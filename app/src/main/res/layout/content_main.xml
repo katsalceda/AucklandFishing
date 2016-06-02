@@ -10,6 +10,75 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="rktechltd.aucklandfishing.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:background="@drawable/bgmenu">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MY FISHING EXPERIENCE"
+        android:id="@+id/buttonXP"
+        android:layout_marginTop="53dp"
+        android:background="#00ffffff"
+        android:textSize="40dp"
+        android:textColor="#00ffffff"
+        android:onClick="buttonXP"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECKLIST"
+        android:id="@+id/buttonChecklist"
+        android:background="#00ffffff"
+        android:textSize="25dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/buttonXP"
+        android:layout_alignParentStart="true"
+        android:textColor="#00ffffff"
+        android:onClick="buttonChecklist" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RULES"
+        android:id="@+id/buttonRules"
+        android:textSize="40dp"
+        android:layout_marginEnd="29dp"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/buttonChecklist"
+        android:layout_alignEnd="@+id/buttonXP"
+        android:textColor="#00ffffff"
+        android:layout_above="@+id/buttonFish"
+        android:onClick="buttonRules" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FISH"
+        android:id="@+id/buttonFish"
+        android:layout_marginTop="107dp"
+        android:background="#00ffffff"
+        android:textSize="45dp"
+        android:textColor="#00ffffff"
+        android:layout_below="@+id/buttonChecklist"
+        android:layout_alignStart="@+id/buttonChecklist"
+        android:layout_alignEnd="@+id/buttonChecklist"
+        android:nestedScrollingEnabled="false"
+        android:onClick="buttonFish" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FAQS"
+        android:id="@+id/buttonFaqs"
+        android:textSize="40dp"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/buttonFish"
+        android:layout_alignStart="@+id/buttonRules"
+        android:layout_alignEnd="@+id/buttonRules"
+        android:textColor="#00ffffff"
+        android:onClick="buttonFaqs" />
 </RelativeLayout>
