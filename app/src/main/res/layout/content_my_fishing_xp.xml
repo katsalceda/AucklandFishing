@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="+ Add Catch"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:id="@+id/tvAddCatch"
         android:textColor="#ff4101"
         android:layout_below="@+id/editText3"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:src="@drawable/location"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="8dp"
         android:background="#00ffffff"
         android:layout_alignBottom="@+id/editText3"
         android:layout_alignEnd="@+id/editText" />
