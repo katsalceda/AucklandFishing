@@ -2,6 +2,7 @@ package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class CategoryDAO implements CategoryDAOInterface {
 
     @Override
     public boolean addCategory(Category category) {
+       // SQLiteDatabase sqldb = getWritableDatabase
         return db.saveCategory(category);
     }
 

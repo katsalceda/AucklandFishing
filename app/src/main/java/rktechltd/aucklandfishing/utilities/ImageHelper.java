@@ -1,6 +1,7 @@
 package rktechltd.aucklandfishing.utilities;
 
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,8 +18,8 @@ import java.io.InputStream;
  */
 public class ImageHelper {
     public static byte[] convertImage(String imagePath) {
-
         byte[] data ;
+
         Bitmap src = BitmapFactory.decodeFile(imagePath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         src.compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -26,6 +27,12 @@ public class ImageHelper {
         return data;
     }
 
+    public static byte[] convertImage(Bitmap bitmap){
+        ByteArrayOutputStream bos=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] img=bos.toByteArray();
+        return img;
+    }
     public static byte[] convertImage(Drawable d) {
         byte[] data ;
         Bitmap src =((BitmapDrawable)d).getBitmap();
@@ -34,6 +41,7 @@ public class ImageHelper {
         data = baos.toByteArray();
         return data;
     }
+
 
 
     public static Bitmap convertImage(byte[] image) {
