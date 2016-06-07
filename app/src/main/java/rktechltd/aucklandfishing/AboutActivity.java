@@ -2,8 +2,6 @@ package rktechltd.aucklandfishing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -42,6 +40,11 @@ public class AboutActivity extends AppCompatActivity {
             case R.id.action_credits:
                 intent = new Intent(this, CreditsActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.action_exit:
+                finish();
+                System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);

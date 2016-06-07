@@ -2,14 +2,11 @@ package rktechltd.aucklandfishing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 public class DisclaimerActivity extends AppCompatActivity {
 
@@ -43,6 +40,11 @@ public class DisclaimerActivity extends AppCompatActivity {
             case R.id.action_credits:
                 intent = new Intent(this, CreditsActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.action_exit:
+                finish();
+                System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);
