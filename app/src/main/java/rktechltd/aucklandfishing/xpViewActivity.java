@@ -7,8 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
 
 public class xpViewActivity extends AppCompatActivity {
+
+    private ListView listView;
+    private XPBackgroundTask xpBackgroundTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,12 @@ public class xpViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_xp);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        listView = (ListView)findViewById(R.id.listViewXP);
+
+        xpBackgroundTask = new XPBackgroundTask(this);
+        xpBackgroundTask.execute("R");
+
     }
 
     @Override
