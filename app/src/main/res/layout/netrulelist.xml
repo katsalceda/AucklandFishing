@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
 
     <LinearLayout
@@ -17,9 +20,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Title"
             android:id="@+id/tvRuleTitle"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:padding="2dp"
             />
 
         <TextView
@@ -27,16 +27,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Description"
-            android:id="@+id/tvRuleDescription"
-            android:layout_marginLeft="10dp" />
+            android:id="@+id/tvRuleDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Penalty"
-            android:id="@+id/tvPenalty"
-            android:layout_marginLeft="10dp" />
+            android:id="@+id/tvPenalty"/>
     </LinearLayout>
 
     <LinearLayout
