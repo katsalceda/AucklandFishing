@@ -57,8 +57,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DisclaimerActivity"
-            android:label="Disclaimer"
             android:configChanges="orientation"
+            android:label="Disclaimer"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -69,26 +69,38 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SafetyChecklistActivity"
-            android:label="Safety Checklist"
             android:configChanges="orientation"
+            android:label="Safety Checklist"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NetRulesActivity"
-            android:label="Net Rules"
             android:configChanges="orientation"
+            android:label="Net Rules"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FishActivity"
-            android:label="Fish Types"
             android:configChanges="orientation"
+            android:label="Fish Types"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyFishingXPActivity"
-            android:label="My Fishing Experience"
             android:configChanges="orientation"
+            android:label="My Fishing Experience"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".xpMenuActivity"
+            android:configChanges="orientation"
+            android:label="My Fishing Experience"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".xpViewActivity"
+            android:configChanges="orientation"
+            android:label="My Fishing Experience"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="rktechltd.aucklandfishing.xpMenuActivity"
+    tools:showIn="@layout/activity_xp_menu"
+    android:background="@drawable/xpmenu">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD NEW XP"
+        android:id="@+id/buttonAddXP"
+        android:layout_marginTop="55dp"
+        android:background="#00ffffff"
+        android:textSize="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#00ffffff"
+        android:onClick="buttonAddXP" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIEW XP"
+        android:id="@+id/buttonViewXP"
+        android:layout_marginTop="65dp"
+        android:background="#00ffffff"
+        android:textSize="90dp"
+        android:textColor="#00ffffff"
+        android:layout_below="@+id/buttonAddXP"
+        android:layout_alignParentEnd="true"
+        android:onClick="buttonViewXP" />
+</RelativeLayout>
