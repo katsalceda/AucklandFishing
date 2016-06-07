@@ -19,4 +19,7 @@
     <string name="title_activity_net_rules">NetRulesActivity</string>
     <string name="title_activity_fish">FishActivity</string>
     <string name="title_activity_my_fishing_xp">MyFishingXPActivity</string>
+    <string name="title_activity_myfishingxp_menu">MyfishingxpMenuActivity</string>
+    <string name="title_activity_xp_menu">xpMenuActivity</string>
+    <string name="title_activity_view_xp">viewXPActivity</string>
 </resources>
