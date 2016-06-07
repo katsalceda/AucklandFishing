@@ -1,5 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.interfaces;
 
+import android.database.Cursor;
+
 import java.util.List;
 
 import rktechltd.aucklandfishing.models.Faq;
@@ -9,7 +11,7 @@ import rktechltd.aucklandfishing.models.Faq;
  */
 public interface FaqDAOInterface {
     Faq getFaqs(int faqId);
-    List<Faq> getAllFaqs();
+    Cursor getAllFaqs();
     boolean addFaq(Faq faq);
     int getFaqId(String question);
 }

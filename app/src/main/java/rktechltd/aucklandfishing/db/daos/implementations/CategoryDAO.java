@@ -2,10 +2,6 @@ package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
-
-import java.util.List;
 
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.db.daos.interfaces.CategoryDAOInterface;

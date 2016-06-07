@@ -1,6 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class NetRuleDAO implements NetruleDAOInterface {
     }
 
     @Override
-    public List<NetRule> getAllNetRules(){
+    public Cursor getAllNetRules(){
         return db.getAllNetRules();
     }
 

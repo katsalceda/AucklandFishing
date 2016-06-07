@@ -6,12 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.sql.Time;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -567,7 +564,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     }
 
     //TBA thread
-    public ArrayList<Faq> getAllFaqs() {
+    public Cursor getAllFaqs() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Faq> faqs = null;
         String query = "SELECT " + AucklandFishingDBTables.Faq.COLUMN_FAQ_ID + ", "
@@ -584,11 +581,11 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return faqs;
+        return cursor;
     }
 
     //TBA thread
-    public ArrayList<Fish> getAllFishes() {
+    public Cursor getAllFishes() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Fish> fishes = null;
         String query = "SELECT " + AucklandFishingDBTables.Fish.COLUMN_FISH_ID + ", "
@@ -610,10 +607,10 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return fishes;
+        return cursor;
     }
 
-    public ArrayList<FishingExperience> getAllFishingExperience() {
+    public Cursor getAllFishingExperience() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FishingExperience> experiences = null;
         String query = "SELECT " + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + ", "
@@ -641,11 +638,11 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return experiences;
+        return cursor;
     }
 
     //TBA thread
-    public ArrayList<FishCatch> getAllFishCatch() {
+    public Cursor getAllFishCatch() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FishCatch> fishes = null;
         String query = "SELECT " + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID + ", "
@@ -667,10 +664,10 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return fishes;
+        return cursor;
     }
 
-    public ArrayList<Location> getAllLocations() {
+    public Cursor getAllLocations() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Location> locations = null;
         String query = "SELECT " + AucklandFishingDBTables.Location.COLUMN_LOCATION_ID + ", "
@@ -690,11 +687,11 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return locations;
+        return cursor;
     }
 
     //public NetRule(int rulesId, String description, String title, double penalty, byte[] image) {
-    public ArrayList<NetRule> getAllNetRules() {
+    public Cursor getAllNetRules() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<NetRule> netrules = null;
         String query = "SELECT " + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_ID + ", "
@@ -714,7 +711,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return netrules;
+        return cursor;
     }
 
     public FishingExperience findFishingExperience(String date) {
@@ -782,7 +779,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         return 0;
     }
 
-    public List<FishCatch> findCatches(String fExId) {
+    public Cursor findCatches(String fExId) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(AucklandFishingDBTables.FishCatch.TABLE_NAME, AucklandFishingDBTables.FishCatch.ALL_COLUMNS,
                 AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE + "=?", new String[]{fExId}, null, null, null, null);
@@ -796,7 +793,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             db.close();
         }
-        return fishes;
+        return cursor;
     }
 
 

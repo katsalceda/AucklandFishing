@@ -1,5 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.interfaces;
 
+import android.database.Cursor;
+
 import java.util.List;
 
 import rktechltd.aucklandfishing.models.FishCatch;
@@ -9,7 +11,7 @@ import rktechltd.aucklandfishing.models.FishCatch;
  */
 public interface FishCatchDAOInterface {
     FishCatch getFishCatch(int fishCatchId);
-    List<FishCatch> getAllFishCatch();
+    Cursor getAllFishCatch();
     boolean addFishCatch(FishCatch fishCatch);
-    List<FishCatch> getAllFishCatchOfExperience(int fishingExperienceId);
+    Cursor getAllFishCatchOfExperience(int fishingExperienceId);
 }

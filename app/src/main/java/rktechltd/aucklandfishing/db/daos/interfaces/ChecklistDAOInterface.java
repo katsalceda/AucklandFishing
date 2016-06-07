@@ -2,8 +2,6 @@ package rktechltd.aucklandfishing.db.daos.interfaces;
 
 import android.database.Cursor;
 
-import java.util.List;
-
 import rktechltd.aucklandfishing.models.Checklist;
 
 /**

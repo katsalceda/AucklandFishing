@@ -1,6 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class FaqDAO implements FaqDAOInterface  {
     }
 
     @Override
-    public List<Faq> getAllFaqs() {
+    public Cursor getAllFaqs() {
       return db.getAllFaqs();
     }
 

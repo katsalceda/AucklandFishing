@@ -1,6 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -22,11 +23,9 @@ public class FishDAO implements FishDAOInterface {
     }
 
     @Override
-    public List<Fish> getAllFish() {
-
-        return db.getAllFishes();
+    public Cursor getAllFish() {
+       return db.getAllFishes();
     }
-
     @Override
     public boolean addFish(Fish fish) {
         return db.saveFish(fish);

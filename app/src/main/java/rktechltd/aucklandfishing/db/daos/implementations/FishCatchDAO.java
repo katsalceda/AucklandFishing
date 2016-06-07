@@ -1,6 +1,7 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class FishCatchDAO implements FishCatchDAOInterface {
     }
 
     @Override
-    public List<FishCatch> getAllFishCatch() {
+    public Cursor getAllFishCatch() {
       return db.getAllFishCatch();
     }
 
@@ -32,7 +33,7 @@ public class FishCatchDAO implements FishCatchDAOInterface {
     }
 
     @Override
-    public List<FishCatch> getAllFishCatchOfExperience(int fishingExperienceId) {
+    public Cursor getAllFishCatchOfExperience(int fishingExperienceId) {
         return db.findCatches(""+fishingExperienceId);
     }
 }
