@@ -117,7 +117,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
 
     private static final String DELETE_CATEGORY_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Category.TABLE_NAME;
     private static final String DELETE_FISH_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Fish.TABLE_NAME;
-    private static final String DELETE_lOCATION_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Location.TABLE_NAME;
+   // private static final String DELETE_lOCATION_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Location.TABLE_NAME;
     private static final String DELETE_FISHEXPERIENCE_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
     private static final String DELETE_FISHCATCH_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.FishCatch.TABLE_NAME;
     private static final String DELETE_CHECKLIST_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.CheckList.TABLE_NAME;
@@ -377,7 +377,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DELETE_CATEGORY_TABLE);
         db.execSQL(DELETE_FISH_TABLE);
-        db.execSQL(DELETE_lOCATION_TABLE);
+        //db.execSQL(DELETE_lOCATION_TABLE);
         db.execSQL(DELETE_FISHEXPERIENCE_TABLE);
         db.execSQL(DELETE_FISHCATCH_TABLE);
         db.execSQL(DELETE_CHECKLIST_TABLE);
@@ -673,7 +673,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-
+/*
     public Cursor getAllLocations() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Location> locations = null;
@@ -695,7 +695,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             db.close();
         }
         return cursor;
-    }
+    }*/
 
     //public NetRule(int rulesId, String description, String title, double penalty, byte[] image) {
     public Cursor getAllNetRules() {
