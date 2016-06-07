@@ -388,7 +388,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     /**
      * a method saving a Category
      *
-     * @param aCategoryList
+     * @param aCategory
      * @return boolean
      */
      public boolean saveCategory(Category aCategory){
@@ -596,7 +596,9 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM + ", "
                 + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT + ", "
                 + AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + " FROM "
-                + AucklandFishingDBTables.Fish.TABLE_NAME;
+                + AucklandFishingDBTables.Fish.TABLE_NAME +
+                " ORDER BY "+AucklandFishingDBTables.Fish.COLUMN_FISH_ID;
+
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             fishes = new ArrayList<Fish>();

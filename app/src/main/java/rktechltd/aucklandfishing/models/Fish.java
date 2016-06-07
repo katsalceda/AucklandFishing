@@ -10,13 +10,13 @@ public class Fish {
     private String fishDescription;
     private byte[] fishImage;
     private int fishCat;
-    private int minFishLengthCm;
+    private double minFishLengthCm;
     private int maxDailyLimit;
     private int isCombinedBag;
 
 
     public Fish(){}
-    public Fish(int fishId, String fishName, String fishDescription, byte[] fishImage, int fishCat, int minFishLengthCm, int maxDailyLimit, int isCombinedBag){
+    public Fish(int fishId, String fishName, String fishDescription, byte[] fishImage, int fishCat, double minFishLengthCm, int maxDailyLimit, int isCombinedBag){
         this.fishId = fishId;
         this.fishName = fishName;
         this.fishDescription = fishDescription;
@@ -68,7 +68,7 @@ public class Fish {
         this.fishCat = fishCat;
     }
 
-    public int getMinFishLengthCm() {
+    public double getMinFishLengthCm() {
         return minFishLengthCm;
     }
 

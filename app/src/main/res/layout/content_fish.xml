@@ -13,22 +13,12 @@
     tools:showIn="@layout/activity_fish"
     android:background="@drawable/bga">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" >
-
-        <ListView
+           <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listViewFish"
             android:background="#78ffffff"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
-    </ScrollView>
-
-
 
 </RelativeLayout>

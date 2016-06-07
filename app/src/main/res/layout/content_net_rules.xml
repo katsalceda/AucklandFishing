@@ -13,12 +13,6 @@
     tools:showIn="@layout/activity_net_rules"
     android:background="@drawable/bga">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView4"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" >
 
         <ListView
             android:layout_width="wrap_content"
@@ -27,7 +21,6 @@
             android:background="#78ffffff"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
-    </ScrollView>
 
 
 </RelativeLayout>

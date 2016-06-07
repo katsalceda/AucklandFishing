@@ -6,20 +6,29 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import rktechltd.aucklandfishing.db.backgroundTasks.FishBackgroundTask;
+import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
 
 public class FishActivity extends AppCompatActivity {
-
+    private ListView listView ;
+    private FishBackgroundTask fishBackgroundTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish);
+        fishBackgroundTask = new FishBackgroundTask(this);
+        fishBackgroundTask.execute("R");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        listView = (ListView)findViewById(R.id.listViewFish);
     }
 
     @Override
