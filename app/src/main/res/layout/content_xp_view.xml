@@ -13,15 +13,6 @@
     tools:showIn="@layout/activity_view_xp"
     android:background="@drawable/bga">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView5"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" >
-
-    </ScrollView>
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

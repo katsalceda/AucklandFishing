@@ -87,12 +87,14 @@ public final class AucklandFishingDBTables {
     public static abstract class FishingExperience implements BaseColumns{
         public static final String TABLE_NAME = "fishingExperience";//table name fishingExperience
         public static final String COLUMN_FISHING_EXPERIENCE_ID ="fishingExperienceId";//implementation of the categoryId column
-        public static final String COLUMN_FISHING_EXPERIENCE_LOCATION_ID ="locationId";//implementation of the locationId column a reference to the location table
+        public static final String COLUMN_FISHING_EXPERIENCE_NAME = "locationName";//implementation of the name column
+        public static final String COLUMN_FISHING_EXPERIENCE_LATITUDE = "locationLatitude";//implementation of the latitude column
+        public static final String COLUMN_FISHING_EXPERIENCE_LONGITUDE = "locationLongitude";//implementation of the longitude column
         public static final String COLUMN_FISHING_EXPERIENCE_DATE ="dateEx";//implementation of the date column
         public static final String COLUMN_FISHING_EXPERIENCE_TIME ="timeEx";//implementation of the time column
         public static final String COLUMN_FISHING_EXPERIENCE_REMARK ="remark";//implementation of the remark column
         public static final String PRIMARY_KEY="PRIMARY KEY ("+COLUMN_FISHING_EXPERIENCE_ID+")";
-        public static final String[] ALL_COLUMNS ={COLUMN_FISHING_EXPERIENCE_ID,COLUMN_FISHING_EXPERIENCE_LOCATION_ID,COLUMN_FISHING_EXPERIENCE_DATE,COLUMN_FISHING_EXPERIENCE_TIME,COLUMN_FISHING_EXPERIENCE_REMARK};
+        public static final String[] ALL_COLUMNS ={COLUMN_FISHING_EXPERIENCE_ID,COLUMN_FISHING_EXPERIENCE_NAME,COLUMN_FISHING_EXPERIENCE_LATITUDE,COLUMN_FISHING_EXPERIENCE_LONGITUDE, COLUMN_FISHING_EXPERIENCE_DATE,COLUMN_FISHING_EXPERIENCE_TIME,COLUMN_FISHING_EXPERIENCE_REMARK};
     }
 
     /**

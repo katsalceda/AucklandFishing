@@ -65,7 +65,7 @@ public class FAQListAdapter extends ArrayAdapter<Faq>{
             faqHolder = (FaqHolder) row.getTag();
         }
         // Get the data item for this position
-        Faq faq = (Faq)getItem(position);
+        Faq faq = getItem(position);
         faqHolder.txtQuestion.setText(faq.getQuestion().toString());
         faqHolder.txtAnswer.setText(faq.getAnswer().toString());
 

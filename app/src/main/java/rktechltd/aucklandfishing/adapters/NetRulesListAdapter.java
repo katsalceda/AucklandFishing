@@ -67,7 +67,7 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
             ruleHolder = (RuleHolder) row.getTag();
         }
         // Get the data item for this position
-        NetRule rule = (NetRule)getItem(position);
+        NetRule rule = getItem(position);
         Log.d("Adapter",""+rule.getTitle());
         ruleHolder.txtRuleTitle.setText(rule.getDescription().toString());
         ruleHolder.txtRuleDescription.setText(rule.getTitle().toString());

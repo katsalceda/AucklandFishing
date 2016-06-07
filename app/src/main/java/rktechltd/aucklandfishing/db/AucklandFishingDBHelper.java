@@ -75,7 +75,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Fish.PRIMARY_KEY +
             " )";
-
+/*
     private static final String CREATE_LOCATION_TABLE = "CREATE TABLE " + AucklandFishingDBTables.Location.TABLE_NAME + " (" +
             AucklandFishingDBTables.Location.COLUMN_LOCATION_ID + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Location.COLUMN_LOCATION_NAME + TEXT_TYPE + COMMA_SEP +
@@ -83,11 +83,12 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.Location.COLUMN_LOCATION_LONGITUDE + REAL_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Location.COLUMN_LOCATION_N0TE + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Location.PRIMARY_KEY +
-            " )";
+            " )";*/
 
     private static final String CREATE_FISHEXPERIENCE_TABLE = "CREATE TABLE " + AucklandFishingDBTables.FishingExperience.TABLE_NAME + " (" +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + NUMERIC_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID + NUMERIC_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + TEXT_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE + DATE_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME + TIME_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + TEXT_TYPE + COMMA_SEP +
@@ -144,8 +145,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         Log.d("AKLFishingDB", "CAT created");
         db.execSQL(CREATE_FISH_TABLE);
         Log.d("AKLFishingDB", "FISH created");
-        db.execSQL(CREATE_LOCATION_TABLE);
-        Log.d("AKLFishingDB", "LOCATION created");
+      /*  db.execSQL(CREATE_LOCATION_TABLE);
+        Log.d("AKLFishingDB", "LOCATION created");*/
         db.execSQL(CREATE_FISHEXPERIENCE_TABLE);
         Log.d("AKLFishingDB", "FX created");
         db.execSQL(CREATE_FISHCATCH_TABLE);
@@ -478,7 +479,9 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID, aFishExp.getExperienceId());
-        cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID, aFishExp.getLocation());
+        cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME, aFishExp.getLocationName());
+        cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE, aFishExp.getLatitude());
+        cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LONGITUDE, aFishExp.getLongitude());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE, aFishExp.getDate().toString());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME, aFishExp.getTime().toString());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK, aFishExp.getRemark());
@@ -488,7 +491,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    //TBA thread
+   /* //TBA thread
     public boolean saveLocation(Location aLocation) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -501,7 +504,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         Log.d("AKLFishingDB","Location added");
         db.close();
         return true;
-    }
+    }*/
 
     //TBA thread
     public boolean saveNetRule(NetRule aNetRule) {
@@ -616,7 +619,9 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FishingExperience> experiences = null;
         String query = "SELECT " + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + ", "
-                + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID + ", "
+                + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + ", "
+                + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + ", "
+                + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LONGITUDE + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + " FROM "
@@ -626,16 +631,16 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             experiences = new ArrayList<FishingExperience>();
             cursor.moveToFirst();
             do {
-                String date = cursor.getString(2);
+                String date = cursor.getString(4);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
                 Date parsed  = new Date();
                 java.sql.Date convertedDate = new java.sql.Date(parsed.getTime());
 
-                String time = cursor.getString(3);
+                String time = cursor.getString(5);
                 Time convertedTime;
                 convertedTime = Time.valueOf(time);
 
-                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3),convertedDate, convertedTime, cursor.getString(6));
                 experiences.add(exp);
             } while (cursor.moveToNext());
             db.close();
@@ -732,19 +737,19 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             Time convertedTime;
             convertedTime = Time.valueOf(time);
 
-            exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+            exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3),convertedDate, convertedTime, cursor.getString(6));
             db.close();
         }
         return exp;
     }
 
-    public FishingExperience findFishingExperience(String date, String locationId) {
+    public FishingExperience findFishingExperience(String date, String locationName) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(AucklandFishingDBTables.FishingExperience.TABLE_NAME,
                                  AucklandFishingDBTables.FishingExperience.ALL_COLUMNS,
                                  AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE + "=? AND"
-                                +AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID + "=?",
-                                new String[]{date,locationId}, null, null, null, null);
+                                +AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + "=?",
+                                new String[]{date,locationName}, null, null, null, null);
         FishingExperience exp = null;
         if (cursor != null) {
             cursor.moveToFirst();
@@ -757,19 +762,19 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             Time convertedTime;
             convertedTime = Time.valueOf(time);
 
-            exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+            exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3),convertedDate, convertedTime, cursor.getString(6));
             db.close();
         }
         return exp;
     }
 
-    public int findFishingExperienceId(String date, String locationId) {
+    public int findFishingExperienceId(String date, String locationName) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(AucklandFishingDBTables.FishingExperience.TABLE_NAME,
                                 new String[]{AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID},
                             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE+ "=? AND"
-                        +   AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID+ "=?" ,
-                            new String[]{date,locationId}, null, null, null, null);
+                        +   AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME+ "=?" ,
+                            new String[]{date,locationName}, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
 
