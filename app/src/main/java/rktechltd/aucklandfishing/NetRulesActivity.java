@@ -56,8 +56,8 @@ public class NetRulesActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.action_close:
-                finish();
+            case R.id.action_exit:
+                System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);

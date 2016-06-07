@@ -17,8 +17,8 @@ public class xpMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_xp_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
@@ -42,8 +42,8 @@ public class xpMenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.action_close:
-                finish();
+            case R.id.action_exit:
+                System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);

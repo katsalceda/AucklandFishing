@@ -42,6 +42,10 @@ public class MyFishingXPActivity extends AppCompatActivity {
                 intent = new Intent(this, CreditsActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.action_exit:
+                System.exit(0);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
