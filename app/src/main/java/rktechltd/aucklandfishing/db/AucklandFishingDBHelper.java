@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,7 +34,7 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";
-    public static final int DB_VERSION =46;
+    public static final int DB_VERSION =47;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String REAL_TYPE = " REAL";
@@ -631,11 +632,15 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             experiences = new ArrayList<FishingExperience>();
             cursor.moveToFirst();
             do {
+                java.sql.Date convertedDate=null;
                 String date = cursor.getString(4);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-                Date parsed  = new Date();
-                java.sql.Date convertedDate = new java.sql.Date(parsed.getTime());
-
+                try {
+                    Date parsed = dateFormat.parse(date);
+                    convertedDate = new java.sql.Date(parsed.getTime());
+                }catch(ParseException e){
+                    e.printStackTrace();
+                }
                 String time = cursor.getString(5);
                 Time convertedTime;
                 convertedTime = Time.valueOf(time);
