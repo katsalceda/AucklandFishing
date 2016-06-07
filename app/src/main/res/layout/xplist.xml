@@ -38,8 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Longtitude"
-        android:id="@+id/tvXPLongtitude" />
+        android:text="Longitude"
+        android:id="@+id/tvXPLongitude" />
 
     <TextView
         android:layout_width="wrap_content"

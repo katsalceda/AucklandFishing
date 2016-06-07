@@ -56,7 +56,7 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
             xpHolder = new XPHolder();
             xpHolder.txtXPLocationName = (TextView) row.findViewById(R.id.tvXPLocationName);
             xpHolder.txtXPLatitude = (TextView) row.findViewById(R.id.tvXPLatitude);
-            xpHolder.txtXPLongitude= (TextView) row.findViewById(R.id.tvXPLongtitude);
+            xpHolder.txtXPLongitude= (TextView) row.findViewById(R.id.tvXPLongitude);
             xpHolder.txtXPDate = (TextView) row.findViewById(R.id.tvXPDate);
             xpHolder.txtXPTime = (TextView) row.findViewById(R.id.tvXPTime);
             xpHolder.txtXPRemarks = (TextView) row.findViewById(R.id.tvXPRemarks);

@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="8"
-        android:id="@+id/editText2"
+        android:id="@+id/latitudeSpace"
         android:layout_below="@+id/textView27"
         android:layout_alignLeft="@+id/textView27"
         android:layout_alignStart="@+id/textView27" />
@@ -76,9 +76,9 @@
         android:text="Longitude"
         android:layout_marginTop="10dp"
         android:id="@+id/textView28"
-        android:layout_below="@+id/editText2"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_below="@+id/latitudeSpace"
+        android:layout_alignLeft="@+id/latitudeSpace"
+        android:layout_alignStart="@+id/latitudeSpace"
         android:textColor="#000000" />
 
     <EditText
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="8"
-        android:id="@+id/editText3"
+        android:id="@+id/longitudeSpace"
         android:layout_below="@+id/textView28"
         android:layout_alignLeft="@+id/textView28"
         android:layout_alignStart="@+id/textView28" />
@@ -99,8 +99,8 @@
         android:layout_marginTop="8dp"
         android:id="@+id/tvAddCatch"
         android:textColor="#ff4101"
-        android:layout_below="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
+        android:layout_below="@+id/longitudeSpace"
+        android:layout_alignStart="@+id/longitudeSpace"
         android:clickable="true"
         android:onClick="tvAddCatch" />
 
@@ -111,7 +111,7 @@
         android:src="@drawable/location"
         android:layout_marginBottom="8dp"
         android:background="#00ffffff"
-        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignBottom="@+id/longitudeSpace"
         android:layout_alignEnd="@+id/editText"
         android:onClick="GetLocationButton" />
 
