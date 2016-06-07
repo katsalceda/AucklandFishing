@@ -46,6 +46,10 @@ public class CreditsActivity extends AppCompatActivity {
                 intent = new Intent(this, CreditsActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.action_close:
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
