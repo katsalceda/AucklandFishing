@@ -9,15 +9,18 @@ import java.sql.Time;
 public class FishingExperience {
 
     private int experienceId;
-    private int location;
+    private String locationName;
+    private double latitude;
+    private double longitude;
     private Date date;
     private Time time;
     private String remark;
 
-
-    public FishingExperience(int experienceId, int location, Date date, Time time, String remark) {
+    public FishingExperience(int experienceId, String locationName, double latitude, double longitude, Date date, Time time, String remark) {
         this.experienceId = experienceId;
-        this.location = location;
+        this.locationName = locationName;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.date = date;
         this.time = time;
         this.remark = remark;
@@ -31,12 +34,28 @@ public class FishingExperience {
         this.experienceId = experienceId;
     }
 
-    public int getLocation() {
-        return location;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public Date getDate() {
@@ -63,4 +82,3 @@ public class FishingExperience {
         this.remark = remark;
     }
 }
-

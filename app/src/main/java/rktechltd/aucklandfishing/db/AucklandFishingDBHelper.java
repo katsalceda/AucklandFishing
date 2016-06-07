@@ -12,7 +12,6 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.SplashActivity;
@@ -478,7 +477,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID, aFishExp.getExperienceId());
-        cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID, aFishExp.getLocation());
+        //cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LOCATION_ID, aFishExp.getLocation());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE, aFishExp.getDate().toString());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME, aFishExp.getTime().toString());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK, aFishExp.getRemark());
@@ -635,8 +634,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 Time convertedTime;
                 convertedTime = Time.valueOf(time);
 
-                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
-                experiences.add(exp);
+                //FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+                //experiences.add(exp);
             } while (cursor.moveToNext());
             db.close();
         }
@@ -732,7 +731,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             Time convertedTime;
             convertedTime = Time.valueOf(time);
 
-            exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+            //exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
             db.close();
         }
         return exp;
@@ -757,7 +756,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             Time convertedTime;
             convertedTime = Time.valueOf(time);
 
-            exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
+            //exp = new FishingExperience(cursor.getInt(0), cursor.getInt(1), convertedDate, convertedTime, cursor.getString(4));
             db.close();
         }
         return exp;

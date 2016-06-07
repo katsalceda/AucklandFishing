@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Longtitude"
+        android:text="Longitude"
         android:layout_marginTop="10dp"
         android:id="@+id/textView28"
         android:layout_below="@+id/editText2"
@@ -107,11 +107,12 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/GetLocationButton"
         android:src="@drawable/location"
         android:layout_marginBottom="8dp"
         android:background="#00ffffff"
         android:layout_alignBottom="@+id/editText3"
-        android:layout_alignEnd="@+id/editText" />
+        android:layout_alignEnd="@+id/editText"
+        android:onClick="GetLocationButton" />
 
 </RelativeLayout>
