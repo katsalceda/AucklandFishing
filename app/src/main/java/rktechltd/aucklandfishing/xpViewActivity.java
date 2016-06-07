@@ -22,14 +22,12 @@ public class xpViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_xp);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-<<<<<<< HEAD
+
         listView = (ListView)findViewById(R.id.listViewXP);
 
         xpBackgroundTask = new XPBackgroundTask(this);
         xpBackgroundTask.execute("R");
 
-=======
->>>>>>> origin/master
     }
 
     @Override

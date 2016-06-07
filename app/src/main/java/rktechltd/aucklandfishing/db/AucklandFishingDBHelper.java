@@ -12,7 +12,6 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.SplashActivity;
@@ -33,7 +32,7 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";
-    public static final int DB_VERSION =46;
+    public static final int DB_VERSION = 47;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String REAL_TYPE = " REAL";
