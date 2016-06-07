@@ -66,7 +66,7 @@ public class FishListAdapter extends ArrayAdapter<Fish> {
             fishHolder = (FishHolder) row.getTag();
         }
         // Get the data item for this position
-        Fish fish = (Fish)getItem(position);
+        Fish fish = getItem(position);
         fishHolder.txtName.setText(fish.getFishName().toString());
         if(fish.getMinFishLengthCm()==0)
             fishHolder.txtMinLength.setText("MIN FISH LENGTH: NONE");

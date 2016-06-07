@@ -82,3 +82,4 @@ public class FishingExperience {
         this.remark = remark;
     }
 }
+
