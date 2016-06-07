@@ -17,7 +17,6 @@ public class xpMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_xp_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
     @Override
@@ -44,13 +43,11 @@ public class xpMenuActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_exit:
-                finish();
                 System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
     public void buttonAddXP(View view) {
         Intent intent = new Intent(this, MyFishingXPActivity.class);
         startActivity(intent);

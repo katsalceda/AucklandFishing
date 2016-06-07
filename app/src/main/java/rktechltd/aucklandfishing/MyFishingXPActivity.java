@@ -120,7 +120,6 @@ public class MyFishingXPActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_exit:
-                finish();
                 System.exit(0);
                 break;
         }

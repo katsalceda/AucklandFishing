@@ -2,6 +2,7 @@ package rktechltd.aucklandfishing;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -54,7 +55,6 @@ public class SafetyChecklistActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_exit:
-                finish();
                 System.exit(0);
                 break;
         }
