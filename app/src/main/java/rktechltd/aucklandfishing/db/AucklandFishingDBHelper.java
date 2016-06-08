@@ -628,25 +628,26 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + " FROM "
                 + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null) {
+        if (cursor.getCount()>0) {
             experiences = new ArrayList<FishingExperience>();
             cursor.moveToFirst();
             do {
                 String date = cursor.getString(4);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-                Date parsed  = new Date();
+                Date parsed = new Date();
                 java.sql.Date convertedDate = new java.sql.Date(parsed.getTime());
 
                 String time = cursor.getString(5);
                 Time convertedTime;
                 convertedTime = Time.valueOf(time);
 
-                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3),convertedDate, convertedTime, cursor.getString(6));
+                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), convertedDate, convertedTime, cursor.getString(6));
                 experiences.add(exp);
             } while (cursor.moveToNext());
             db.close();
-        }
-        return cursor;
+
+            return cursor;
+        }else return null;
     }
 
     //TBA thread
@@ -713,7 +714,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             netrules = new ArrayList<NetRule>();
             cursor.moveToFirst();
             do {
-
                 NetRule netRule = new NetRule(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getBlob(4));
                 netrules.add(netRule);
             } while (cursor.moveToNext());

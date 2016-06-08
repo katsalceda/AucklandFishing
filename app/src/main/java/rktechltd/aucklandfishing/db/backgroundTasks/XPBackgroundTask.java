@@ -76,7 +76,7 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
             java.sql.Date convertedDate = null;
 
             Cursor cursor = xpdao.getAllFishingExperience();
-            if (cursor == null) {
+            if (cursor != null) {
                 cursor.moveToFirst();
                 Log.d("BG", "" + cursor.getCount());
                 while (cursor.moveToNext()) {
