@@ -33,7 +33,7 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";
-    public static final int DB_VERSION =47;
+    public static final int DB_VERSION =48;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String REAL_TYPE = " REAL";
@@ -88,7 +88,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_FISHEXPERIENCE_TABLE = "CREATE TABLE " + AucklandFishingDBTables.FishingExperience.TABLE_NAME + " (" +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + TEXT_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + TEXT_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + REAL_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LONGITUDE + REAL_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE + DATE_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME + TIME_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + TEXT_TYPE + COMMA_SEP +
