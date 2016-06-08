@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,10 +19,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MyFishingXPActivity extends AppCompatActivity {
+import java.sql.Date;
+import java.util.Calendar;
 
+import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
+import rktechltd.aucklandfishing.db.daos.implementations.FishingExperienceDAO;
+import rktechltd.aucklandfishing.models.FishingExperience;
+
+public class MyFishingXPActivity extends AppCompatActivity {
+    private XPBackgroundTask xpBackgroundTask;
     private Button buttonGetLocation;
     private EditText spaceLatitude, spaceLongitude;
+    private EditText locationName;
     private LocationManager locationManager;
     private LocationListener locationListener;
 
@@ -31,6 +40,20 @@ public class MyFishingXPActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_fishing_xp);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        locationName = (EditText) findViewById(R.id.tfLocationName);
+        spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
+        spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
+    }
+
+    public void buttonSaveXP(View v){
+        String location = locationName.getText().toString();
+        String latitude = spaceLatitude.getText().toString();
+        String longitude = spaceLongitude.getText().toString();
+        Log.d("SAVING","FISHING EXP");
+        xpBackgroundTask = new XPBackgroundTask(this);
+        xpBackgroundTask.execute("I",location,latitude,latitude);
+
     }
 
         /** buttonGetLocation = (Button) findViewById(R.id.GetLocationButton);
@@ -132,9 +155,6 @@ public class MyFishingXPActivity extends AppCompatActivity {
     }
 
     public void GetLocationButton(View v) {
-         spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
-         spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
-
          locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
          locationListener = new LocationListener() {
 
@@ -177,20 +197,20 @@ public class MyFishingXPActivity extends AppCompatActivity {
          @Override
          public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
          switch (requestCode) {
-         case 10:
-         if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-         configureButton();
-         return;
+            case 10:
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                     configureButton();
+                return;
 
-         }
+             }
          }
 
          private void configureButton() {
-         buttonGetLocation.setOnClickListener(new View.OnClickListener() {
+            buttonGetLocation.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-         locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
-         }
+             locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+            }
          });
          }
 }

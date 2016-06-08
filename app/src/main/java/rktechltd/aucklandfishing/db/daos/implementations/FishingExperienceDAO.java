@@ -47,4 +47,9 @@ public class FishingExperienceDAO implements FishingExperienceDAOInterface {
 
         return db.findFishingExperienceId(date, ""+locationId);
     }
+
+    @Override
+    public int getLatestXPId() {
+        return db.findLatestXPId();
+    }
 }

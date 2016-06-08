@@ -62,7 +62,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text|numberSigned"
         android:ems="8"
         android:id="@+id/tfLatitude"
         android:layout_below="@+id/textView27"
@@ -84,7 +84,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text|numberSigned"
         android:ems="8"
         android:id="@+id/tfLongitude"
         android:layout_below="@+id/textView28"

@@ -22,7 +22,6 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
     private List list;
     public NetRulesListAdapter(Context context) {
-
         super(context, R.layout.netrulelist);
         list = new ArrayList<NetRule>();
         Log.d("Adapter", "constructor");
@@ -52,14 +51,13 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
         // Check if an existing view is being reused, otherwise inflate the view
         RuleHolder ruleHolder; // view lookup cache stored in tag
         if (convertView == null) {
-            // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             row = inflater.inflate(R.layout.netrulelist,parent, false);
             ruleHolder = new RuleHolder();
             ruleHolder.txtRuleTitle = (TextView) row.findViewById(R.id.tvRuleTitle);
             ruleHolder.txtRuleDescription = (TextView) row.findViewById(R.id.tvRuleDescription);
             ruleHolder.txtPenalty = (TextView) row.findViewById(R.id.tvPenalty);
-            ruleHolder.imgRule = (ImageView) row.findViewById(R.id.imgRule);
+          //  ruleHolder.imgRule = (ImageView) row.findViewById(R.id.imgRule);
 
             // clHolder.imgCL = (ImageView) row.findViewById(R.id.imgCL);
             row.setTag(ruleHolder);
@@ -72,7 +70,7 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
         ruleHolder.txtRuleTitle.setText(rule.getDescription().toString());
         ruleHolder.txtRuleDescription.setText(rule.getTitle().toString());
         ruleHolder.txtPenalty.setText("PENALTY: "+rule.getPenalty());
-        ruleHolder.imgRule.setImageBitmap(ImageHelper.convertImage(rule.getImage()));
+     //   ruleHolder.imgRule.setImageBitmap(ImageHelper.convertImage(rule.getImage()));
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;
@@ -84,6 +82,6 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
         TextView txtRuleTitle = null;
         TextView txtRuleDescription = null;
         TextView txtPenalty = null;
-        ImageView imgRule =null;
+      //  ImageView imgRule =null;
     }
 }

@@ -6,21 +6,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.models.FishingExperience;
+import rktechltd.aucklandfishing.models.NetRule;
+import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
- * Created by KatSalceda on 7/06/16.
+ * Created by KatSalceda on 7/06/2016.
  */
 public class XPListAdapter extends ArrayAdapter<FishingExperience> {
     private List list;
     public XPListAdapter(Context context) {
-
         super(context, R.layout.xplist);
         list = new ArrayList<FishingExperience>();
         Log.d("Adapter", "constructor");
@@ -50,31 +53,34 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
         // Check if an existing view is being reused, otherwise inflate the view
         XPHolder xpHolder; // view lookup cache stored in tag
         if (convertView == null) {
-            // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+             LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //LayoutInflater inflater = LayoutInflater.from(getContext());
             row = inflater.inflate(R.layout.xplist,parent, false);
-            xpHolder = new XPHolder();
-            xpHolder.txtXPLocationName = (TextView) row.findViewById(R.id.tvXPLocationName);
-            xpHolder.txtXPLatitude = (TextView) row.findViewById(R.id.tvXPLatitude);
-            xpHolder.txtXPLongitude= (TextView) row.findViewById(R.id.tvXPLongitude);
-            xpHolder.txtXPDate = (TextView) row.findViewById(R.id.tvXPDate);
-            xpHolder.txtXPTime = (TextView) row.findViewById(R.id.tvXPTime);
-            xpHolder.txtXPRemarks = (TextView) row.findViewById(R.id.tvXPRemarks);
 
-            // clHolder.imgCL = (ImageView) row.findViewById(R.id.imgCL);
+
+            xpHolder = new XPHolder();
+            xpHolder.txtLocation = (TextView) row.findViewById(R.id.tvLocationName);
+            xpHolder.txtLatitude = (TextView) row.findViewById(R.id.tvXPLatitude);
+            xpHolder.txtLongitude = (TextView) row.findViewById(R.id.tvXPLongitude);
+            xpHolder.txtDate = (TextView) row.findViewById(R.id.tvXPDate);
+            xpHolder.txtTime = (TextView) row.findViewById(R.id.tvXPTime);
+
             row.setTag(xpHolder);
         } else {
             xpHolder = (XPHolder) row.getTag();
         }
         // Get the data item for this position
-        FishingExperience xp = getItem(position);
-        Log.d("Adapter", "" + xp.getLocationName());
-        xpHolder.txtXPLocationName.setText("LOCATION NAME: " + xp.getLocationName());
-        xpHolder.txtXPLatitude .setText("LATITUDE: " + xp.getLatitude());
-        xpHolder.txtXPLongitude.setText("LONGITUDE " + xp.getLongitude());
-        xpHolder.txtXPDate.setText(xp.getDate().toString());
-        xpHolder.txtXPTime.setText(xp.getTime().toString());
-        xpHolder.txtXPRemarks.setText("REMARKS: " + xp.getRemark());
+        FishingExperience fx = getItem(position);
+        Log.d("Adapter",""+fx.getLocationName());
+        xpHolder.txtLocation.setText("Location: "+fx.getLocationName().toString());
+        xpHolder.txtLatitude.setText("Latitude: "+fx.getLatitude());
+        xpHolder.txtLongitude.setText("Longitude:  "+fx.getLongitude());
+        String PATTERN="yyyy-MM-dd";
+        SimpleDateFormat dateFormat=new SimpleDateFormat();
+        dateFormat.applyPattern(PATTERN);
+        String date1=dateFormat.format(fx.getDate());
+        xpHolder.txtDate.setText("Date: "+date1);
+        xpHolder.txtTime.setText("Time: "+fx.getTime().toString());
 
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
@@ -84,11 +90,10 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
     // View lookup cache
     static class XPHolder
     {
-        TextView txtXPLocationName = null;
-        TextView txtXPLatitude = null;
-        TextView txtXPLongitude = null;
-        TextView txtXPDate = null;
-        TextView txtXPTime = null;
-        TextView txtXPRemarks = null;
+        TextView txtLocation = null;
+        TextView txtLatitude = null;
+        TextView txtLongitude = null;
+        TextView txtDate = null;
+        TextView txtTime = null;
     }
 }

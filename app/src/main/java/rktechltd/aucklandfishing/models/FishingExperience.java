@@ -1,7 +1,8 @@
 package rktechltd.aucklandfishing.models;
 
-import java.sql.Date;
+
 import java.sql.Time;
+import java.util.Date;
 
 /**
  * Created by romelyn on 30/05/2016.

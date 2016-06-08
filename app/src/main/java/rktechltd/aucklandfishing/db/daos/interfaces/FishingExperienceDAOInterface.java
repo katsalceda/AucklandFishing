@@ -16,4 +16,5 @@ public interface FishingExperienceDAOInterface {
     Cursor getAllFishingExperience();
     boolean addFishingExperience(FishingExperience fishingExperience);
     int getFishingExperienceId(String date, int locationId);
+    int getLatestXPId();
 }

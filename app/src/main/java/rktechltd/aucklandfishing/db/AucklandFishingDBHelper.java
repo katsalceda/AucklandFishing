@@ -487,6 +487,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME, aFishExp.getTime().toString());
         cv.put(AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK, aFishExp.getRemark());
         db.insert(AucklandFishingDBTables.FishingExperience.TABLE_NAME, null, cv);
+        Log.d("AKLFishingDB INSERT",cv.toString());
         Log.d("AKLFishingDB","FX added");
         db.close();
         return true;
@@ -627,6 +628,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + " FROM "
                 + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
+        Log.d("QUERY:",query );
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.getCount()>0) {
             experiences = new ArrayList<FishingExperience>();
@@ -742,6 +744,22 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             db.close();
         }
         return exp;
+    }
+
+    public int findLatestXPId(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT max( "+AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID+" ) from "
+                    + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sql,null);
+        Log.d("XP BG",cursor.getCount()+"");
+        cursor.moveToFirst();
+        if(cursor.getCount()>0){
+            Log.d("XP",cursor.getInt(0)+"");
+            return cursor.getInt(0);
+        }else {
+            Log.d("XP",cursor.getCount()+"");
+            return 0;
+        }
     }
 
     public FishingExperience findFishingExperience(String date, String locationName) {

@@ -30,7 +30,6 @@ public class NetRulesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.listViewNetRules);
-
     }
 
     @Override

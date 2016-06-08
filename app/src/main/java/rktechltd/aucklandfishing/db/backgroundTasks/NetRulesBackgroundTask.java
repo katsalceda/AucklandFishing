@@ -71,8 +71,8 @@ public class NetRulesBackgroundTask extends AsyncTask<String,NetRule,String> {
             byte[] image;
             Cursor cursor = ndao.getAllNetRules();
             cursor.moveToFirst();
-            Log.d("BG",""+cursor.getCount());
-            while(cursor.moveToNext()){
+            Log.d("BG Hello",""+cursor.getCount());
+            do{
                 Log.d("BG","inside while");
                 id = cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_ID));
                 n_title = cursor.getString(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_TITLE));
@@ -83,7 +83,7 @@ public class NetRulesBackgroundTask extends AsyncTask<String,NetRule,String> {
                 publishProgress(cl);
                 netRuleAdapter.add(cl);
                 Log.d("BG",""+netRuleAdapter.getCount());
-            }
+            }while(cursor.moveToNext());
             return "Reading DB";
         }
         return null;

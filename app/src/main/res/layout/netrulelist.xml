@@ -11,9 +11,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_gravity="left|center_horizontal"
-        android:layout_weight="1.10">
+        android:layout_weight="0.88">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,15 +37,4 @@
             android:id="@+id/tvPenalty"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgRule"
-         />
-    </LinearLayout>
 </LinearLayout>
