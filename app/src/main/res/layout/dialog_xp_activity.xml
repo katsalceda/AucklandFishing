@@ -18,7 +18,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/tfCatchName"
         android:layout_gravity="right" />
 
     <TextView
@@ -32,7 +32,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText5"
+        android:id="@+id/tvWeight"
         android:inputType="number"
         android:layout_gravity="right" />
 
@@ -47,7 +47,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText6"
+        android:id="@+id/tvLength"
         android:inputType="number"
         android:layout_gravity="right" />
 
@@ -62,7 +62,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText7"
+        android:id="@+id/tvRemarks"
         android:layout_gravity="right" />
 
 

@@ -16,6 +16,15 @@
         android:textStyle="bold"
         android:textColor="#f8c08c" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/tvXPId"
+        android:layout_gravity="right"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"

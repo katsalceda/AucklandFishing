@@ -64,6 +64,7 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
             xpHolder.txtLongitude = (TextView) row.findViewById(R.id.tvXPLongitude);
             xpHolder.txtDate = (TextView) row.findViewById(R.id.tvXPDate);
             xpHolder.txtTime = (TextView) row.findViewById(R.id.tvXPTime);
+            xpHolder.txtId =(TextView) row.findViewById(R.id.tvXPId);
 
             row.setTag(xpHolder);
         } else {
@@ -81,7 +82,8 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
         String date1=dateFormat.format(fx.getDate());
         xpHolder.txtDate.setText("Date: "+date1);
         xpHolder.txtTime.setText("Time: "+fx.getTime().toString());
-
+        xpHolder.txtId.setText(fx.getExperienceId()+"");
+        //xpHolder.txtId.visible
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;
@@ -95,5 +97,6 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
         TextView txtLongitude = null;
         TextView txtDate = null;
         TextView txtTime = null;
+        TextView txtId =null;
     }
 }

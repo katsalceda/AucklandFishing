@@ -72,7 +72,9 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             int id;
             String catchName;
             String remark;
+            int xp;
             Double weight, length;
+            byte[] img;
 
             Cursor cursor = fcdao.getAllFishCatch();
             if (cursor == null) {
@@ -80,12 +82,14 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                 Log.d("BG", "" + cursor.getCount());
                 while (cursor.moveToNext()) {
                     id = cursor.getInt(0);
-                    catchName = cursor.getString(1);
-                    weight = cursor.getDouble(2);
-                    length = cursor.getDouble(3);
+                    xp = cursor.getInt(1);
+                    length = cursor.getDouble(2);
+                    weight = cursor.getDouble(3);
+                    img = cursor.getBlob(4);
+                    catchName = cursor.getString(5);
                     remark = cursor.getString(6);
 
-                    FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
+                    FishCatch exp = new FishCatch(id, xp, length, weight, img, catchName, remark);
                     publishProgress(exp);
                     fcatchAdapter.add(exp);
                     Log.d("BG", "" + fcatchAdapter.getCount());
@@ -93,7 +97,7 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             }
             return "Reading DB";
         } else {
-            return ("No fishing experience to load");
+            return ("No Catch to load");
         }
     }
 }

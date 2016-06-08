@@ -33,6 +33,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
     private EditText locationName;
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private Button saveXP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class MyFishingXPActivity extends AppCompatActivity {
         locationName = (EditText) findViewById(R.id.tfLocationName);
         spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
         spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
+
+        saveXP = (Button)findViewById(R.id.buttonSaveXP);
     }
 
     public void buttonSaveXP(View v){
@@ -53,6 +56,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
         Log.d("SAVING","FISHING EXP");
         xpBackgroundTask = new XPBackgroundTask(this);
         xpBackgroundTask.execute("I",location,latitude,latitude);
+        //saveXP.isEnabled(false);
 
     }
 
@@ -151,6 +155,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
 
     public void tvAddCatch(View v) {
         DialogActivity dialog = new DialogActivity();
+        //dialog.getActivity().
         dialog.show(getFragmentManager(), "my_dialog");
     }
 

@@ -657,7 +657,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FishCatch> fishes = null;
         String query = "SELECT " + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID + ", "
-                + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_WEIGHT + ", "

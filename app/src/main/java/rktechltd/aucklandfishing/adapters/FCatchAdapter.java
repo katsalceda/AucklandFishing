@@ -54,7 +54,7 @@ public class FCatchAdapter extends ArrayAdapter<FishCatch> {
         if (convertView == null) {
             // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            row = inflater.inflate(R.layout.fishlist,parent, false);
+            row = inflater.inflate(R.layout.fcatchlist,parent, false);
             fishcatchHolder = new FishCatchHolder();
             fishcatchHolder.txtName = (TextView) row.findViewById(R.id.tvCatchName);
             fishcatchHolder.txtWeight = (TextView) row.findViewById(R.id.tvCatchWeight);
