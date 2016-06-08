@@ -132,8 +132,8 @@ public class MyFishingXPActivity extends AppCompatActivity {
     }
 
     public void GetLocationButton(View v) {
-         spaceLatitude = (EditText) findViewById(R.id.latitudeSpace);
-         spaceLongitude = (EditText) findViewById(R.id.longitudeSpace);
+         spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
+         spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
 
          locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
          locationListener = new LocationListener() {

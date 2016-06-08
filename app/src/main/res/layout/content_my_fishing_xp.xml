@@ -28,7 +28,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/tfLocationName"
         android:ems="13"
         android:layout_below="@+id/textView16"
         android:layout_alignLeft="@+id/textView17"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="8"
-        android:id="@+id/latitudeSpace"
+        android:id="@+id/tfLatitude"
         android:layout_below="@+id/textView27"
         android:layout_alignLeft="@+id/textView27"
         android:layout_alignStart="@+id/textView27" />
@@ -76,9 +76,9 @@
         android:text="Longitude"
         android:layout_marginTop="10dp"
         android:id="@+id/textView28"
-        android:layout_below="@+id/latitudeSpace"
-        android:layout_alignLeft="@+id/latitudeSpace"
-        android:layout_alignStart="@+id/latitudeSpace"
+        android:layout_below="@+id/tfLatitude"
+        android:layout_alignLeft="@+id/tfLatitude"
+        android:layout_alignStart="@+id/tfLatitude"
         android:textColor="#000000" />
 
     <EditText
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="8"
-        android:id="@+id/longitudeSpace"
+        android:id="@+id/tfLongitude"
         android:layout_below="@+id/textView28"
         android:layout_alignLeft="@+id/textView28"
         android:layout_alignStart="@+id/textView28" />
@@ -99,8 +99,8 @@
         android:layout_marginTop="8dp"
         android:id="@+id/tvAddCatch"
         android:textColor="#ff4101"
-        android:layout_below="@+id/longitudeSpace"
-        android:layout_alignStart="@+id/longitudeSpace"
+        android:layout_below="@+id/tfLongitude"
+        android:layout_alignStart="@+id/tfLongitude"
         android:clickable="true"
         android:onClick="tvAddCatch" />
 
@@ -111,8 +111,8 @@
         android:src="@drawable/location"
         android:layout_marginBottom="8dp"
         android:background="#00ffffff"
-        android:layout_alignBottom="@+id/longitudeSpace"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_alignBottom="@+id/tfLongitude"
+        android:layout_alignEnd="@+id/tfLocationName"
         android:onClick="GetLocationButton" />
 
     <Button

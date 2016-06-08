@@ -12,6 +12,7 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.SplashActivity;
@@ -32,7 +33,7 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";
-    public static final int DB_VERSION = 48;
+    public static final int DB_VERSION =48;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String REAL_TYPE = " REAL";
@@ -88,7 +89,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + REAL_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LONGITUDE+ REAL_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LONGITUDE + REAL_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_DATE + DATE_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_TIME + TIME_TYPE + COMMA_SEP +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + TEXT_TYPE + COMMA_SEP +
@@ -117,7 +118,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
 
     private static final String DELETE_CATEGORY_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Category.TABLE_NAME;
     private static final String DELETE_FISH_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Fish.TABLE_NAME;
-    private static final String DELETE_lOCATION_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Location.TABLE_NAME;
+   // private static final String DELETE_lOCATION_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.Location.TABLE_NAME;
     private static final String DELETE_FISHEXPERIENCE_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
     private static final String DELETE_FISHCATCH_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.FishCatch.TABLE_NAME;
     private static final String DELETE_CHECKLIST_TABLE = "DROP TABLE IF EXISTS " + AucklandFishingDBTables.CheckList.TABLE_NAME;
@@ -377,7 +378,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DELETE_CATEGORY_TABLE);
         db.execSQL(DELETE_FISH_TABLE);
-        db.execSQL(DELETE_lOCATION_TABLE);
+        //db.execSQL(DELETE_lOCATION_TABLE);
         db.execSQL(DELETE_FISHEXPERIENCE_TABLE);
         db.execSQL(DELETE_FISHCATCH_TABLE);
         db.execSQL(DELETE_CHECKLIST_TABLE);
@@ -617,7 +618,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
 
     public Cursor getAllFishingExperience() {
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<FishingExperience> experiences;
+        ArrayList<FishingExperience> experiences = null;
         String query = "SELECT " + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_NAME + ", "
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_LATITUDE + ", "
@@ -627,31 +628,32 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_REMARK + " FROM "
                 + AucklandFishingDBTables.FishingExperience.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null) {
+        if (cursor.getCount()>0) {
             experiences = new ArrayList<FishingExperience>();
             cursor.moveToFirst();
             do {
                 String date = cursor.getString(4);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-                Date parsed  = new Date();
+                Date parsed = new Date();
                 java.sql.Date convertedDate = new java.sql.Date(parsed.getTime());
 
                 String time = cursor.getString(5);
                 Time convertedTime;
                 convertedTime = Time.valueOf(time);
 
-                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3),convertedDate, convertedTime, cursor.getString(6));
+                FishingExperience exp = new FishingExperience(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), convertedDate, convertedTime, cursor.getString(6));
                 experiences.add(exp);
             } while (cursor.moveToNext());
             db.close();
-        }
-        return cursor;
+
+            return cursor;
+        }else return null;
     }
 
     //TBA thread
     public Cursor getAllFishCatch() {
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<FishCatch> fishes;
+        ArrayList<FishCatch> fishes = null;
         String query = "SELECT " + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE + ", "
@@ -673,7 +675,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-
+/*
     public Cursor getAllLocations() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Location> locations = null;
@@ -695,7 +697,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             db.close();
         }
         return cursor;
-    }
+    }*/
 
     //public NetRule(int rulesId, String description, String title, double penalty, byte[] image) {
     public Cursor getAllNetRules() {
@@ -712,7 +714,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             netrules = new ArrayList<NetRule>();
             cursor.moveToFirst();
             do {
-
                 NetRule netRule = new NetRule(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getBlob(4));
                 netrules.add(netRule);
             } while (cursor.moveToNext());
