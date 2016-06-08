@@ -27,12 +27,13 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
     Activity activity;
     ListView lv;
 
-    public XPBackgroundTask(Context ctc){
+    public XPBackgroundTask(Context ctc) {
         Log.d("BG TASK", "inside constructor");
-        this.ctc=ctc;
+        this.ctc = ctc;
         xpAdapter = new XPListAdapter(ctc);
-        activity =(Activity)ctc;
+        activity = (Activity) ctc;
     }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -40,20 +41,20 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
 
     @Override
     protected void onPostExecute(String result) {
-        Log.d("BG","setting adapter");
-        if(result.equals("Reading DB")){
+        Log.d("BG", "setting adapter");
+        if (result.equals("Reading DB")) {
             lv.setAdapter(xpAdapter);
-        }else{
-            Toast.makeText(ctc, result, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(ctc, result, Toast.LENGTH_LONG).show();
         }
 
     }
 
     @Override
     protected void onProgressUpdate(FishingExperience... values) {
-        Log.d("BG","On progress update");
+        Log.d("BG", "On progress update");
         xpAdapter.add(values[0]);
-        Log.d("BG","populating");
+        Log.d("BG", "populating");
     }
 
     @Override
@@ -61,13 +62,13 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
         String method = params[0];
         FishingExperienceDAO xpdao;
 
-        if(method.equals("C")){
+        if (method.equals("C")) {
             return "C";
-        }else if(method.equals("R")){
-            lv = (ListView)activity.findViewById(R.id.listViewXP);
-            xpdao= new FishingExperienceDAO(ctc);
+        } else if (method.equals("R")) {
+            lv = (ListView) activity.findViewById(R.id.listViewXP);
+            xpdao = new FishingExperienceDAO(ctc);
             xpAdapter = new XPListAdapter(ctc);
-            Log.d("BG",xpAdapter.toString());
+            Log.d("BG", xpAdapter.toString());
             int id;
             String locationName;
             String remark;
@@ -75,37 +76,38 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
             java.sql.Date convertedDate = null;
 
             Cursor cursor = xpdao.getAllFishingExperience();
-            cursor.moveToFirst();
-            Log.d("BG",""+cursor.getCount());
-            while(cursor.moveToNext()){
-                id = cursor.getInt(0);
-                locationName = cursor.getString(1);
-                latitude = cursor.getDouble(2);
-                longitude = cursor.getDouble(3);
-                String d = cursor.getString(4);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-                try {
-                    Date parsed  = dateFormat.parse(d);
-                    convertedDate = new java.sql.Date(parsed.getTime());
+            if (cursor == null) {
+                cursor.moveToFirst();
+                Log.d("BG", "" + cursor.getCount());
+                while (cursor.moveToNext()) {
+                    id = cursor.getInt(0);
+                    locationName = cursor.getString(1);
+                    latitude = cursor.getDouble(2);
+                    longitude = cursor.getDouble(3);
+                    String d = cursor.getString(4);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+                    try {
+                        Date parsed = dateFormat.parse(d);
+                        convertedDate = new java.sql.Date(parsed.getTime());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    String t = cursor.getString(5);
+                    Time convertedTime;
+                    convertedTime = Time.valueOf(t);
+
+                    remark = cursor.getString(6);
+
+                    FishingExperience exp = new FishingExperience(id, locationName, latitude, longitude, convertedDate, convertedTime, remark);
+                    publishProgress(exp);
+                    xpAdapter.add(exp);
+                    Log.d("BG", "" + xpAdapter.getCount());
                 }
-                catch(ParseException e) {
-                    e.printStackTrace();
-                }
-
-
-                String t = cursor.getString(5);
-                Time convertedTime;
-                convertedTime = Time.valueOf(t);
-
-                remark = cursor.getString(6);
-
-                FishingExperience exp = new FishingExperience(id, locationName, latitude, longitude,convertedDate, convertedTime, remark);
-                publishProgress(exp);
-                xpAdapter.add(exp);
-                Log.d("BG",""+xpAdapter.getCount());
             }
             return "Reading DB";
+        } else {
+            return ("No fishing experience to load");
         }
-        return null;
     }
 }

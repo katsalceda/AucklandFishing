@@ -3,8 +3,6 @@ package rktechltd.aucklandfishing.db.daos.implementations;
 import android.content.Context;
 import android.database.Cursor;
 
-import java.util.List;
-
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.db.daos.interfaces.FishingExperienceDAOInterface;
 import rktechltd.aucklandfishing.models.FishingExperience;
@@ -15,7 +13,7 @@ import rktechltd.aucklandfishing.models.FishingExperience;
 public class FishingExperienceDAO implements FishingExperienceDAOInterface {
     private AucklandFishingDBHelper db ;
     public FishingExperienceDAO(Context context){
-        db = new AucklandFishingDBHelper(context);//initialize database with context
+        db = new AucklandFishingDBHelper(context); //initialize database with context
     }
     @Override
     public FishingExperience getFishingExperience(int fishingExperienceId) {
@@ -34,7 +32,9 @@ public class FishingExperienceDAO implements FishingExperienceDAOInterface {
 
     @Override
     public Cursor getAllFishingExperience() {
-        return db.getAllFishingExperience();
+        Cursor cursor = null;
+        cursor = db.getAllFishingExperience();
+        return cursor;
     }
 
     @Override
