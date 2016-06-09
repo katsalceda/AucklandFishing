@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="http://wildblue.co.nz/Info/Fish+ID+and+Tactics/Non-Target+Species.html"
+        android:text="https://upload.wikimedia.org/wikipedia/commons/6/62/Spisula_solida.jpg"
         android:id="@+id/textView6"
         android:textColor="#ffffff"
         android:layout_marginTop="5dp"
