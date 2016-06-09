@@ -27,9 +27,8 @@ import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
 
 public class MyFishingXPActivity extends AppCompatActivity {
     private XPBackgroundTask xpBackgroundTask;
-    //TextView textLat;
-    //TextView textLong;
     private EditText locationName;
+
     double nlat;
     double nlng;
     double glat;
@@ -49,7 +48,6 @@ public class MyFishingXPActivity extends AppCompatActivity {
     private LocationListener locationListener;
     private Button saveXP;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,23 +55,16 @@ public class MyFishingXPActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-                //All textView
-                textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
+        //All textView
+        textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
         textViewNetLng = (TextView)findViewById(R.id.textViewNetLng);
         textViewGpsLat = (TextView)findViewById(R.id.textViewGpsLat);
         textViewGpsLng = (TextView)findViewById(R.id.textViewGpsLng);
         locationName = (EditText) findViewById(R.id.tfLocationName);
     }
 
-     public void buttonSaveXP(View v){
-        String location = locationName.getText().toString();
-    //    String latitude = spaceLatitude.getText().toString();
-    //    String longitude = spaceLongitude.getText().toString();
-    //    Log.d("SAVING","FISHING EXP");
-     //   xpBackgroundTask = new XPBackgroundTask(this);
-      //  xpBackgroundTask.execute("I",location,latitude,latitude);
-        //saveXP.isEnabled(false);
+    @Override
+    public void onDestroy() {
 
         //Remove GPS location update
         if(glocManager != null){
@@ -87,6 +78,16 @@ public class MyFishingXPActivity extends AppCompatActivity {
             Log.d("ServiceForLatLng", "Network Update Released");
         }
         super.onDestroy();
+    }
+
+    public void buttonSaveXP(View v){
+        String location = locationName.getText().toString();
+        String latitude = spaceLatitude.getText().toString();
+        String longitude = spaceLongitude.getText().toString();
+        Log.d("SAVING","FISHING EXP");
+        xpBackgroundTask = new XPBackgroundTask(this);
+        xpBackgroundTask.execute("I",location,latitude,latitude);
+        //saveXP.isEnabled(false);
     }
 
     //This is for Lat lng which is determine by your wireless or mobile network
@@ -200,14 +201,14 @@ public class MyFishingXPActivity extends AppCompatActivity {
     }
 
     /** public void buttonSaveXP(View v){
-     String location = locationName.getText().toString();
-     String latitude = textLat.getText().toString();
-     String longitude = textLong.getText().toString();
-     Log.d("SAVING","FISHING EXP");
-     xpBackgroundTask = new XPBackgroundTask(this);
-     xpBackgroundTask.execute("I", location, latitude, latitude);
+        String location = locationName.getText().toString();
+        String latitude = textLat.getText().toString();
+        String longitude = textLong.getText().toString();
+        Log.d("SAVING","FISHING EXP");
+        xpBackgroundTask = new XPBackgroundTask(this);
+        xpBackgroundTask.execute("I", location, latitude, latitude);
 
-     } */
+    } */
 
 
     @Override
