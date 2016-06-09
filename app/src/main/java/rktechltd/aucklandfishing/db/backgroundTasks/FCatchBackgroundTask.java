@@ -8,11 +8,6 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
@@ -85,9 +80,9 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                     length = cursor.getDouble(3);
                     remark = cursor.getString(6);
 
-                    FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
-                    publishProgress(exp);
-                    fcatchAdapter.add(exp);
+                    //FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
+                    //publishProgress(exp);
+                    //fcatchAdapter.add(exp);
                     Log.d("BG", "" + fcatchAdapter.getCount());
                 }
             }

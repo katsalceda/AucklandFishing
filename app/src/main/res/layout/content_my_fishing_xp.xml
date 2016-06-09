@@ -51,69 +51,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Latitude"
+        android:text="Net Latitude: "
         android:layout_marginTop="15dp"
-        android:id="@+id/textView27"
+        android:id="@+id/textViewNetLat"
         android:layout_below="@+id/textView17"
         android:layout_alignLeft="@+id/textView17"
         android:layout_alignStart="@+id/textView17"
-        android:textColor="#000000" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text|numberSigned"
-        android:ems="8"
-        android:id="@+id/tfLatitude"
-        android:layout_below="@+id/textView27"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27" />
+        android:textColor="#000000"
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Longitude"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView28"
-        android:layout_below="@+id/tfLatitude"
-        android:layout_alignLeft="@+id/tfLatitude"
-        android:layout_alignStart="@+id/tfLatitude"
-        android:textColor="#000000" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text|numberSigned"
-        android:ems="8"
-        android:id="@+id/tfLongitude"
-        android:layout_below="@+id/textView28"
-        android:layout_alignLeft="@+id/textView28"
-        android:layout_alignStart="@+id/textView28" />
+        android:text="Net Longitude: "
+        android:id="@+id/textViewNetLng"
+        android:textColor="#000000"
+        android:layout_below="@+id/textViewNetLat"
+        android:layout_alignStart="@+id/textViewNetLat"
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="+ Add Catch"
-        android:layout_marginTop="8dp"
         android:id="@+id/tvAddCatch"
         android:textColor="#ff4101"
-        android:layout_below="@+id/tfLongitude"
-        android:layout_alignStart="@+id/tfLongitude"
         android:clickable="true"
-        android:onClick="tvAddCatch" />
+        android:onClick="tvAddCatch"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textViewGpsLng" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/GetLocationButton"
+        android:id="@+id/buttonGetLoc"
         android:src="@drawable/location"
-        android:layout_marginBottom="8dp"
         android:background="#00ffffff"
-        android:layout_alignBottom="@+id/tfLongitude"
-        android:layout_alignEnd="@+id/tfLocationName"
-        android:onClick="GetLocationButton" />
+        android:onClick="showLoc"
+        android:layout_alignBottom="@+id/tvAddCatch"
+        android:layout_alignEnd="@+id/tfLocationName" />
 
     <Button
         android:layout_width="wrap_content"
@@ -126,5 +104,29 @@
         android:onClick="buttonSaveXP"
         android:background="#96ffffff"
         android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="GPS Latitude: "
+        android:id="@+id/textViewGpsLat"
+        android:textColor="#000000"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textViewNetLng"
+        android:layout_alignStart="@+id/textViewNetLng"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="GPS Longitude: "
+        android:id="@+id/textViewGpsLng"
+        android:layout_below="@+id/textViewGpsLat"
+        android:layout_alignStart="@+id/textViewGpsLat"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
 
 </RelativeLayout>
