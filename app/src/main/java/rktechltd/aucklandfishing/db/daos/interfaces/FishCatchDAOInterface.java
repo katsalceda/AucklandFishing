@@ -7,6 +7,7 @@ import java.util.List;
 import rktechltd.aucklandfishing.models.FishCatch;
 
 /**
+ * An interface for FishCatch Data Access Object
  * Created by romelyn on 30/05/2016.
  */
 public interface FishCatchDAOInterface {

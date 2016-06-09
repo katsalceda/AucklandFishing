@@ -1,13 +1,16 @@
 package rktechltd.aucklandfishing;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +28,12 @@ import com.google.android.gms.location.LocationListener;
 
 import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
 
+/**
+ * A class that handles the fishing experience activity
+ * Back code for the fishing experience activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
 public class MyFishingXPActivity extends AppCompatActivity {
     private XPBackgroundTask xpBackgroundTask;
     private EditText locationName;
@@ -35,9 +44,9 @@ public class MyFishingXPActivity extends AppCompatActivity {
     double glng;
 
     LocationManager glocManager;
-    LocationListener glocListener;
+    MyLocationListenerGPS glocListener;
     LocationManager nlocManager;
-    LocationListener nlocListener;
+    MyLocationListenerNetWork nlocListener;
 
     TextView textViewNetLat;
     TextView textViewNetLng;
@@ -47,7 +56,10 @@ public class MyFishingXPActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private Button saveXP;
-
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,46 +68,57 @@ public class MyFishingXPActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //All textView
-        textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
-        textViewNetLng = (TextView)findViewById(R.id.textViewNetLng);
-        textViewGpsLat = (TextView)findViewById(R.id.textViewGpsLat);
-        textViewGpsLng = (TextView)findViewById(R.id.textViewGpsLng);
+        textViewNetLat = (TextView) findViewById(R.id.textViewNetLat);
+        textViewNetLng = (TextView) findViewById(R.id.textViewNetLng);
+        textViewGpsLat = (TextView) findViewById(R.id.textViewGpsLat);
+        textViewGpsLng = (TextView) findViewById(R.id.textViewGpsLng);
         locationName = (EditText) findViewById(R.id.tfLocationName);
     }
 
+    /**
+     * Removes the location update
+     */
     @Override
     public void onDestroy() {
 
         //Remove GPS location update
-        if(glocManager != null){
-            glocManager.removeUpdates(glocListener);
+        if (glocManager != null) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                 return;
+            }
+            glocManager.removeUpdates((android.location.LocationListener) glocListener);
             Log.d("ServiceForLatLng", "GPS Update Released");
         }
 
         //Remove Network location update
-        if(nlocManager != null){
-            nlocManager.removeUpdates(nlocListener);
+        if (nlocManager != null) {
+            nlocManager.removeUpdates((android.location.LocationListener) nlocListener);
             Log.d("ServiceForLatLng", "Network Update Released");
         }
         super.onDestroy();
     }
 
-    public void buttonSaveXP(View v){
+    /**
+     * Saving new Fishing Experience
+     * @param v
+     */
+    public void buttonSaveXP(View v) {
         String location = locationName.getText().toString();
-        String latitude = spaceLatitude.getText().toString();
-        String longitude = spaceLongitude.getText().toString();
-        Log.d("SAVING","FISHING EXP");
+        String latitude = textViewGpsLat.getText().toString();
+        String longitude = textViewGpsLng.getText().toString();
+        Log.d("SAVING", "FISHING EXP");
         xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I",location,latitude,latitude);
-        //saveXP.isEnabled(false);
+        xpBackgroundTask.execute("I", location, latitude, longitude);
     }
 
-    //This is for Lat lng which is determine by your wireless or mobile network
-    public class MyLocationListenerNetWork implements LocationListener
-    {
+    /**
+     * This is for Lat lng which is determine by your wireless or mobile network
+     * @author  ROMELYN UNGAB
+     * @author KATRINA SALCEDA
+     */
+     public class MyLocationListenerNetWork implements LocationListener {
         @Override
-        public void onLocationChanged(Location loc)
-        {
+        public void onLocationChanged(Location loc) {
             nlat = loc.getLatitude();
             nlng = loc.getLongitude();
 
@@ -106,28 +129,17 @@ public class MyFishingXPActivity extends AppCompatActivity {
             Log.d("LAT & LNG Network:", nlat + " " + nlng);
         }
 
-        @Override
-        public void onProviderDisabled(String provider)
-        {
-            Log.d("LOG", "Network is OFF!");
-        }
-        @Override
-        public void onProviderEnabled(String provider)
-        {
-            Log.d("LOG", "Thanks for enabling Network !");
-        }
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-        }
+
     }
 
-    //This is for Lat lng which is determine by your device GPS
-    public class MyLocationListenerGPS implements LocationListener
-    {
+    /**
+     *This is for Lat long which is determine by your device GPS
+     * @author ROMELYN UNGA
+     * @author KATRINA SALCEDAs
+     */
+       public class MyLocationListenerGPS implements LocationListener {
         @Override
-        public void onLocationChanged(Location loc)
-        {
+        public void onLocationChanged(Location loc) {
             glat = loc.getLatitude();
             glng = loc.getLongitude();
 
@@ -138,23 +150,13 @@ public class MyFishingXPActivity extends AppCompatActivity {
             Log.d("LAT & LNG GPS:", glat + " " + glng);
         }
 
-        @Override
-        public void onProviderDisabled(String provider)
-        {
-            Log.d("LOG", "GPS is OFF!");
-        }
-        @Override
-        public void onProviderEnabled(String provider)
-        {
-            Log.d("LOG", "Thanks for enabling GPS !");
-        }
 
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-        }
     }
 
+    /**
+     * Shows the current location
+     * @param v
+     */
     public void showLoc(View v) {
 
         //Location access ON or OFF checking
@@ -163,8 +165,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
         boolean networkWifiStatus = Settings.Secure.isLocationProviderEnabled(contentResolver, LocationManager.NETWORK_PROVIDER);
 
         //If GPS and Network location is not accessible show an alert and ask user to enable both
-        if(!gpsStatus || !networkWifiStatus)
-        {
+        if (!gpsStatus || !networkWifiStatus) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(MyFishingXPActivity.this);
 
             alertDialog.setTitle("Make your location accessible ...");
@@ -178,7 +179,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
             });
 
             alertDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,int which) {
+                public void onClick(DialogInterface dialog, int which) {
                     Toast.makeText(getApplicationContext(), "Remember to show location you have to enable it !", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }
@@ -187,37 +188,37 @@ public class MyFishingXPActivity extends AppCompatActivity {
             alertDialog.show();
         }
         //IF GPS and Network location is accessible
-        else
-        {
-            nlocManager   = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        else {
+            nlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             nlocListener = new MyLocationListenerNetWork();
-            nlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 1, 0, nlocListener);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+            }
+            nlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 1, 0, (android.location.LocationListener) nlocListener);
 
 
             glocManager  = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
             glocListener = new MyLocationListenerGPS();
-            glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 1, 0, glocListener);
+            glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 1, 0, (android.location.LocationListener) glocListener);
         }
     }
 
-    /** public void buttonSaveXP(View v){
-        String location = locationName.getText().toString();
-        String latitude = textLat.getText().toString();
-        String longitude = textLong.getText().toString();
-        Log.d("SAVING","FISHING EXP");
-        xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I", location, latitude, latitude);
-
-    } */
-
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -241,6 +242,10 @@ public class MyFishingXPActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Loading the dialog to add fish catch
+     * @param v
+     */
     public void tvAddCatch(View v) {
         DialogActivity dialog = new DialogActivity();
         //dialog.getActivity().

@@ -16,9 +16,20 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.FishBackgroundTask;
 import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
 
+/**
+ * A class that handles the fish activity
+ * Back code for the fish activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
 public class FishActivity extends AppCompatActivity {
     private ListView listView ;
     private FishBackgroundTask fishBackgroundTask;
+
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +41,22 @@ public class FishActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.listViewFish);
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

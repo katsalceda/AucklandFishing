@@ -5,74 +5,85 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
->>>>>>> origin/master
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
-import rktechltd.aucklandfishing.db.daos.implementations.FishingExperienceDAO;
 import rktechltd.aucklandfishing.models.FishCatch;
-import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
+ * A class that would take care of communicating the UI thread and the thread
+ * that would insert and read data about Fishing Catch
  * Created by KatSalceda on 8/06/16.
  */
 public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
-    Context ctc;
-    FCatchAdapter fcatchAdapter;
-    Activity activity;
-    ListView lv;
+   private Context ctc;
+    private FCatchAdapter fcatchAdapter;
+    private Activity activity;
+    private ListView lv;
 
+    /**
+     * Constructor that accepts the context being passed
+     * @param ctc
+     */
     public FCatchBackgroundTask(Context ctc) {
         Log.d("BG TASK", "inside constructor");
-        this.ctc = ctc;
-        fcatchAdapter = new FCatchAdapter(ctc);
-        activity = (Activity) ctc;
+        this.ctc = ctc;//initialized the context
+        fcatchAdapter = new FCatchAdapter(ctc);//initializes the custom list adapter for checklist
+        activity = (Activity) ctc;//initializes the activity
     }
 
+    /**
+     *Executes before the thread starts
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
+    /**
+     * Executes at the end of the thread
+     * @param result of type string
+     */
     @Override
     protected void onPostExecute(String result) {
         Log.d("BG", "setting adapter");
         if (result.equals("Reading DB")) {
-            lv.setAdapter(fcatchAdapter);
+            lv.setAdapter(fcatchAdapter);// sets the adapter for the listview
         } else {
             Toast.makeText(ctc, result, Toast.LENGTH_LONG).show();
         }
 
     }
 
+    /**
+     * Adds the FishCatch in the custom list adapter for the FishCatch listview
+     * @param values
+     */
     @Override
     protected void onProgressUpdate(FishCatch... values) {
         Log.d("BG", "On progress update");
-        fcatchAdapter.add(values[0]);
+        fcatchAdapter.add(values[0]);//adds the checklist being passed as parameter
         Log.d("BG", "populating");
     }
 
+    /**
+     *Executes before the thread starts
+     * @param params Accepts parameter of Strings
+     * @return String
+     */
     @Override
     protected String doInBackground(String... params) {
         String method = params[0];
         FishCatchDAO fcdao;
 
-        if (method.equals("I")) {
+        if (method.equals("I")) {    //if the task is inserting new fish caught in the database
           //  saveButton=(Button)this.activity.findViewById(R.id.buttonSaveXP);
-            fcdao = new FishCatchDAO(ctc);
-            int id = fcdao.getLatestFishCatchId()+1;
+            fcdao = new FishCatchDAO(ctc);//instantiates the Checklist Data Access Object
+            int id = fcdao.getLatestFishCatchId()+1;//gets the next fish catch id
             int fx=Integer.parseInt(params[1]);
             double length = Double.parseDouble(params[2]);
             double weight = Double.parseDouble(params[3]);
@@ -83,11 +94,12 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             FishCatch fc = new FishCatch(id,fx,length,weight, name, remarks);
             fcdao.addFishCatch(fc);
             return "Fishing Experience Added";
-        } else if (method.equals("R")) {
 
-            lv = (ListView) activity.findViewById(R.id.listViewCatch);
-            fcdao = new FishCatchDAO(ctc);
-            fcatchAdapter = new FCatchAdapter(ctc);
+        } else if (method.equals("R")) {   //if the task is reading the database
+
+            lv = (ListView) activity.findViewById(R.id.listViewCatch);//casting of lv to the custom widget
+            fcdao = new FishCatchDAO(ctc);//instantiates the Checklist Data Access Object
+            fcatchAdapter = new FCatchAdapter(ctc);//instantiates the checklist custom adapter
             Log.d("BG", fcatchAdapter.toString());
             int id;
             String catchName;
@@ -96,11 +108,11 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             Double weight, length;
             byte[] img;
 
-            Cursor cursor = fcdao.getAllFishCatch();
+            Cursor cursor = fcdao.getAllFishCatch();//assigns a cursor with the list of all checklist from the db
             if (cursor == null) {
                 cursor.moveToFirst();
                 Log.d("BG", "" + cursor.getCount());
-                while (cursor.moveToNext()) {
+               do { //while the cursor has items
                     id = cursor.getInt(0);
                     xp = cursor.getInt(1);
                     length = cursor.getDouble(2);
@@ -108,18 +120,11 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                     img = cursor.getBlob(4);
                     catchName = cursor.getString(5);
                     remark = cursor.getString(6);
-
-<<<<<<< HEAD
-                    //FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
-                    //publishProgress(exp);
-                    //fcatchAdapter.add(exp);
-=======
+                   //instantiates the FishCatch with the row in the cursor
                     FishCatch exp = new FishCatch(id, xp, length, weight, img, catchName, remark);
-                    publishProgress(exp);
-                    fcatchAdapter.add(exp);
->>>>>>> origin/master
+                    publishProgress(exp);//calls the onProgressUpdate method
                     Log.d("BG", "" + fcatchAdapter.getCount());
-                }
+               }while(cursor.moveToNext());
             }
             return "Reading DB";
         } else {

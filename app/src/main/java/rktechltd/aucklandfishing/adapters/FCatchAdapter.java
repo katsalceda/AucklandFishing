@@ -17,53 +17,75 @@ import rktechltd.aucklandfishing.models.FishCatch;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
+ * A custom list adapter for fish catch
  * Created by KatSalceda on 8/06/16.
  */
 public class FCatchAdapter extends ArrayAdapter<FishCatch> {
     private List list;
+    /**
+     * Constructor of the custom list adapter
+     * @param context
+     */
     public FCatchAdapter (Context context) {
 
-        super(context, R.layout.fcatchlist);
-        list = new ArrayList<FishCatch>();
+        super(context, R.layout.fcatchlist);//calls the superclass constructor
+        list = new ArrayList<FishCatch>();//initalize the list as FishCatch
         Log.d("Adapter", "constructor");
     }
-
+    /**
+     * an implementation of the add method adding an object to the custom list
+     * @param object
+     */
     @Override
     public void add(FishCatch object) {
-        list.add(object);
+        list.add(object);//adds the FishCatch to the list
         Log.d("Adapter","added");
     }
-
+    /**
+     * Returns the size of the custom list
+     * @return int
+     */
     @Override
     public int getCount() {
         return list.size();
     }
-
+    /**
+     * Returns the FishCatch in the position
+     * @param position
+     * @return
+     */
     @Override
     public FishCatch getItem(int position) {
         Log.d("Adapter","getting an item");
         return (FishCatch)list.get(position);
     }
-
+    /**
+     * returns the row item for the list
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d("Adapter","getting view");
         View row = convertView;
-        // Check if an existing view is being reused, otherwise inflate the view
+
         FishCatchHolder fishcatchHolder; // view lookup cache stored in tag
+        // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             row = inflater.inflate(R.layout.fcatchlist,parent, false);
             fishcatchHolder = new FishCatchHolder();
-            fishcatchHolder.txtName = (TextView) row.findViewById(R.id.tvCatchName);
-            fishcatchHolder.txtWeight = (TextView) row.findViewById(R.id.tvCatchWeight);
-            fishcatchHolder.txtLength= (TextView) row.findViewById(R.id.tvCatchLength);
-            fishcatchHolder.txtRemarks = (TextView) row.findViewById(R.id.tvCatchRemarks);
-            fishcatchHolder.img = (ImageView)row.findViewById(R.id.imgCatch);
-            row.setTag(fishcatchHolder);
+            fishcatchHolder.txtName = (TextView) row.findViewById(R.id.tvCatchName);//casting of textview
+            fishcatchHolder.txtWeight = (TextView) row.findViewById(R.id.tvCatchWeight);//casting of textview
+            fishcatchHolder.txtLength= (TextView) row.findViewById(R.id.tvCatchLength);//casting of textview
+            fishcatchHolder.txtRemarks = (TextView) row.findViewById(R.id.tvCatchRemarks);//casting of textview
+            fishcatchHolder.img = (ImageView)row.findViewById(R.id.imgCatch);//casting of imageview
+            row.setTag(fishcatchHolder);//Set the holder to he row
         } else {
-            fishcatchHolder = (FishCatchHolder) row.getTag();
+            fishcatchHolder = (FishCatchHolder) row.getTag();//recycles the existing rows
         }
 
     // Get the data item for this position

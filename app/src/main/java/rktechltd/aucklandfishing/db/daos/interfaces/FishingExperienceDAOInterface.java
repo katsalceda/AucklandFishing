@@ -7,6 +7,7 @@ import java.util.List;
 import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
+ * An interface for FishingExperience Data Access Object
  * Created by romelyn on 30/05/2016.
  */
 public interface FishingExperienceDAOInterface {
@@ -15,6 +16,6 @@ public interface FishingExperienceDAOInterface {
     FishingExperience getFishingExperience(String date);
     Cursor getAllFishingExperience();
     boolean addFishingExperience(FishingExperience fishingExperience);
-    int getFishingExperienceId(String date, int locationId);
+    int getFishingExperienceId(String date, String locationName);
     int getLatestXPId();
 }

@@ -18,50 +18,75 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 
 /**
+ * A custom list adapter for checklist
  * Created by romelyn on 1/06/2016.
  */
 public class CheckListAdapter extends ArrayAdapter<Checklist> {
     private List list;
-    public CheckListAdapter(Context context) {
 
-        super(context, R.layout.checklist);
-        list = new ArrayList<Checklist>();
+    /**
+     * Constructor of the custom list adapter
+     * @param context
+     */
+    public CheckListAdapter(Context context) {
+        super(context, R.layout.checklist);//calls the superclass constructor
+        list = new ArrayList<Checklist>();//initalize the list as checklist
         Log.d("Adapter", "constructor");
     }
-
+    /**
+     * an implementation of the add method adding an object to the custom list
+     * @param object
+     */
     @Override
     public void add(Checklist object) {
-        list.add(object);
+        list.add(object); //adds the checklist to the list
         Log.d("Adapter","added");
     }
 
+    /**
+     * Returns the size of the custom list
+     * @return int
+     */
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return list.size();
     }
 
+    /**
+     * Returns the checklist in the position
+     * @param position
+     * @return
+     */
     @Override
     public Checklist getItem(int position) {
         Log.d("Adapter","getting an item");
         return (Checklist)list.get(position);
     }
 
+    /**
+     * returns the row item for the list
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d("Adapter","getting view");
         View row = convertView;
+        ChecklistHolder clHolder; // view lookup cache stored in tag'
         // Check if an existing view is being reused, otherwise inflate the view
-        ChecklistHolder clHolder; // view lookup cache stored in tag
         if (convertView == null) {
-           // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             row = inflater.inflate(R.layout.checklist,parent, false);
             clHolder = new ChecklistHolder();
-            clHolder.txtTitle = (TextView) row.findViewById(R.id.tvTitle);
-            clHolder.txtDescription = (TextView) row.findViewById(R.id.tvDescription);
-            clHolder.imgCL = (ImageView) row.findViewById(R.id.imgCL);
-            row.setTag(clHolder);
+            clHolder.txtTitle = (TextView) row.findViewById(R.id.tvTitle);//casting of textview
+            clHolder.txtDescription = (TextView) row.findViewById(R.id.tvDescription);//casting of textview
+            clHolder.imgCL = (ImageView) row.findViewById(R.id.imgCL);//casting of image
+            row.setTag(clHolder);//Set the holder to he row
         } else {
+            //reuse the existing row
             clHolder = (ChecklistHolder)row.getTag();
         }
         // Get the data item for this position

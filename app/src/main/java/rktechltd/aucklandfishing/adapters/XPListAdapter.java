@@ -19,56 +19,73 @@ import rktechltd.aucklandfishing.models.NetRule;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
+ * A custom list adapter for fishing experience
  * Created by KatSalceda on 7/06/2016.
  */
 public class XPListAdapter extends ArrayAdapter<FishingExperience> {
     private List list;
+    /**
+     * Constructor of the custom list adapter
+     * @param context
+     */
     public XPListAdapter(Context context) {
-        super(context, R.layout.xplist);
-        list = new ArrayList<FishingExperience>();
+        super(context, R.layout.xplist);//calls the superclass constructor
+        list = new ArrayList<FishingExperience>();//initalize the list as FishingExperience
         Log.d("Adapter", "constructor");
     }
-
+    /**
+     * an implementation of the add method adding an object to the custom list
+     * @param object
+     */
     @Override
     public void add(FishingExperience object) {
-        list.add(object);
+        list.add(object);//adds the FishingExperience to the list
         Log.d("Adapter","added");
     }
-
+    /**
+     * Returns the size of the custom list
+     * @return int
+     */
     @Override
     public int getCount() {
         return list.size();
     }
-
+    /**
+     * Returns the FishingExperience in the position
+     * @param position
+     * @return
+     */
     @Override
     public FishingExperience getItem(int position) {
         Log.d("Adapter","getting an item");
         return (FishingExperience)list.get(position);
     }
-
+    /**
+     * returns the row item for the list
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d("Adapter","getting view");
         View row = convertView;
-        // Check if an existing view is being reused, otherwise inflate the view
         XPHolder xpHolder; // view lookup cache stored in tag
+        // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
              LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            //LayoutInflater inflater = LayoutInflater.from(getContext());
-            row = inflater.inflate(R.layout.xplist,parent, false);
-
-
+             row = inflater.inflate(R.layout.xplist,parent, false);
             xpHolder = new XPHolder();
-            xpHolder.txtLocation = (TextView) row.findViewById(R.id.tvLocationName);
-            xpHolder.txtLatitude = (TextView) row.findViewById(R.id.tvXPLatitude);
-            xpHolder.txtLongitude = (TextView) row.findViewById(R.id.tvXPLongitude);
-            xpHolder.txtDate = (TextView) row.findViewById(R.id.tvXPDate);
-            xpHolder.txtTime = (TextView) row.findViewById(R.id.tvXPTime);
-            xpHolder.txtId =(TextView) row.findViewById(R.id.tvXPId);
-
-            row.setTag(xpHolder);
+            xpHolder.txtLocation = (TextView) row.findViewById(R.id.tvLocationName);//casting of textview
+            xpHolder.txtLatitude = (TextView) row.findViewById(R.id.tvXPLatitude);//casting of textview
+            xpHolder.txtLongitude = (TextView) row.findViewById(R.id.tvXPLongitude);//casting of textview
+            xpHolder.txtDate = (TextView) row.findViewById(R.id.tvXPDate);//casting of textview
+            xpHolder.txtTime = (TextView) row.findViewById(R.id.tvXPTime);//casting of textview
+            xpHolder.txtId =(TextView) row.findViewById(R.id.tvXPId);//casting of textview
+            row.setTag(xpHolder);//Set the holder to he row
         } else {
-            xpHolder = (XPHolder) row.getTag();
+            xpHolder = (XPHolder) row.getTag();//recycles the existing rows
         }
         // Get the data item for this position
         FishingExperience fx = getItem(position);
@@ -83,7 +100,6 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
         xpHolder.txtDate.setText("Date: "+date1);
         xpHolder.txtTime.setText("Time: "+fx.getTime().toString());
         xpHolder.txtId.setText(fx.getExperienceId()+"");
-        //xpHolder.txtId.visible
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;

@@ -17,53 +17,74 @@ import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.models.Fish;
 
 /**
+ * A custom list adapter for fish
  * Created by romelyn on 7/06/2016.
  */
 public class FishListAdapter extends ArrayAdapter<Fish> {
     private List list;
+    /**
+     * Constructor of the custom list adapter
+     * @param context
+     */
     public FishListAdapter (Context context) {
 
-        super(context, R.layout.faqlist);
-        list = new ArrayList<Fish>();
+        super(context, R.layout.faqlist);//calls the superclass constructor
+        list = new ArrayList<Fish>();//initalize the list as Fish
         Log.d("Adapter", "constructor");
         }
-
+    /**
+     * an implementation of the add method adding an object to the custom list
+     * @param object
+     */
     @Override
     public void add(Fish object) {
-        list.add(object);
+        list.add(object);//adds the Fish to the list
         Log.d("Adapter","added");
     }
-
+    /**
+     * Returns the size of the custom list
+     * @return int
+     */
     @Override
     public int getCount() {
         return list.size();
         }
-
+    /**
+     * Returns the Fish in the position
+     * @param position
+     * @return
+     */
     @Override
     public Fish getItem(int position) {
         Log.d("Adapter","getting an item");
         return (Fish)list.get(position);
         }
-
+    /**
+     * returns the row item for the list
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d("Adapter","getting view");
         View row = convertView;
-        // Check if an existing view is being reused, otherwise inflate the view
+
         FishHolder fishHolder; // view lookup cache stored in tag
+        // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-        // LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        row = inflater.inflate(R.layout.fishlist,parent, false);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            row = inflater.inflate(R.layout.fishlist,parent, false);
             fishHolder = new FishHolder();
-            fishHolder.txtName = (TextView) row.findViewById(R.id.tvFishName);
-            fishHolder.txtMinLength = (TextView) row.findViewById(R.id.tvMinLength);
-            fishHolder.txtMaxLimit= (TextView) row.findViewById(R.id.tvMaxLimit);
-            fishHolder.ckCombined= (CheckBox) row.findViewById(R.id.cbCombinedBag);
-            fishHolder.img = (ImageView)row.findViewById(R.id.imgFish);
-            row.setTag(fishHolder);
+            fishHolder.txtName = (TextView) row.findViewById(R.id.tvFishName);//casting of textview
+            fishHolder.txtMinLength = (TextView) row.findViewById(R.id.tvMinLength);//casting of textview
+            fishHolder.txtMaxLimit= (TextView) row.findViewById(R.id.tvMaxLimit);//casting of textview
+            fishHolder.ckCombined= (CheckBox) row.findViewById(R.id.cbCombinedBag);//casting of textview
+            fishHolder.img = (ImageView)row.findViewById(R.id.imgFish);//casting of imageview
+            row.setTag(fishHolder);//Set the holder to he row
         } else {
-            fishHolder = (FishHolder) row.getTag();
+            fishHolder = (FishHolder) row.getTag();//recycles the existing rows
         }
         // Get the data item for this position
         Fish fish = getItem(position);

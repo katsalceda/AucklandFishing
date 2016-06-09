@@ -67,20 +67,6 @@ public final class AucklandFishingDBTables {
         public static final String[] ALL_COLUMNS ={COLUMN_FISH_ID,COLUMN_FISH_NAME,COLUMN_FISH_DESC,COLUMN_FISH_IMAGE,COLUMN_FISH_CAT,COLUMN_MIN_FISH_LENGTH_CM,COLUMN_MIN_FISH_MAX_DAILY_LIMIT,COLUMN_IS_COMBINED_BAG};
     }
 
-
-    /**
-     * A subclass which is an implementation of the Location table
-     */
-   /* public static abstract class Location implements BaseColumns{
-        public static final String TABLE_NAME = "location";//table name location
-        public static final String COLUMN_LOCATION_ID = "locationId";//implementation of the locationId column
-        public static final String COLUMN_LOCATION_NAME = "locationName";//implementation of the name column
-        public static final String COLUMN_lOCATION_LATITUDE = "locationLatitude";//implementation of the latitude column
-        public static final String COLUMN_LOCATION_LONGITUDE = "locationLongitude";//implementation of the longitude column
-        public static final String COLUMN_LOCATION_N0TE ="locationNote";//implementation of the note column
-        public static final String PRIMARY_KEY="PRIMARY KEY("+ COLUMN_LOCATION_ID+")";//implementation of the locationId column as primary key
-        public static final String[] ALL_COLUMNS ={COLUMN_LOCATION_ID,COLUMN_LOCATION_NAME,COLUMN_LOCATION_LONGITUDE,COLUMN_lOCATION_LATITUDE,COLUMN_LOCATION_N0TE};
-    }*/
     /**
      * A subclass which is an implementation of the FishingExperience table
      */
@@ -126,8 +112,5 @@ public final class AucklandFishingDBTables {
         public static final String PRIMARY_KEY = "PRIMARY KEY (" + COLUMN_NETRULES_ID + ")";//implementation of the netrulesId column as primary key
         public static final String[] ALL_COLUMNS = {COLUMN_NETRULES_ID, COLUMN_NETRULES_TITLE, COLUMN_NETRULES_DESCRIPTION,COLUMN_NETRULES_PENALTY, COLUMN_NETRULES_IMAGE};
     }
-
-
-
 }
 

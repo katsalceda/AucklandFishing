@@ -15,12 +15,19 @@ import org.w3c.dom.Text;
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
- * Created by KatSalceda on 3/06/16.
+ * A class that handles the dialog
+ * Back code for the dialog
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
  */
 public class DialogActivity extends DialogFragment {
 
     LayoutInflater inflater;
     View v;
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {

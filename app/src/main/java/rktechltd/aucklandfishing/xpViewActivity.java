@@ -16,12 +16,21 @@ import android.widget.TextView;
 
 import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
 import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
-
+/**
+ * A class that handles the View Fishing Expereince activity
+ * Back code for the  View Fishing Expereince activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
 public class xpViewActivity extends AppCompatActivity {
 
     private ListView listView;
     private XPBackgroundTask xpBackgroundTask;
 
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +45,11 @@ public class xpViewActivity extends AppCompatActivity {
         listView = (ListView)this.findViewById(R.id.lvXP);
         listView.setOnItemClickListener(new XPClick());
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
@@ -44,6 +57,11 @@ public class xpViewActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -67,6 +85,9 @@ public class xpViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Loads the List of Fish Catch when clicking on the item in the listview
+     */
    public class XPClick implements AdapterView.OnItemClickListener{
        @Override
        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

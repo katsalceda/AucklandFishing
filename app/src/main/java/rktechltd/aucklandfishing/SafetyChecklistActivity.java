@@ -13,9 +13,19 @@ import android.widget.ListView;
 
 import rktechltd.aucklandfishing.db.backgroundTasks.ChecklistBackgroundTask;
 
+/**
+ * A class that handles the checklist activity
+ * Back code for the checklist activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
 public class SafetyChecklistActivity extends AppCompatActivity {
     private ListView listView ;
     private ChecklistBackgroundTask checklistBgt;
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +40,22 @@ public class SafetyChecklistActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listViewSafetyChecklist);
 
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

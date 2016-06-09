@@ -14,13 +14,19 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
- * Created by romelyn on 9/06/2016.
+ * A class that handles the fishcatch activity
+ * Back code for the fishcatch activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
  */
 public class ViewFishCatchActivity extends AppCompatActivity {
 
     private ListView listView;
     private FCatchBackgroundTask fcBackgroundTask;
-
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +42,22 @@ public class ViewFishCatchActivity extends AppCompatActivity {
         listView = (ListView)this.findViewById(R.id.listViewCatch);
     }
 
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
