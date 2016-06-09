@@ -2,8 +2,11 @@ package rktechltd.aucklandfishing.models;
 
 /**
  * Class representing Faq
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class Faq {
 
     private int faqId; //FAQ id

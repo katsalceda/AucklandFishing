@@ -3,9 +3,9 @@ import android.provider.BaseColumns;
 
 /**
  * This class is an implementation of the database designed for the Auckland Fishing App
+ * Auckland Fishing
  * @version 12/05/2016
- * @author Romelyn Ungab
- * @author Katrina Salceda
+ * @author Romelyn Ungab and Katrina Salceda
  */
 public final class AucklandFishingDBTables {
     /**

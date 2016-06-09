@@ -6,14 +6,10 @@ import rktechltd.aucklandfishing.db.daos.interfaces.ChecklistDAOInterface;
 import rktechltd.aucklandfishing.models.Checklist;
 
 /**
-<<<<<<< HEAD
+ * A Checklist Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * A Checklist Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public class ChecklistDAO implements ChecklistDAOInterface {

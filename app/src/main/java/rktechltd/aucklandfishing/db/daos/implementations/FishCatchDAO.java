@@ -6,14 +6,10 @@ import rktechltd.aucklandfishing.db.daos.interfaces.FishCatchDAOInterface;
 import rktechltd.aucklandfishing.models.FishCatch;
 
 /**
-<<<<<<< HEAD
+ * A FishCatch Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * A FishCatch Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public class FishCatchDAO implements FishCatchDAOInterface {

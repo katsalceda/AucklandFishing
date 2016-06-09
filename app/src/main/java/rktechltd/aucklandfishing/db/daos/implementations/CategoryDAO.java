@@ -6,14 +6,10 @@ import rktechltd.aucklandfishing.db.daos.interfaces.CategoryDAOInterface;
 import rktechltd.aucklandfishing.models.Category;
 
 /**
-<<<<<<< HEAD
+ * * A Category Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * A Category Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public class CategoryDAO implements CategoryDAOInterface {

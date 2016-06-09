@@ -6,14 +6,10 @@ import rktechltd.aucklandfishing.db.daos.interfaces.NetruleDAOInterface;
 import rktechltd.aucklandfishing.models.NetRule;
 
 /**
-<<<<<<< HEAD
+ * A NetRule Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * A NetRule Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public class NetRuleDAO implements NetruleDAOInterface {

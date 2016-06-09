@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing.db.backgroundTasks;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,7 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FAQListAdapter;
 import rktechltd.aucklandfishing.db.AucklandFishingDBTables;
@@ -15,9 +13,11 @@ import rktechltd.aucklandfishing.db.daos.implementations.FaqDAO;
 import rktechltd.aucklandfishing.models.Faq;
 
 /**
- *A class that would take care of communicating the UI thread and the thread
+ * A class that would take care of communicating the UI thread and the thread
  * that would read data about faq
- * Created by romelyn on 7/06/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
 public class FaqBackgroundTask extends AsyncTask<String,Faq,String> {
     private Context ctc;

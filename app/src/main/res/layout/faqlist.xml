@@ -20,5 +20,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:paddingLeft="5dp"
         android:text="Answer"
-        android:id="@+id/tvAnswer" />
+        android:id="@+id/tvAnswer"
+        android:textColor="#676767" />
 </LinearLayout>

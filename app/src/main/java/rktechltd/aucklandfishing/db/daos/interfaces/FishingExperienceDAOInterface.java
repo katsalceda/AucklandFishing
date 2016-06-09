@@ -3,14 +3,10 @@ import android.database.Cursor;
 import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
-<<<<<<< HEAD
+ * An interface for FishingExperience Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * An interface for FishingExperience Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public interface FishingExperienceDAOInterface {

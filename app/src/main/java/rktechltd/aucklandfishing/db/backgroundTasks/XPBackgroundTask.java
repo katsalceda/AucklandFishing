@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing.db.backgroundTasks;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,16 +7,12 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.sql.Time;
-import java.util.Calendar;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.util.Calendar;
+import java.util.Date;
 import rktechltd.aucklandfishing.R;
-
-import rktechltd.aucklandfishing.adapters.FAQListAdapter;
 import rktechltd.aucklandfishing.adapters.XPListAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishingExperienceDAO;
 import rktechltd.aucklandfishing.models.FishingExperience;
@@ -25,8 +20,11 @@ import rktechltd.aucklandfishing.models.FishingExperience;
 /**
  * A class that would take care of communicating the UI thread and the thread
  * that would read data about Fishing Experience
- * Created by romelyn on 2/06/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String> {
     private Context ctc;
     private XPListAdapter xpListAdapter;

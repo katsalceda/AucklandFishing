@@ -6,14 +6,10 @@ import rktechltd.aucklandfishing.db.daos.interfaces.FaqDAOInterface;
 import rktechltd.aucklandfishing.models.Faq;
 
 /**
-<<<<<<< HEAD
+ * A Faq Data Access Object
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
-=======
- * A Faq Data Access Object
- * Created by romelyn on 30/05/2016.
->>>>>>> origin/master
  */
 
 public class FaqDAO implements FaqDAOInterface  {

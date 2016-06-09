@@ -42,8 +42,6 @@ public class SplashActivity extends AppCompatActivity {
 
     /**
      * A class that initializes the database using AsyncTask
-     * @author ROMELYN UNGAB
-     * @author KATRINA SALCEDA
      */
     public class InitializeDatabase extends AsyncTask<Void,Void,Void> {
         private Context context;

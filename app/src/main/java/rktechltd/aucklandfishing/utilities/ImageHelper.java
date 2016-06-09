@@ -1,18 +1,17 @@
 package rktechltd.aucklandfishing.utilities;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-
 import java.io.ByteArrayOutputStream;
 
 /**
  * This class helps in converting the images to byte array, ready to be saved to the database
+ * Auckland Fishing
  * @version 16/05/2016
- * @author Romelyn Ungab
- * @author Katrina Salceda
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class ImageHelper {
     public static byte[] convertImage(String imagePath) {
         byte[] data ;

@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
-<<<<<<< HEAD
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab

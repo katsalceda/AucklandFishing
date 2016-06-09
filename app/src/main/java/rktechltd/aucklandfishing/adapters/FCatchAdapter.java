@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing.adapters;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,18 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.models.FishCatch;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
  * A custom list adapter for fish catch
- * Created by KatSalceda on 8/06/16.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class FCatchAdapter extends ArrayAdapter<FishCatch> {
     private List list;
     /**
@@ -102,7 +102,6 @@ public class FCatchAdapter extends ArrayAdapter<FishCatch> {
     Log.d("Adapter", "returning view");
     // Return the completed view to render on screen
     return row;
-
 }
 
     // View lookup cache

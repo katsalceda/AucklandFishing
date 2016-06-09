@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**

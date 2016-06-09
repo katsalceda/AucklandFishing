@@ -2,7 +2,9 @@ package rktechltd.aucklandfishing.models;
 
 /**
  * Class representing Category
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
 public class Category {
     private int categoryId;
@@ -13,7 +15,6 @@ public class Category {
      * Constructor
      */
     public Category(){
-
     }
 
     /**
