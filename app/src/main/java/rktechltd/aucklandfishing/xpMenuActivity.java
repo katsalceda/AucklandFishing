@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
- * A class that handles the FIshing Experience menu activity
- * Back code for the FIshing Experience menu activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * A class that handles the Fishing Experience menu activity
+ * Back code for the Fishing Experience menu activity
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class xpMenuActivity extends AppCompatActivity {
     /**
      * On creatting the activity
@@ -83,5 +84,4 @@ public class xpMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, xpViewActivity.class);
         startActivity(intent);
     }
-
 }

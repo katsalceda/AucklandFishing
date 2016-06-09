@@ -7,7 +7,6 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp">
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -20,21 +19,22 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Title"
             android:id="@+id/tvRuleTitle"
-            />
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Description"
-            android:id="@+id/tvRuleDescription" />
+            android:id="@+id/tvRuleDescription"
+            android:textColor="#676767" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Penalty"
-            android:id="@+id/tvPenalty"/>
+            android:id="@+id/tvPenalty"
+            android:textColor="#676767" />
     </LinearLayout>
-
 </LinearLayout>

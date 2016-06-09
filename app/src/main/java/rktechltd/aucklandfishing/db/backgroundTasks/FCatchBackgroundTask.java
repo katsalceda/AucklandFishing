@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing.db.backgroundTasks;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,8 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
-
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
@@ -18,7 +15,9 @@ import rktechltd.aucklandfishing.models.FishCatch;
 /**
  * A class that would take care of communicating the UI thread and the thread
  * that would insert and read data about Fishing Catch
- * Created by KatSalceda on 8/06/16.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
 public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
    private Context ctc;

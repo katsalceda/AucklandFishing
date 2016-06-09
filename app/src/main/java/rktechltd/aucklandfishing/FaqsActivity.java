@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,16 +8,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-
 import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
-
 
 /**
  * A class that handles the faq activity
  * Back code for the faq activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class FaqsActivity extends AppCompatActivity {
     private ListView listView ;
     private FaqBackgroundTask faqbgt;
@@ -76,5 +75,4 @@ public class FaqsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

@@ -1,18 +1,17 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
-
 import android.content.Context;
 import android.database.Cursor;
-
-import java.util.List;
-
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.db.daos.interfaces.NetruleDAOInterface;
 import rktechltd.aucklandfishing.models.NetRule;
 
 /**
  * A NetRule Data Access Object
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Romelyn Ungab and Katrina Salceda
  */
+
 public class NetRuleDAO implements NetruleDAOInterface {
     private AucklandFishingDBHelper db ;
     /**

@@ -21,7 +21,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Title"
             android:id="@+id/tvTitle"
-            />
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,6 @@
             android:text="Description"
             android:id="@+id/tvDescription"/>
     </LinearLayout>
-
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,9 +41,9 @@
         android:layout_alignParentRight="true"></LinearLayout>
 
     <ImageView
-    android:layout_width="81dp"
-    android:layout_height="67dp"
-    android:id="@+id/imgCL"
+        android:layout_width="81dp"
+        android:layout_height="67dp"
+        android:id="@+id/imgCL"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 

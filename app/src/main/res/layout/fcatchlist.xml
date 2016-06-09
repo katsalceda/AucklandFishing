@@ -12,21 +12,24 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="CatchName"
-        android:id="@+id/tvCatchName" />
+        android:id="@+id/tvCatchName"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Weight"
-        android:id="@+id/tvCatchWeight" />
+        android:id="@+id/tvCatchWeight"
+        android:textColor="#676767" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Length"
-        android:id="@+id/tvCatchLength" />
+        android:id="@+id/tvCatchLength"
+        android:textColor="#676767" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,7 +37,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="10dp"
         android:text="Remarks"
-        android:id="@+id/tvCatchRemarks" />
+        android:id="@+id/tvCatchRemarks"
+        android:textColor="#000000" />
 
     <ImageView
         android:layout_width="wrap_content"

@@ -35,7 +35,8 @@
         android:layout_marginTop="5dp"
         android:textSize="15dp"
         android:layout_below="@+id/textView1"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textIsSelectable="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
         android:layout_marginTop="5dp"
         android:textSize="15dp"
         android:layout_below="@+id/textView3"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textIsSelectable="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,19 +79,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="http://wildblue.co.nz/Info/Fish+ID+and+Tactics/Non-Target+Species.html"
+        android:text="https://upload.wikimedia.org/wikipedia/commons/6/62/Spisula_solida.jpg"
         android:id="@+id/textView6"
         android:textColor="#ffffff"
         android:layout_marginTop="5dp"
         android:textSize="15dp"
         android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textIsSelectable="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="           _____________________________"
+        android:text="  _________________________________________"
         android:id="@+id/textView7"
         android:layout_marginTop="15dp"
         android:textColor="#ffffff"

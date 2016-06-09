@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
- * A class that handles the about activity
- * Back code for the about activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class AboutActivity extends AppCompatActivity {
     /**
      * On creatting the activity

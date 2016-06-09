@@ -2,10 +2,11 @@ package rktechltd.aucklandfishing.models;
 
 /**
  * Class representing Fish
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
 public class Fish {
-
     private int fishId;
     private String fishName;
     private String fishDescription;

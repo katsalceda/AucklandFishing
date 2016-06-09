@@ -39,17 +39,12 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Location coordinates"
+        android:layout_marginTop="15dp"
         android:id="@+id/textView17"
-        android:layout_below="@+id/textView16"
-        android:layout_alignLeft="@+id/textView16"
-        android:layout_alignStart="@+id/textView16"
-        android:layout_marginTop="50dp"
         android:typeface="sans"
-        android:textColor="#000000" />
-
-
-
-
+        android:textColor="#000000"
+        android:layout_below="@+id/tfLocationName"
+        android:layout_alignStart="@+id/textView16" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,8 +55,9 @@
         android:textColor="#ff4101"
         android:clickable="true"
         android:onClick="tvAddCatch"
+        android:textSize="20dp"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/buttonSaveXP" />
+        android:layout_alignEnd="@+id/textView16" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -69,8 +65,8 @@
         android:id="@+id/buttonGetLoc"
         android:src="@drawable/location"
         android:background="#00ffffff"
-        android:layout_alignBottom="@+id/tflong"
-        android:layout_toEndOf="@+id/textView17" />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/xpid" />
 
     <Button
         android:layout_width="wrap_content"
@@ -88,14 +84,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tflat"
+        android:ems="8"
+        android:hint="Latitude"
         android:layout_below="@+id/textView17"
-        android:layout_alignStart="@+id/textView17"
-        android:hint="Latitude" />
+        android:layout_alignStart="@+id/textView17" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tflong"
+        android:ems="8"
         android:layout_below="@+id/tflat"
         android:layout_alignStart="@+id/tflat"
         android:hint="Longitude" />
@@ -109,6 +107,4 @@
         android:layout_above="@+id/tfLocationName"
         android:layout_alignEnd="@+id/tfLocationName"
         android:visibility="invisible" />
-
-
 </RelativeLayout>

@@ -1,27 +1,22 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
-
-import rktechltd.aucklandfishing.db.backgroundTasks.ChecklistBackgroundTask;
 import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
 
 /**
  * A class that handles the netrules activity
  * Back code for the netrules activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class NetRulesActivity extends AppCompatActivity {
     private ListView listView ;
     private NetRulesBackgroundTask netRulesBackgroundTask;
@@ -79,5 +74,4 @@ public class NetRulesActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

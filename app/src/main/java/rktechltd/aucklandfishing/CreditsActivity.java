@@ -1,24 +1,18 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+
 /**
  * A class that handles the credits activity
  * Back code for the credits activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class CreditsActivity extends AppCompatActivity {
     /**
      * On creatting the activity

@@ -1,13 +1,14 @@
 package rktechltd.aucklandfishing.models;
-
-
 import java.sql.Time;
 import java.util.Date;
 
 /**
  * Class representing FishingExperience
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class FishingExperience {
 
     private int experienceId;

@@ -1,8 +1,6 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,15 +8,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-
 import rktechltd.aucklandfishing.db.backgroundTasks.ChecklistBackgroundTask;
 
 /**
  * A class that handles the checklist activity
  * Back code for the checklist activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class SafetyChecklistActivity extends AppCompatActivity {
     private ListView listView ;
     private ChecklistBackgroundTask checklistBgt;
@@ -38,7 +37,6 @@ public class SafetyChecklistActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.listViewSafetyChecklist);
-
     }
     /**
      * creating the menu
@@ -78,5 +76,4 @@ public class SafetyChecklistActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

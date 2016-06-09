@@ -1,16 +1,17 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
-
 import android.content.Context;
 import android.database.Cursor;
-
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.db.daos.interfaces.FishingExperienceDAOInterface;
 import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
  * A FishingExperience Data Access Object
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Romelyn Ungab and Katrina Salceda
  */
+
 public class FishingExperienceDAO implements FishingExperienceDAOInterface {
     private AucklandFishingDBHelper db ;
     /**

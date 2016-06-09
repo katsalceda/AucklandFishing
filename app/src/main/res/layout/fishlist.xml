@@ -6,8 +6,6 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp">
 
-
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="288dp"
@@ -18,23 +16,28 @@
             android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Fish Name"
-            android:id="@+id/tvFishName" />
+            android:id="@+id/tvFishName"
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Minimum Fish Length : "
-            android:id="@+id/tvMinLength" />
+            android:text="Minimum Fish Length: "
+            android:id="@+id/tvMinLength"
+            android:textSize="16dp"
+            android:textColor="#676767" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="MAX Daily Limit :"
-            android:id="@+id/tvMaxLimit" />
+            android:text="MAX Daily Limit:"
+            android:id="@+id/tvMaxLimit"
+            android:textSize="16dp"
+            android:textColor="#676767" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -43,7 +46,6 @@
             android:text="Is Combine Bag"
             android:id="@+id/cbCombinedBag"
             android:checked="true" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -54,8 +56,7 @@
         <ImageView
             android:layout_width="62dp"
             android:layout_height="146dp"
-            android:id="@+id/imgFish"
-          />
+            android:id="@+id/imgFish" />
     </LinearLayout>
 
 </LinearLayout>

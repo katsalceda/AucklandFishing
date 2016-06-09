@@ -1,27 +1,24 @@
 package rktechltd.aucklandfishing.adapters;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.models.FishingExperience;
-import rktechltd.aucklandfishing.models.NetRule;
-import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
  * A custom list adapter for fishing experience
- * Created by KatSalceda on 7/06/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class XPListAdapter extends ArrayAdapter<FishingExperience> {
     private List list;
     /**
