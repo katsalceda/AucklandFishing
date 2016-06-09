@@ -12,6 +12,7 @@ import android.widget.Toast;
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
+import rktechltd.aucklandfishing.db.daos.implementations.FishingExperienceDAO;
 import rktechltd.aucklandfishing.models.FishCatch;
 
 /**
@@ -34,6 +35,7 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
         this.ctc = ctc;//initialized the context
         fcatchAdapter = new FCatchAdapter(ctc);//initializes the custom list adapter for checklist
         activity = (Activity) ctc;//initializes the activity
+        Log.d("ACTIVITY",activity.toString());
     }
 
     /**
@@ -44,22 +46,7 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
         super.onPreExecute();
     }
 
-    /**
-     * Executes at the end of the thread
-     * @param result of type string
-     */
-    @Override
-    protected void onPostExecute(String result) {
-        Log.d("BG", "setting adapter");
-        if (result.equals("Reading DB")) {
-            lv.setAdapter(fcatchAdapter);// sets the adapter for the listview
-        } else {
-            Toast.makeText(ctc, result, Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    /**
+       /**
      * Adds the FishCatch in the custom list adapter for the FishCatch listview
      * @param values
      */
@@ -81,23 +68,23 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
         FishCatchDAO fcdao;
 
         if (method.equals("I")) {    //if the task is inserting new fish caught in the database
-          //  saveButton=(Button)this.activity.findViewById(R.id.buttonSaveXP);
+             FishingExperienceDAO fdao = new FishingExperienceDAO(ctc);
             fcdao = new FishCatchDAO(ctc);//instantiates the Checklist Data Access Object
             int id = fcdao.getLatestFishCatchId()+1;//gets the next fish catch id
-            int fx=Integer.parseInt(params[1]);
-            double length = Double.parseDouble(params[2]);
-            double weight = Double.parseDouble(params[3]);
-            String name = params[4];
-            String remarks = params[5];
+            int fx=fdao.getLatestXPId();//gets the latest fishingexperience id that was saved
+            double length = Double.parseDouble(params[1]);
+            double weight = Double.parseDouble(params[2]);
+            String name = params[3];
+            String remarks = params[4];
 
             Log.d("XP",""+id);
             FishCatch fc = new FishCatch(id,fx,length,weight, name, remarks);
             fcdao.addFishCatch(fc);
-            return "Fishing Experience Added";
+            return "Catch Added";
 
         } else if (method.equals("R")) {   //if the task is reading the database
 
-            lv = (ListView) activity.findViewById(R.id.listViewCatch);//casting of lv to the custom widget
+            lv = (ListView)this.activity.findViewById(R.id.lvFC);//casting of lv to the custom widget
             fcdao = new FishCatchDAO(ctc);//instantiates the Checklist Data Access Object
             fcatchAdapter = new FCatchAdapter(ctc);//instantiates the checklist custom adapter
             Log.d("BG", fcatchAdapter.toString());
@@ -107,9 +94,9 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             int xp;
             Double weight, length;
             byte[] img;
-
-            Cursor cursor = fcdao.getAllFishCatch();//assigns a cursor with the list of all checklist from the db
-            if (cursor == null) {
+            //assigns a cursor with the list of all checklist from the db
+            Cursor cursor = fcdao.getAllFishCatchOfExperience(Integer.parseInt(params[1]));
+            if (cursor.getCount()>0) {
                 cursor.moveToFirst();
                 Log.d("BG", "" + cursor.getCount());
                do { //while the cursor has items
@@ -117,11 +104,12 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                     xp = cursor.getInt(1);
                     length = cursor.getDouble(2);
                     weight = cursor.getDouble(3);
-                    img = cursor.getBlob(4);
-                    catchName = cursor.getString(5);
-                    remark = cursor.getString(6);
+                    //img = cursor.getBlob(6);
+                    catchName = cursor.getString(4);
+                    remark = cursor.getString(5);
                    //instantiates the FishCatch with the row in the cursor
-                    FishCatch exp = new FishCatch(id, xp, length, weight, img, catchName, remark);
+
+                    FishCatch exp = new FishCatch(id, xp, length, weight, catchName, remark);
                     publishProgress(exp);//calls the onProgressUpdate method
                     Log.d("BG", "" + fcatchAdapter.getCount());
                }while(cursor.moveToNext());
@@ -129,6 +117,15 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
             return "Reading DB";
         } else {
             return ("No Catch to load");
+        }
+    }
+    @Override
+    protected void onPostExecute(String s) {
+        Log.d("POST", "setting adapter");
+        if (s.equals("Reading DB")) {
+            this.lv.setAdapter(fcatchAdapter);// sets the adapter for the listview
+        } else if(s.equals("Catch Added")){
+            Toast.makeText(ctc,s, Toast.LENGTH_SHORT).show();
         }
     }
 }

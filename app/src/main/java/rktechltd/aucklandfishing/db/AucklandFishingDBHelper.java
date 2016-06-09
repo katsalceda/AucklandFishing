@@ -664,29 +664,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-/*
-    public Cursor getAllLocations() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<Location> locations = null;
-        String query = "SELECT " + AucklandFishingDBTables.Location.COLUMN_LOCATION_ID + ", "
-                + AucklandFishingDBTables.Location.COLUMN_lOCATION_LATITUDE + ", "
-                + AucklandFishingDBTables.Location.COLUMN_LOCATION_LONGITUDE + ", "
-                + AucklandFishingDBTables.Location.COLUMN_LOCATION_N0TE + ", "
-                + AucklandFishingDBTables.Location.COLUMN_LOCATION_NAME + " FROM "
-                + AucklandFishingDBTables.Location.TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null) {
-            locations = new ArrayList<Location>();
-            cursor.moveToFirst();
-            do {
-
-                Location location = new Location(cursor.getInt(0), cursor.getDouble(1), cursor.getDouble(2), cursor.getString(3), cursor.getString(4));
-                locations.add(location);
-            } while (cursor.moveToNext());
-            db.close();
-        }
-        return cursor;
-    }*/
 
     //public NetRule(int rulesId, String description, String title, double penalty, byte[] image) {
     public Cursor getAllNetRules() {
@@ -794,14 +771,23 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
 
     public Cursor findCatches(String fExId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(AucklandFishingDBTables.FishCatch.TABLE_NAME, AucklandFishingDBTables.FishCatch.ALL_COLUMNS,
+        Cursor cursor = db.query(AucklandFishingDBTables.FishCatch.TABLE_NAME,
+                               new String[]{ AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_WEIGHT,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_NAME,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_REMARK,
+                                       AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_IMAGE,
+                               },
                 AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE + "=?", new String[]{fExId}, null, null, null, null);
         ArrayList<FishCatch> fishes = null;
-        if (cursor != null) {
+        Log.d("CURSOR",cursor.getCount()+"");
+        if (cursor.getCount()>0) {
             fishes = new ArrayList<FishCatch>();
             cursor.moveToFirst();
             do {
-                FishCatch aFish = new FishCatch(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2), cursor.getDouble(3), cursor.getBlob(4), cursor.getString(5), cursor.getString(6));
+                FishCatch aFish = new FishCatch(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2), cursor.getDouble(3),cursor.getBlob(6), cursor.getString(4), cursor.getString(5));
                 fishes.add(aFish);
             } while (cursor.moveToNext());
             db.close();

@@ -38,7 +38,6 @@ public class DialogActivity extends DialogFragment {
         // TODO Auto-generated method stub
         inflater = getActivity().getLayoutInflater();
         v = inflater.inflate(R.layout.dialog_xp_activity, null);
-        final TextView fxid = (TextView) getActivity().findViewById(R.id.tvXPId);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -49,16 +48,14 @@ public class DialogActivity extends DialogFragment {
                 TextView txWeight =(TextView)v.findViewById(R.id.tfWeight);
                 TextView txCatchName =(TextView)v.findViewById(R.id.tfCatchName);
                 TextView txRemarks =(TextView)v.findViewById(R.id.tfRemarks);
-                TextView txId = (TextView) getActivity().findViewById(R.id.tvXPId);
 
-                String xpid =txId.getText().toString();
                 String length =txLength.getText().toString();
                 String weight =txWeight.getText().toString();
                 String catchName = txCatchName.getText().toString();
                 String remarks = txRemarks.getText().toString();
 
                 FCatchBackgroundTask fcbg = new FCatchBackgroundTask(getActivity());
-                fcbg.execute("I",xpid,length,weight,catchName,remarks);
+                fcbg.execute("I",length,weight,catchName,remarks);
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override

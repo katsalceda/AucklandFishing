@@ -88,14 +88,16 @@ public class FCatchAdapter extends ArrayAdapter<FishCatch> {
             fishcatchHolder = (FishCatchHolder) row.getTag();//recycles the existing rows
         }
 
-    // Get the data item for this position
-    FishCatch fc = getItem(position);
-    Log.d("Adapter", "" + fc.getFishCatchId());
-    fishcatchHolder.txtName.setText("FISH CATCH NAME: " + fc.getName());
-    fishcatchHolder.txtWeight .setText("WEIGHT: " + fc.getWeight());
-    fishcatchHolder.txtLength.setText("LENGTH: " + fc.getLength());
-    fishcatchHolder.txtRemarks.setText("REMARKS: " + fc.getRemark());
-    fishcatchHolder.img.setImageBitmap(ImageHelper.convertImage(fc.getPicture()));
+        // Get the data item for this position
+        FishCatch fc = getItem(position);
+        Log.d("Adapter", "" + fc.getFishCatchId());
+        fishcatchHolder.txtName.setText("FISH CATCH NAME: " + fc.getName());
+        fishcatchHolder.txtWeight .setText("WEIGHT: " + fc.getWeight());
+        fishcatchHolder.txtLength.setText("LENGTH: " + fc.getLength());
+        fishcatchHolder.txtRemarks.setText("REMARKS: " + fc.getRemark());
+        if(fc.getPicture()!=null) {
+            fishcatchHolder.img.setImageBitmap(ImageHelper.convertImage(fc.getPicture()));
+        }
 
     Log.d("Adapter", "returning view");
     // Return the completed view to render on screen

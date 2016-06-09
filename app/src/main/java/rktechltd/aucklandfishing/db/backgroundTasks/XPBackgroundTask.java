@@ -89,7 +89,7 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
             return "Fishing Experience Added";
         }else if(method.equals("R")){   //if the task is reading the database
             lv = (ListView)this.activity.findViewById(R.id.lvXP);//casting of lv to the custom widget
-            fxdao= new FishingExperienceDAO(ctc);//instantiates the Checklist Data Access Object
+            fxdao= new FishingExperienceDAO(ctc);//instantiates the Fishing Experience Data Access Object
             xpListAdapter = new XPListAdapter(ctc);
             Log.d("BG",xpListAdapter.toString());
             int id;
@@ -138,7 +138,6 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
         if (s.equals("Reading DB")) {
             this.lv.setAdapter(xpListAdapter);// sets the adapter for the listview
         } else if(s.equals("Fishing Experience Added")){
-
             Toast.makeText(ctc,s, Toast.LENGTH_SHORT).show();
         }
     }

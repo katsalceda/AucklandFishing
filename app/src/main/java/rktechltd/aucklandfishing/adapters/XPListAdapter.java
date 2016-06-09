@@ -82,7 +82,7 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
             xpHolder.txtLongitude = (TextView) row.findViewById(R.id.tvXPLongitude);//casting of textview
             xpHolder.txtDate = (TextView) row.findViewById(R.id.tvXPDate);//casting of textview
             xpHolder.txtTime = (TextView) row.findViewById(R.id.tvXPTime);//casting of textview
-            xpHolder.txtId =(TextView) row.findViewById(R.id.tvXPId);//casting of textview
+            xpHolder.txtId = (TextView) row.findViewById(R.id.tvXPId);//casting of textview
             row.setTag(xpHolder);//Set the holder to he row
         } else {
             xpHolder = (XPHolder) row.getTag();//recycles the existing rows
@@ -91,8 +91,8 @@ public class XPListAdapter extends ArrayAdapter<FishingExperience> {
         FishingExperience fx = getItem(position);
         Log.d("Adapter",""+fx.getLocationName());
         xpHolder.txtLocation.setText("Location: "+fx.getLocationName().toString());
-        xpHolder.txtLatitude.setText("Latitude: "+fx.getLatitude());
-        xpHolder.txtLongitude.setText("Longitude:  "+fx.getLongitude());
+        xpHolder.txtLatitude.setText("Lat: "+fx.getLatitude());
+        xpHolder.txtLongitude.setText("Long:  "+fx.getLongitude());
         String PATTERN="yyyy-MM-dd";
         SimpleDateFormat dateFormat=new SimpleDateFormat();
         dateFormat.applyPattern(PATTERN);
