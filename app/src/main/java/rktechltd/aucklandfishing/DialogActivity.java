@@ -6,6 +6,7 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -51,6 +52,7 @@ public class DialogActivity extends DialogFragment {
                 String remarks = txRemarks.getText().toString();
 
                 FCatchBackgroundTask fcbg = new FCatchBackgroundTask(getActivity());
+                Log.d("CATCHNAME",catchName);
                 fcbg.execute("I",length,weight,catchName,remarks);
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

@@ -456,6 +456,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_WEIGHT, aFishCatch.getWeight());
         if(aFishCatch.getPicture()!=null)
             cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_IMAGE, aFishCatch.getPicture());
+        cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_NAME,aFishCatch.getName());
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_REMARK, aFishCatch.getRemark());
         db.insert(AucklandFishingDBTables.FishCatch.TABLE_NAME, null, cv);
         Log.d("AKLFishingDB","Catch added");
@@ -762,7 +763,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
 
-
             int id = cursor.getInt(0);
             db.close();
             return id;
@@ -788,6 +788,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             fishes = new ArrayList<FishCatch>();
             cursor.moveToFirst();
             do {
+                Log.d("CURSOR",cursor.getString(4)+"");
                 FishCatch aFish = new FishCatch(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2), cursor.getDouble(3),cursor.getBlob(6), cursor.getString(4), cursor.getString(5));
                 fishes.add(aFish);
             } while (cursor.moveToNext());

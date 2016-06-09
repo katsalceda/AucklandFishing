@@ -30,6 +30,7 @@ public class FishCatch {
         this.weight = weight;
         this.name = name;
         this.remark = remark;
+        this.picture=null;
     }
 
     /**
