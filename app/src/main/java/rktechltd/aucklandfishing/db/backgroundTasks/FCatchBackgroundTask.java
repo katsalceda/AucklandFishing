@@ -9,15 +9,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
->>>>>>> origin/master
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
@@ -70,7 +61,6 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
         FishCatchDAO fcdao;
 
         if (method.equals("I")) {
-          //  saveButton=(Button)this.activity.findViewById(R.id.buttonSaveXP);
             fcdao = new FishCatchDAO(ctc);
             int id = fcdao.getLatestFishCatchId()+1;
             int fx=Integer.parseInt(params[1]);
@@ -109,15 +99,10 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                     catchName = cursor.getString(5);
                     remark = cursor.getString(6);
 
-<<<<<<< HEAD
-                    //FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
-                    //publishProgress(exp);
-                    //fcatchAdapter.add(exp);
-=======
                     FishCatch exp = new FishCatch(id, xp, length, weight, img, catchName, remark);
                     publishProgress(exp);
                     fcatchAdapter.add(exp);
->>>>>>> origin/master
+
                     Log.d("BG", "" + fcatchAdapter.getCount());
                 }
             }

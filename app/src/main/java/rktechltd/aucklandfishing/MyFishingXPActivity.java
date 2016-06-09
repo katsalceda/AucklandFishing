@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +30,6 @@ public class MyFishingXPActivity extends AppCompatActivity {
     //TextView textLat;
     //TextView textLong;
     private EditText locationName;
-<<<<<<< HEAD
-
     double nlat;
     double nlng;
     double glat;
@@ -45,11 +44,11 @@ public class MyFishingXPActivity extends AppCompatActivity {
     TextView textViewNetLng;
     TextView textViewGpsLat;
     TextView textViewGpsLng;
-=======
+
     private LocationManager locationManager;
     private LocationListener locationListener;
     private Button saveXP;
->>>>>>> origin/master
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,35 +57,23 @@ public class MyFishingXPActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-<<<<<<< HEAD
-        //All textView
-        textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
+
+                //All textView
+                textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
         textViewNetLng = (TextView)findViewById(R.id.textViewNetLng);
         textViewGpsLat = (TextView)findViewById(R.id.textViewGpsLat);
         textViewGpsLng = (TextView)findViewById(R.id.textViewGpsLng);
         locationName = (EditText) findViewById(R.id.tfLocationName);
     }
 
-    @Override
-    public void onDestroy() {
-=======
-
-        locationName = (EditText) findViewById(R.id.tfLocationName);
-        spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
-        spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
-
-        saveXP = (Button)findViewById(R.id.buttonSaveXP);
-    }
-
-    public void buttonSaveXP(View v){
+     public void buttonSaveXP(View v){
         String location = locationName.getText().toString();
-        String latitude = spaceLatitude.getText().toString();
-        String longitude = spaceLongitude.getText().toString();
-        Log.d("SAVING","FISHING EXP");
-        xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I",location,latitude,latitude);
+    //    String latitude = spaceLatitude.getText().toString();
+    //    String longitude = spaceLongitude.getText().toString();
+    //    Log.d("SAVING","FISHING EXP");
+     //   xpBackgroundTask = new XPBackgroundTask(this);
+      //  xpBackgroundTask.execute("I",location,latitude,latitude);
         //saveXP.isEnabled(false);
->>>>>>> origin/master
 
         //Remove GPS location update
         if(glocManager != null){
@@ -213,14 +200,14 @@ public class MyFishingXPActivity extends AppCompatActivity {
     }
 
     /** public void buttonSaveXP(View v){
-        String location = locationName.getText().toString();
-        String latitude = textLat.getText().toString();
-        String longitude = textLong.getText().toString();
-        Log.d("SAVING","FISHING EXP");
-        xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I", location, latitude, latitude);
+     String location = locationName.getText().toString();
+     String latitude = textLat.getText().toString();
+     String longitude = textLong.getText().toString();
+     Log.d("SAVING","FISHING EXP");
+     xpBackgroundTask = new XPBackgroundTask(this);
+     xpBackgroundTask.execute("I", location, latitude, latitude);
 
-    } */
+     } */
 
 
     @Override
