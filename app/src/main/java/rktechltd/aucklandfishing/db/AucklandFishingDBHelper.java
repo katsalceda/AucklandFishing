@@ -72,15 +72,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Fish.PRIMARY_KEY +
             " )";
-/*
-    private static final String CREATE_LOCATION_TABLE = "CREATE TABLE " + AucklandFishingDBTables.Location.TABLE_NAME + " (" +
-            AucklandFishingDBTables.Location.COLUMN_LOCATION_ID + NUMERIC_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.Location.COLUMN_LOCATION_NAME + TEXT_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.Location.COLUMN_lOCATION_LATITUDE + REAL_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.Location.COLUMN_LOCATION_LONGITUDE + REAL_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.Location.COLUMN_LOCATION_N0TE + TEXT_TYPE + COMMA_SEP +
-            AucklandFishingDBTables.Location.PRIMARY_KEY +
-            " )";*/
+
 
     private static final String CREATE_FISHEXPERIENCE_TABLE = "CREATE TABLE " + AucklandFishingDBTables.FishingExperience.TABLE_NAME + " (" +
             AucklandFishingDBTables.FishingExperience.COLUMN_FISHING_EXPERIENCE_ID + NUMERIC_TYPE + COMMA_SEP +
@@ -143,8 +135,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         Log.d("AKLFishingDB", "CAT created");
         db.execSQL(CREATE_FISH_TABLE);
         Log.d("AKLFishingDB", "FISH created");
-      /*  db.execSQL(CREATE_LOCATION_TABLE);
-        Log.d("AKLFishingDB", "LOCATION created");*/
+
         db.execSQL(CREATE_FISHEXPERIENCE_TABLE);
         Log.d("AKLFishingDB", "FX created");
         db.execSQL(CREATE_FISHCATCH_TABLE);
@@ -233,8 +224,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             Log.d("AKLFishingDB", insertSQL);
             db.execSQL(insertSQL);
         }
-        //db.close();
-     //   initializeTables();
+
     }
 
     public void initializeTables(){

@@ -7,18 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 
 /**
+<<<<<<< HEAD
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
+=======
+ * A class that handles the Splash
+ * Back code for the Splash
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
+>>>>>>> origin/master
 public class SplashActivity extends AppCompatActivity {
      private InitializeDatabase initdb;
     private static Context context;
     /** Waiting time **/
     private final int SPLASH_DISPLAY_LENGTH = 3000;
 
-    /** Called when the activity is first created. */
+    /**
+     * On creating the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +39,19 @@ public class SplashActivity extends AppCompatActivity {
       initdb.execute();
     }
 
+    /**
+     *gets the current context of the splash activity
+     * @return
+     */
     public static Context getAppContext() {
         return SplashActivity.context;
     }
+
+    /**
+     * A class that initializes the database using AsyncTask
+     * @author ROMELYN UNGAB
+     * @author KATRINA SALCEDA
+     */
     public class InitializeDatabase extends AsyncTask<Void,Void,Void> {
         private Context context;
         private AucklandFishingDBHelper db;
@@ -38,6 +59,11 @@ public class SplashActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        /**
+         * Displays the splash while initializing the database
+         * @param params
+         * @return
+         */
         @Override
         protected Void doInBackground(Void... params) {
             db = new AucklandFishingDBHelper(SplashActivity.getAppContext());
@@ -49,14 +75,22 @@ public class SplashActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * Executes before the thread starts
+         */
         @Override
         protected void onPreExecute() {
           super.onPreExecute();
         }
 
+        /**
+         * Executes when the thread ends
+         * @param aVoid
+         */
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            //starts the main activity when the thread ends and finishes the splash activity
             Intent i = new Intent(SplashActivity.this,MainActivity.class);
             startActivity(i);
             finish();

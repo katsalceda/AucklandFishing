@@ -6,16 +6,26 @@ import rktechltd.aucklandfishing.db.daos.interfaces.FishingExperienceDAOInterfac
 import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
+<<<<<<< HEAD
  * Auckland Fishing
  * @version 16/05/2016
  * @author Romelyn Ungab and Katrina Salceda
+=======
+ * A FishingExperience Data Access Object
+ * Created by romelyn on 30/05/2016.
+>>>>>>> origin/master
  */
 
 public class FishingExperienceDAO implements FishingExperienceDAOInterface {
     private AucklandFishingDBHelper db ;
+    /**
+     * Constructor
+     * @param context
+     */
     public FishingExperienceDAO(Context context){
         db = new AucklandFishingDBHelper(context); //initialize database with context
     }
+
     @Override
     public FishingExperience getFishingExperience(int fishingExperienceId) {
          return db.findFishingExperience(""+fishingExperienceId);
@@ -25,30 +35,51 @@ public class FishingExperienceDAO implements FishingExperienceDAOInterface {
     public FishingExperience getFishingExperience(String date, int locationId) {
        return db.findFishingExperience(date, ""+locationId);
     }
-
+    /**
+     * gets the FishingExperience given the id
+     * @param date
+     * @return
+     */
     @Override
     public FishingExperience getFishingExperience(String date) {
         return db.findFishingExperience(date);
     }
-
+    /**
+     * Gets all FishingExperience
+     * @return Cursor
+     */
     @Override
     public Cursor getAllFishingExperience() {
         Cursor cursor = null;
         cursor = db.getAllFishingExperience();
         return cursor;
     }
-
+    /**
+     * adds new FishingExperience
+     * @param fishingExperience
+     * @return
+     */
     @Override
     public boolean addFishingExperience(FishingExperience fishingExperience) {
         return db.saveFishingExperience(fishingExperience);
     }
 
+    /**
+     * Gets the id given the date and location name
+     * @param date
+     * @param locationname
+     * @return
+     */
     @Override
-    public int getFishingExperienceId(String date, int locationId) {
+    public int getFishingExperienceId(String date, String locationname) {
 
-        return db.findFishingExperienceId(date, ""+locationId);
+        return db.findFishingExperienceId(date, ""+locationname);
     }
 
+    /**
+     * Gets the next fishing experience id
+     * @return
+     */
     @Override
     public int getLatestXPId() {
         return db.findLatestXPId();

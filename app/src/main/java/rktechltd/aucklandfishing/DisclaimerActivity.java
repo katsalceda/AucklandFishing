@@ -13,8 +13,17 @@ import android.view.MenuItem;
  * @author Katrina Salceda and Romelyn Ungab
  */
 
+/**
+ * A class that handles the disclaimer activity
+ * Back code for the disclaimer activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
 public class DisclaimerActivity extends AppCompatActivity {
-
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +31,22 @@ public class DisclaimerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

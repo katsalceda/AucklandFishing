@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+<<<<<<< HEAD
 
 /**
  * Auckland Fishing
@@ -13,8 +14,21 @@ import android.view.MenuItem;
  * @author Katrina Salceda and Romelyn Ungab
  */
 
+=======
+import android.view.View;
+import android.widget.TextView;
+/**
+ * A class that handles the credits activity
+ * Back code for the credits activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
+>>>>>>> origin/master
 public class CreditsActivity extends AppCompatActivity {
-
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +36,22 @@ public class CreditsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

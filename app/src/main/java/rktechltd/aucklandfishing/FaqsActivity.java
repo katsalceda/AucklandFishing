@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+<<<<<<< HEAD
 import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
 
 /**
@@ -16,9 +17,25 @@ import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
  * @author Katrina Salceda and Romelyn Ungab
  */
 
+=======
+
+import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
+
+
+/**
+ * A class that handles the faq activity
+ * Back code for the faq activity
+ * @author ROmelyn Ungab
+ * @Author Katrina Salceda
+ */
+>>>>>>> origin/master
 public class FaqsActivity extends AppCompatActivity {
     private ListView listView ;
     private FaqBackgroundTask faqbgt;
+    /**
+     * On creatting the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +48,22 @@ public class FaqsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.listViewFaqs);
     }
-
+    /**
+     * creating the menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = this.getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /**
+     * Selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
