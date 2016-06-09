@@ -1,14 +1,11 @@
 package rktechltd.aucklandfishing.utilities;
 
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 /**
  * This class helps in converting the images to byte array, ready to be saved to the database
@@ -42,11 +39,8 @@ public class ImageHelper {
         return data;
     }
 
-
-
     public static Bitmap convertImage(byte[] image) {
         Bitmap bmp=BitmapFactory.decodeByteArray(image,0,image.length);
         return bmp;
     }
-
 }

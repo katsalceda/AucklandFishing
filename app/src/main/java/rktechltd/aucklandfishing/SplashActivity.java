@@ -1,12 +1,16 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
+
+/**
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
+ */
 
 public class SplashActivity extends AppCompatActivity {
      private InitializeDatabase initdb;
@@ -42,7 +46,6 @@ public class SplashActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             return null;
         }
 
@@ -59,6 +62,4 @@ public class SplashActivity extends AppCompatActivity {
             finish();
         }
     }
-
-
 }

@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +7,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
-
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
- * Created by romelyn on 9/06/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class ViewFishCatchActivity extends AppCompatActivity {
 
     private ListView listView;

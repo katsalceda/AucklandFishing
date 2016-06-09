@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing.db;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,12 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.SplashActivity;
 import rktechltd.aucklandfishing.models.Category;
@@ -24,10 +21,12 @@ import rktechltd.aucklandfishing.models.FishingExperience;
 import rktechltd.aucklandfishing.models.NetRule;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
-
 /**
- * Created by romelyn on 13/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";

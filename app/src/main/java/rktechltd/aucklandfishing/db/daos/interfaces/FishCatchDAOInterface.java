@@ -1,14 +1,13 @@
 package rktechltd.aucklandfishing.db.daos.interfaces;
-
 import android.database.Cursor;
-
-import java.util.List;
-
 import rktechltd.aucklandfishing.models.FishCatch;
 
 /**
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Romelyn Ungab and Katrina Salceda
  */
+
 public interface FishCatchDAOInterface {
     FishCatch getFishCatch(int fishCatchId);
     Cursor getAllFishCatch();

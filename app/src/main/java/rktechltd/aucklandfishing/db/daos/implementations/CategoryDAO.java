@@ -1,19 +1,20 @@
 package rktechltd.aucklandfishing.db.daos.implementations;
-
 import android.content.Context;
 import android.database.Cursor;
-
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.db.daos.interfaces.CategoryDAOInterface;
 import rktechltd.aucklandfishing.models.Category;
 
 /**
- * Created by romelyn on 30/05/2016.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Romelyn Ungab and Katrina Salceda
  */
+
 public class CategoryDAO implements CategoryDAOInterface {
     private AucklandFishingDBHelper db ;
     public CategoryDAO(Context context){
-        db = new AucklandFishingDBHelper(context);//initialize database with context
+        db = new AucklandFishingDBHelper(context); //initialize database with context
     }
 
     @Override
@@ -36,6 +37,4 @@ public class CategoryDAO implements CategoryDAOInterface {
     public Cursor getAllCategories() {
        return db.getAllCategories();
     }
-
-
 }

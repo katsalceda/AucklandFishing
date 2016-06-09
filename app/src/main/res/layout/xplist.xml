@@ -70,6 +70,4 @@
             android:textStyle="normal"
             android:textColor="#f8c08c" />
     </LinearLayout>
-
-
 </LinearLayout>

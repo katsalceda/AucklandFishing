@@ -1,5 +1,4 @@
 package rktechltd.aucklandfishing;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -10,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
- * Created by KatSalceda on 3/06/16.
+ * Auckland Fishing
+ * @version 16/05/2016
+ * @author Katrina Salceda and Romelyn Ungab
  */
+
 public class DialogActivity extends DialogFragment {
 
     LayoutInflater inflater;
