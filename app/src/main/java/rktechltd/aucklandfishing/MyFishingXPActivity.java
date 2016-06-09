@@ -82,8 +82,8 @@ public class MyFishingXPActivity extends AppCompatActivity {
 
     public void buttonSaveXP(View v){
         String location = locationName.getText().toString();
-        String latitude = spaceLatitude.getText().toString();
-        String longitude = spaceLongitude.getText().toString();
+        String latitude =  textViewGpsLat.getText().toString();
+        String longitude = textViewGpsLng.getText().toString();
         Log.d("SAVING","FISHING EXP");
         xpBackgroundTask = new XPBackgroundTask(this);
         xpBackgroundTask.execute("I",location,latitude,latitude);
