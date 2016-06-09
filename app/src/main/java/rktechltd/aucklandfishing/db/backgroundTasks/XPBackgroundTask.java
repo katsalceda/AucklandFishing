@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
     private XPListAdapter xpListAdapter;
     private Activity activity;
     private ListView lv;
+    private Button saveButton;
 
     public XPBackgroundTask(Context ctc){
         Log.d("BG TASK", "inside constructor");
@@ -54,6 +56,7 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
         String method = params[0];
         FishingExperienceDAO fxdao;
         if (method.equals("I")) {
+            saveButton=(Button)this.activity.findViewById(R.id.buttonSaveXP);
             fxdao = new FishingExperienceDAO(ctc);
             int id = fxdao.getLatestXPId()+1;
             Log.d("XP",""+id);
@@ -115,7 +118,8 @@ public class XPBackgroundTask extends AsyncTask<String,FishingExperience,String>
         Log.d("POST", "setting adapter");
         if (s.equals("Reading DB")) {
             this.lv.setAdapter(xpListAdapter);
-        } else {
+        } else if(s.equals("Fishing Experience Added")){
+
             Toast.makeText(ctc,s, Toast.LENGTH_SHORT).show();
         }
     }

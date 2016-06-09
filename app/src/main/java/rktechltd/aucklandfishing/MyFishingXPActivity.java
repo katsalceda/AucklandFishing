@@ -29,6 +29,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
     //TextView textLat;
     //TextView textLong;
     private EditText locationName;
+<<<<<<< HEAD
 
     double nlat;
     double nlng;
@@ -44,6 +45,11 @@ public class MyFishingXPActivity extends AppCompatActivity {
     TextView textViewNetLng;
     TextView textViewGpsLat;
     TextView textViewGpsLng;
+=======
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private Button saveXP;
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
         //All textView
         textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
         textViewNetLng = (TextView)findViewById(R.id.textViewNetLng);
@@ -62,6 +69,24 @@ public class MyFishingXPActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
+=======
+
+        locationName = (EditText) findViewById(R.id.tfLocationName);
+        spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
+        spaceLongitude = (EditText) findViewById(R.id.tfLongitude);
+
+        saveXP = (Button)findViewById(R.id.buttonSaveXP);
+    }
+
+    public void buttonSaveXP(View v){
+        String location = locationName.getText().toString();
+        String latitude = spaceLatitude.getText().toString();
+        String longitude = spaceLongitude.getText().toString();
+        Log.d("SAVING","FISHING EXP");
+        xpBackgroundTask = new XPBackgroundTask(this);
+        xpBackgroundTask.execute("I",location,latitude,latitude);
+        //saveXP.isEnabled(false);
+>>>>>>> origin/master
 
         //Remove GPS location update
         if(glocManager != null){
@@ -230,6 +255,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
 
     public void tvAddCatch(View v) {
         DialogActivity dialog = new DialogActivity();
+        //dialog.getActivity().
         dialog.show(getFragmentManager(), "my_dialog");
     }
 }

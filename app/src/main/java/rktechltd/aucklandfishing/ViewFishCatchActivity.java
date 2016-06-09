@@ -9,33 +9,33 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
-import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
+import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
-public class xpViewActivity extends AppCompatActivity {
+/**
+ * Created by romelyn on 9/06/2016.
+ */
+public class ViewFishCatchActivity extends AppCompatActivity {
 
     private ListView listView;
-    private XPBackgroundTask xpBackgroundTask;
+    private FCatchBackgroundTask fcBackgroundTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_xp);
-
-        xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("R");
-        Log.d("BG onCreate",xpBackgroundTask.toString());
+        setContentView(R.layout.activity_view_fishcatch);
+        Intent intent = this.getIntent();
+        int fxid = Integer.parseInt(intent.getExtras().getString("XPId"));
+        fcBackgroundTask = new FCatchBackgroundTask(this);
+        fcBackgroundTask.execute("R",""+fxid);
+        Log.d("BG onCreate",fcBackgroundTask.toString());
 
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        listView = (ListView)this.findViewById(R.id.lvXP);
-        listView.setOnItemClickListener(new XPClick());
+        listView = (ListView)this.findViewById(R.id.listViewCatch);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,18 +66,5 @@ public class xpViewActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-   public class XPClick implements AdapterView.OnItemClickListener{
-       @Override
-       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            ViewGroup vg =(ViewGroup)view;
-            TextView txid =(TextView)vg.findViewById(R.id.tvXPId);
-            Intent intent = new Intent(xpViewActivity.this,ViewFishCatchActivity.class);
-           intent.putExtra("XPId",txid.getText().toString());
-           startActivity(intent);
-       }
-   }
-
-
 
 }

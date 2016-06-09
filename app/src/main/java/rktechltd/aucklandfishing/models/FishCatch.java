@@ -12,6 +12,14 @@ public class FishCatch {
     private byte[] picture;
     private String name;
     private String remark;
+    public FishCatch(int fishCatchId, int fx, double length, double weight, String name, String remark) {
+        this.fishCatchId = fishCatchId;
+        this.fx = fx;
+        this.length = length;
+        this.weight = weight;
+        this.name = name;
+        this.remark = remark;
+    }
 
 
     public FishCatch(int fishCatchId, int fx, double length, double weight, byte[] picture, String name, String remark) {

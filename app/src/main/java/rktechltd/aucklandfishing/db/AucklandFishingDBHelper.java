@@ -466,7 +466,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE, aFishCatch.getFx());
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH, aFishCatch.getLength());
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_WEIGHT, aFishCatch.getWeight());
-        cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_IMAGE, aFishCatch.getPicture());
+        if(aFishCatch.getPicture()!=null)
+            cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_IMAGE, aFishCatch.getPicture());
         cv.put(AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_REMARK, aFishCatch.getRemark());
         db.insert(AucklandFishingDBTables.FishCatch.TABLE_NAME, null, cv);
         Log.d("AKLFishingDB","Catch added");
@@ -657,7 +658,6 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FishCatch> fishes = null;
         String query = "SELECT " + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID + ", "
-                + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_EXPERIENCE + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_LENGTH + ", "
                 + AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_WEIGHT + ", "
@@ -820,6 +820,22 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             db.close();
         }
         return cursor;
+    }
+
+    public int findLatestFCId(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT max( "+AucklandFishingDBTables.FishCatch.COLUMN_FISH_CATCH_ID+" ) from "
+                + AucklandFishingDBTables.FishCatch.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sql,null);
+        Log.d("XP BG",cursor.getCount()+"");
+        cursor.moveToFirst();
+        if(cursor.getCount()>0){
+            Log.d("XP",cursor.getInt(0)+"");
+            return cursor.getInt(0);
+        }else {
+            Log.d("XP",cursor.getCount()+"");
+            return 0;
+        }
     }
 
 

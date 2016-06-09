@@ -14,4 +14,5 @@ public interface FishCatchDAOInterface {
     Cursor getAllFishCatch();
     boolean addFishCatch(FishCatch fishCatch);
     Cursor getAllFishCatchOfExperience(int fishingExperienceId);
+    int getLatestFishCatchId();
 }
