@@ -47,29 +47,9 @@
         android:typeface="sans"
         android:textColor="#000000" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Net Latitude: "
-        android:layout_marginTop="15dp"
-        android:id="@+id/textViewNetLat"
-        android:layout_below="@+id/textView17"
-        android:layout_alignLeft="@+id/textView17"
-        android:layout_alignStart="@+id/textView17"
-        android:textColor="#000000"
-        android:textSize="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Net Longitude: "
-        android:id="@+id/textViewNetLng"
-        android:textColor="#000000"
-        android:layout_below="@+id/textViewNetLat"
-        android:layout_alignStart="@+id/textViewNetLat"
-        android:textSize="16dp" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,7 +61,7 @@
         android:clickable="true"
         android:onClick="tvAddCatch"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textViewGpsLng" />
+        android:layout_toStartOf="@+id/buttonSaveXP" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -89,9 +69,8 @@
         android:id="@+id/buttonGetLoc"
         android:src="@drawable/location"
         android:background="#00ffffff"
-        android:onClick="showLoc"
-        android:layout_alignBottom="@+id/tvAddCatch"
-        android:layout_alignEnd="@+id/tfLocationName" />
+        android:layout_alignBottom="@+id/tflong"
+        android:layout_toEndOf="@+id/textView17" />
 
     <Button
         android:layout_width="wrap_content"
@@ -105,28 +84,31 @@
         android:background="#96ffffff"
         android:textSize="16dp" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="GPS Latitude: "
-        android:id="@+id/textViewGpsLat"
-        android:textColor="#000000"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/textViewNetLng"
-        android:layout_alignStart="@+id/textViewNetLng"
-        android:textSize="16dp" />
+        android:id="@+id/tflat"
+        android:layout_below="@+id/textView17"
+        android:layout_alignStart="@+id/textView17"
+        android:hint="Latitude" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tflong"
+        android:layout_below="@+id/tflat"
+        android:layout_alignStart="@+id/tflat"
+        android:hint="Longitude" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="GPS Longitude: "
-        android:id="@+id/textViewGpsLng"
-        android:layout_below="@+id/textViewGpsLat"
-        android:layout_alignStart="@+id/textViewGpsLat"
-        android:textColor="#000000"
-        android:textSize="16dp" />
+        android:text="Small Text"
+        android:id="@+id/xpid"
+        android:layout_above="@+id/tfLocationName"
+        android:layout_alignEnd="@+id/tfLocationName"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

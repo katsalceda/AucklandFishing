@@ -1,5 +1,6 @@
 package rktechltd.aucklandfishing;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
  * @Author Katrina Salceda
  */
 public class xpViewActivity extends AppCompatActivity {
-
+    private static Context context;
     private ListView listView;
     private XPBackgroundTask xpBackgroundTask;
 
@@ -35,7 +36,7 @@ public class xpViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_xp);
-
+        xpViewActivity.context=getApplicationContext();
         xpBackgroundTask = new XPBackgroundTask(this);
         xpBackgroundTask.execute("R");
         Log.d("BG onCreate",xpBackgroundTask.toString());
@@ -84,7 +85,13 @@ public class xpViewActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    /**
+     *gets the current context of the XPVIEW activity
+     * @return
+     */
+    public static Context getAppContext() {
+        return xpViewActivity.context;
+    }
     /**
      * Loads the List of Fish Catch when clicking on the item in the listview
      */

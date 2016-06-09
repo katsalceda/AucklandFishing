@@ -1,13 +1,20 @@
 package rktechltd.aucklandfishing;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,10 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.LocationListener;
 
 import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
 
@@ -29,24 +36,14 @@ public class MyFishingXPActivity extends AppCompatActivity {
     private XPBackgroundTask xpBackgroundTask;
     private EditText locationName;
 
-    double nlat;
-    double nlng;
-    double glat;
-    double glng;
+    private EditText tflat;
+    private EditText tflong;
 
-    LocationManager glocManager;
-    LocationListener glocListener;
-    LocationManager nlocManager;
-    LocationListener nlocListener;
+    private LocationManager glocManager;
+    private LocationListener glocListener;
 
-    TextView textViewNetLat;
-    TextView textViewNetLng;
-    TextView textViewGpsLat;
-    TextView textViewGpsLng;
-
-    private LocationManager locationManager;
-    private LocationListener locationListener;
     private Button saveXP;
+    private ImageButton getLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,159 +53,100 @@ public class MyFishingXPActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //All textView
-        textViewNetLat = (TextView)findViewById(R.id.textViewNetLat);
-        textViewNetLng = (TextView)findViewById(R.id.textViewNetLng);
-        textViewGpsLat = (TextView)findViewById(R.id.textViewGpsLat);
-        textViewGpsLng = (TextView)findViewById(R.id.textViewGpsLng);
+        tflat = (EditText) findViewById(R.id.tflat);
+        tflong = (EditText) findViewById(R.id.tflong);
         locationName = (EditText) findViewById(R.id.tfLocationName);
+        glocManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        glocListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                Log.d("PASOK",location.toString());
+                if(location!=null) {
+                    tflat.setText("" + location.getLatitude());
+                    tflong.setText("" + location.getLongitude());
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        };
+
+
+        getLocation = (ImageButton) findViewById(R.id.buttonGetLoc);
+        getLocation.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("CONF",getLocation.toString());
+                glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, glocListener);
+            }
+        });
+        Log.d("BUTTON",getLocation.toString());
+
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            Log.d("Build",Build.VERSION.SDK_INT+"");
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.INTERNET}, 10);
+
+                return;
+            }
+        }else{
+            configureButton();
+        }
+
     }
 
     @Override
-    public void onDestroy() {
-
-        //Remove GPS location update
-        if(glocManager != null){
-            glocManager.removeUpdates(glocListener);
-            Log.d("ServiceForLatLng", "GPS Update Released");
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case 10:
+                if(grantResults.length > 0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                    configureButton();
+                         return;
         }
-
-        //Remove Network location update
-        if(nlocManager != null){
-            nlocManager.removeUpdates(nlocListener);
-            Log.d("ServiceForLatLng", "Network Update Released");
-        }
-        super.onDestroy();
     }
+
+    private void configureButton(){
+
+        getLocation.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("CONF",getLocation.toString());
+                glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, glocListener);
+            }
+        });
+
+    }
+
 
     public void buttonSaveXP(View v){
         String location = locationName.getText().toString();
-        String latitude =  textViewGpsLat.getText().toString();
-        String longitude = textViewGpsLng.getText().toString();
+        String latitude =  tflat.getText().toString();
+        String longitude = tflong.getText().toString();
         Log.d("SAVING","FISHING EXP");
         xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I",location,latitude,latitude);
+        xpBackgroundTask.execute("I",location,latitude,longitude);
         //saveXP.isEnabled(false);
     }
 
-    //This is for Lat lng which is determine by your wireless or mobile network
-    public class MyLocationListenerNetWork implements LocationListener
-    {
-        @Override
-        public void onLocationChanged(Location loc)
-        {
-            nlat = loc.getLatitude();
-            nlng = loc.getLongitude();
-
-            //Setting the Network Lat, Lng into the textView
-            textViewNetLat.setText("Network Latitude:  " + nlat);
-            textViewNetLng.setText("Network Longitude:  " + nlng);
-
-            Log.d("LAT & LNG Network:", nlat + " " + nlng);
-        }
-
-        @Override
-        public void onProviderDisabled(String provider)
-        {
-            Log.d("LOG", "Network is OFF!");
-        }
-        @Override
-        public void onProviderEnabled(String provider)
-        {
-            Log.d("LOG", "Thanks for enabling Network !");
-        }
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-        }
-    }
-
-    //This is for Lat lng which is determine by your device GPS
-    public class MyLocationListenerGPS implements LocationListener
-    {
-        @Override
-        public void onLocationChanged(Location loc)
-        {
-            glat = loc.getLatitude();
-            glng = loc.getLongitude();
-
-            //Setting the GPS Lat, Lng into the textView
-            textViewGpsLat.setText("GPS Latitude:  " + glat);
-            textViewGpsLng.setText("GPS Longitude:  " + glng);
-
-            Log.d("LAT & LNG GPS:", glat + " " + glng);
-        }
-
-        @Override
-        public void onProviderDisabled(String provider)
-        {
-            Log.d("LOG", "GPS is OFF!");
-        }
-        @Override
-        public void onProviderEnabled(String provider)
-        {
-            Log.d("LOG", "Thanks for enabling GPS !");
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-        }
-    }
-
-    public void showLoc(View v) {
-
-        //Location access ON or OFF checking
-        ContentResolver contentResolver = getBaseContext().getContentResolver();
-        boolean gpsStatus = Settings.Secure.isLocationProviderEnabled(contentResolver, LocationManager.GPS_PROVIDER);
-        boolean networkWifiStatus = Settings.Secure.isLocationProviderEnabled(contentResolver, LocationManager.NETWORK_PROVIDER);
-
-        //If GPS and Network location is not accessible show an alert and ask user to enable both
-        if(!gpsStatus || !networkWifiStatus)
-        {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MyFishingXPActivity.this);
-
-            alertDialog.setTitle("Make your location accessible ...");
-            alertDialog.setMessage("Your Location is not accessible to us.To show location you have to enable it.");
-            alertDialog.setIcon(R.drawable.warning);
-
-            alertDialog.setNegativeButton("Enable", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
-                }
-            });
-
-            alertDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,int which) {
-                    Toast.makeText(getApplicationContext(), "Remember to show location you have to enable it !", Toast.LENGTH_SHORT).show();
-                    dialog.cancel();
-                }
-            });
-
-            alertDialog.show();
-        }
-        //IF GPS and Network location is accessible
-        else
-        {
-            nlocManager   = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            nlocListener = new MyLocationListenerNetWork();
-            nlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 1, 0, nlocListener);
-
-
-            glocManager  = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            glocListener = new MyLocationListenerGPS();
-            glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 1, 0, glocListener);
-        }
-    }
-
-    /** public void buttonSaveXP(View v){
-        String location = locationName.getText().toString();
-        String latitude = textLat.getText().toString();
-        String longitude = textLong.getText().toString();
-        Log.d("SAVING","FISHING EXP");
-        xpBackgroundTask = new XPBackgroundTask(this);
-        xpBackgroundTask.execute("I", location, latitude, latitude);
-
-    } */
 
 
     @Override
@@ -242,8 +180,8 @@ public class MyFishingXPActivity extends AppCompatActivity {
     }
 
     public void tvAddCatch(View v) {
+
         DialogActivity dialog = new DialogActivity();
-        //dialog.getActivity().
-        dialog.show(getFragmentManager(), "my_dialog");
+         dialog.show(getFragmentManager(), "my_dialog");
     }
 }
