@@ -12,7 +12,6 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.SplashActivity;
@@ -22,7 +21,6 @@ import rktechltd.aucklandfishing.models.Faq;
 import rktechltd.aucklandfishing.models.Fish;
 import rktechltd.aucklandfishing.models.FishCatch;
 import rktechltd.aucklandfishing.models.FishingExperience;
-import rktechltd.aucklandfishing.models.Location;
 import rktechltd.aucklandfishing.models.NetRule;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
@@ -252,7 +250,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
 
         FAQS[0] = new Faq(1, "Do I need a fishing licence?", "Yes you need a fishing licence to fish in all freshwater fisheries in NZ, these can be purchased online or once you arrive in NZ at most sports stores and retailers  specialising in fishing and the outdoors.");
         FAQS[1] = new Faq(2, "When does the fishing season start in New Zealand?", "The lowland streams all open on the 1st October with the back country rivers opening on the 1st NOVEMBER. The Southern Lakes are open all year round for fishing with some great options if your here during this time and interested in a days fishing.");
-        FAQS[2] = new Faq(3, "Can I bring my own fishing gear to New Zealand?", "Yes, we recommend you bring your own gear to NZ where where possible. Using your own fishing equipment gives  you added confidence.you added confidence.");
+        FAQS[2] = new Faq(3, "Can I bring my own fishing gear to New Zealand?", "Yes, we recommend you bring your own gear to NZ where where possible. Using your own fishing equipment gives  you added confidence.");
 
         FISHES[0] = new Fish(1, "Blue Cod", "Blue Cod", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluecod)), 1, 30, 20, 1);
         FISHES[1] = new Fish(2, "Blue Moki", "Blue Moki",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemoki)), 1, 40, 20, 1);
