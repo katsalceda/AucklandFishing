@@ -5,25 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
->>>>>>> origin/master
 import rktechltd.aucklandfishing.R;
 import rktechltd.aucklandfishing.adapters.FCatchAdapter;
 import rktechltd.aucklandfishing.db.daos.implementations.FishCatchDAO;
-import rktechltd.aucklandfishing.db.daos.implementations.FishingExperienceDAO;
 import rktechltd.aucklandfishing.models.FishCatch;
-import rktechltd.aucklandfishing.models.FishingExperience;
 
 /**
  * Created by KatSalceda on 8/06/16.
@@ -108,16 +96,10 @@ public class FCatchBackgroundTask extends AsyncTask<String, FishCatch,String> {
                     img = cursor.getBlob(4);
                     catchName = cursor.getString(5);
                     remark = cursor.getString(6);
-
-<<<<<<< HEAD
-                    //FishCatch exp = new FishCatch(id, fx, length, weight, picture, name, remark);
-                    //publishProgress(exp);
-                    //fcatchAdapter.add(exp);
-=======
+                    
                     FishCatch exp = new FishCatch(id, xp, length, weight, img, catchName, remark);
                     publishProgress(exp);
                     fcatchAdapter.add(exp);
->>>>>>> origin/master
                     Log.d("BG", "" + fcatchAdapter.getCount());
                 }
             }
