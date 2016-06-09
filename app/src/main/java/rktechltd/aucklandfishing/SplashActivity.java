@@ -7,19 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 
 /**
-<<<<<<< HEAD
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
- * A class that handles the Splash
- * Back code for the Splash
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
+
 public class SplashActivity extends AppCompatActivity {
      private InitializeDatabase initdb;
     private static Context context;

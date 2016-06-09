@@ -10,19 +10,13 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.NetRulesBackgroundTask;
 
 /**
-<<<<<<< HEAD
+ * A class that handles the netrules activity
+ * Back code for the netrules activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
- * A class that handles the netrules activity
- * Back code for the netrules activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class NetRulesActivity extends AppCompatActivity {
     private ListView listView ;
     private NetRulesBackgroundTask netRulesBackgroundTask;

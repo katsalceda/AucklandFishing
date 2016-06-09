@@ -10,23 +10,19 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.FishBackgroundTask;
 
 /**
+ * A class that handles the fish activity
+ * Back code for the fish activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-/**
- * A class that handles the fish activity
- * Back code for the fish activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
 public class FishActivity extends AppCompatActivity {
     private ListView listView ;
     private FishBackgroundTask fishBackgroundTask;
 
     /**
-     * On creatting the activity
+     * On creating the activity
      * @param savedInstanceState
      */
     @Override
@@ -78,5 +74,4 @@ public class FishActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

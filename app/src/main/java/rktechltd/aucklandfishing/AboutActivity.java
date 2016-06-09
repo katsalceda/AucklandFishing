@@ -15,13 +15,6 @@ import android.view.View;
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
- * A class that handles the about activity
- * Back code for the about activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class AboutActivity extends AppCompatActivity {
     /**
      * On creatting the activity

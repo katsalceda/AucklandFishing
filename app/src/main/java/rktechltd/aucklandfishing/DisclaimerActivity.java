@@ -8,17 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
+ * A class that handles the disclaimer activity
+ * Back code for the disclaimer activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-/**
- * A class that handles the disclaimer activity
- * Back code for the disclaimer activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
 public class DisclaimerActivity extends AppCompatActivity {
     /**
      * On creatting the activity

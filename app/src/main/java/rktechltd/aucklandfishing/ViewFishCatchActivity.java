@@ -11,16 +11,11 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
-<<<<<<< HEAD
+ * A class that handles the fishcatch activity
+ * Back code for the fishcatch activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
-=======
- * A class that handles the fishcatch activity
- * Back code for the fishcatch activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
->>>>>>> origin/master
  */
 
 public class ViewFishCatchActivity extends AppCompatActivity {
@@ -87,5 +82,4 @@ public class ViewFishCatchActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

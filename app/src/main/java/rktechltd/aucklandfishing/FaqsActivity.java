@@ -8,27 +8,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-<<<<<<< HEAD
 import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
 
 /**
+ * A class that handles the faq activity
+ * Back code for the faq activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
-
-import rktechltd.aucklandfishing.db.backgroundTasks.FaqBackgroundTask;
-
-
-/**
- * A class that handles the faq activity
- * Back code for the faq activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class FaqsActivity extends AppCompatActivity {
     private ListView listView ;
     private FaqBackgroundTask faqbgt;

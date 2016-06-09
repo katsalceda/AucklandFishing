@@ -1,9 +1,5 @@
 package rktechltd.aucklandfishing;
-<<<<<<< HEAD
-=======
-
 import android.content.Context;
->>>>>>> origin/master
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,22 +14,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import rktechltd.aucklandfishing.db.backgroundTasks.XPBackgroundTask;
-<<<<<<< HEAD
 
 /**
+ * A class that handles the View Fishing Expereince activity
+ * Back code for the  View Fishing Expereince activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
-/**
- * A class that handles the View Fishing Expereince activity
- * Back code for the  View Fishing Expereince activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class xpViewActivity extends AppCompatActivity {
     private static Context context;
     private ListView listView;

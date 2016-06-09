@@ -9,19 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
-<<<<<<< HEAD
+ * A class that handles the Fishing Experience menu activity
+ * Back code for the Fishing Experience menu activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
- * A class that handles the FIshing Experience menu activity
- * Back code for the FIshing Experience menu activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class xpMenuActivity extends AppCompatActivity {
     /**
      * On creatting the activity

@@ -12,16 +12,11 @@ import android.widget.TextView;
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
-<<<<<<< HEAD
+ *  A class that handles the dialog
+ * Back code for the dialog
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
-=======
- * A class that handles the dialog
- * Back code for the dialog
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
->>>>>>> origin/master
  */
 
 public class DialogActivity extends DialogFragment {
@@ -65,5 +60,4 @@ public class DialogActivity extends DialogFragment {
         });
         return builder.create();
     }
-
 }

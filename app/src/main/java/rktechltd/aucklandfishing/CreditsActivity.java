@@ -6,24 +6,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-<<<<<<< HEAD
 
-/**
- * Auckland Fishing
- * @version 16/05/2016
- * @author Katrina Salceda and Romelyn Ungab
- */
-
-=======
-import android.view.View;
-import android.widget.TextView;
 /**
  * A class that handles the credits activity
  * Back code for the credits activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
+ * @author Katrina Salceda and Romelyn Ungab
  */
->>>>>>> origin/master
+
 public class CreditsActivity extends AppCompatActivity {
     /**
      * On creatting the activity

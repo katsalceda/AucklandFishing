@@ -11,19 +11,13 @@ import android.widget.ListView;
 import rktechltd.aucklandfishing.db.backgroundTasks.ChecklistBackgroundTask;
 
 /**
-<<<<<<< HEAD
+ * A class that handles the checklist activity
+ * Back code for the checklist activity
  * Auckland Fishing
  * @version 16/05/2016
  * @author Katrina Salceda and Romelyn Ungab
  */
 
-=======
- * A class that handles the checklist activity
- * Back code for the checklist activity
- * @author ROmelyn Ungab
- * @Author Katrina Salceda
- */
->>>>>>> origin/master
 public class SafetyChecklistActivity extends AppCompatActivity {
     private ListView listView ;
     private ChecklistBackgroundTask checklistBgt;
