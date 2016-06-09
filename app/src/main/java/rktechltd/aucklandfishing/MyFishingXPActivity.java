@@ -42,6 +42,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         locationName = (EditText) findViewById(R.id.tfLocationName);
         spaceLatitude = (EditText) findViewById(R.id.tfLatitude);
         spaceLongitude = (EditText) findViewById(R.id.tfLongitude);

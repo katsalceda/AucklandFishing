@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
@@ -24,15 +25,17 @@ public class ViewFishCatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_fishcatch);
-
+        Intent intent = this.getIntent();
+        int fxid = Integer.parseInt(intent.getExtras().getString("XPId"));
         fcBackgroundTask = new FCatchBackgroundTask(this);
-        fcBackgroundTask.execute("R");
+        fcBackgroundTask.execute("R",""+fxid);
         Log.d("BG onCreate",fcBackgroundTask.toString());
 
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listView = (ListView)this.findViewById(R.id.listViewCatch);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

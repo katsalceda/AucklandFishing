@@ -36,4 +36,9 @@ public class FishCatchDAO implements FishCatchDAOInterface {
     public Cursor getAllFishCatchOfExperience(int fishingExperienceId) {
         return db.findCatches(""+fishingExperienceId);
     }
+
+    @Override
+    public int getLatestFishCatchId() {
+        return db.findLatestFCId();
+    }
 }

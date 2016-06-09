@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import rktechltd.aucklandfishing.db.backgroundTasks.FCatchBackgroundTask;
 
 /**
  * Created by KatSalceda on 3/06/16.
@@ -16,19 +21,33 @@ public class DialogActivity extends DialogFragment {
 
     LayoutInflater inflater;
     View v;
-
     @Override
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         inflater = getActivity().getLayoutInflater();
         v = inflater.inflate(R.layout.dialog_xp_activity, null);
+        final TextView fxid = (TextView) getActivity().findViewById(R.id.tvXPId);
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(v).setPositiveButton("SUBMIT", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO Auto-generated method stub
+                TextView txLength =(TextView)v.findViewById(R.id.tfLength);
+                TextView txWeight =(TextView)v.findViewById(R.id.tfWeight);
+                TextView txCatchName =(TextView)v.findViewById(R.id.tfCatchName);
+                TextView txRemarks =(TextView)v.findViewById(R.id.tfRemarks);
+                TextView txId = (TextView) getActivity().findViewById(R.id.tvXPId);
+
+                String xpid =txId.getText().toString();
+                String length =txLength.getText().toString();
+                String weight =txWeight.getText().toString();
+                String catchName = txCatchName.getText().toString();
+                String remarks = txRemarks.getText().toString();
+
+                FCatchBackgroundTask fcbg = new FCatchBackgroundTask(getActivity());
+                fcbg.execute("I",xpid,length,weight,catchName,remarks);
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
