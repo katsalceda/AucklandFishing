@@ -88,6 +88,7 @@ public class ChecklistBackgroundTask extends AsyncTask<String,Checklist,String> 
             int id;
             String title, description;
             byte[] image;
+           int index;
             Cursor cursor = cdao.getAllCheckList(); //assigns a cursor with the list of all checklist from the db
             cursor.moveToFirst();
             Log.d("BG",""+cursor.getCount());
@@ -97,7 +98,8 @@ public class ChecklistBackgroundTask extends AsyncTask<String,Checklist,String> 
                 title = cursor.getString(cursor.getColumnIndex(AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_TITLE));
                 description = cursor.getString(cursor.getColumnIndex(AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_DESCRIPTION));
                 image = cursor.getBlob(cursor.getColumnIndex(AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE));
-                Checklist cl= new Checklist(id, title, description,image); //instantiates the Checklist with the row in the cursor
+//                index = cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_INDEX));
+                Checklist cl= new Checklist(id, title, description,image,id); //instantiates the Checklist with the row in the cursor
                 publishProgress(cl); //calls the onProgressUpdate method
                 Log.d("BG",""+checkListAdapter.getCount());
             } while(cursor.moveToNext());

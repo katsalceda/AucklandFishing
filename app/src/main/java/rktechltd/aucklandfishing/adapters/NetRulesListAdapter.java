@@ -1,15 +1,19 @@
 package rktechltd.aucklandfishing.adapters;
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import rktechltd.aucklandfishing.R;
+import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.models.NetRule;
+import rktechltd.aucklandfishing.utilities.ImageHelper;
 
 /**
  * A custom list adapter for netrules
@@ -75,6 +79,7 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
             ruleHolder.txtRuleTitle = (TextView) row.findViewById(R.id.tvRuleTitle);//casting of textview
             ruleHolder.txtRuleDescription = (TextView) row.findViewById(R.id.tvRuleDescription);//casting of textview
             ruleHolder.txtPenalty = (TextView) row.findViewById(R.id.tvPenalty);//casting of textview
+            ruleHolder.imgRule = (ImageView) row.findViewById(R.id.imgNetRule);//casting of imageview
             row.setTag(ruleHolder);//Set the holder to he row
         } else {
             ruleHolder = (RuleHolder) row.getTag();//recycles the existing rows
@@ -85,6 +90,8 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
         ruleHolder.txtRuleTitle.setText(rule.getDescription().toString());
         ruleHolder.txtRuleDescription.setText(rule.getTitle().toString());
         ruleHolder.txtPenalty.setText("PENALTY: "+rule.getPenalty());
+        ruleHolder.imgRule.setImageResource(AucklandFishingDBHelper.images[rule.getRulesId()]);
+
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;
@@ -96,6 +103,6 @@ public class NetRulesListAdapter extends ArrayAdapter<NetRule> {
         TextView txtRuleTitle = null;
         TextView txtRuleDescription = null;
         TextView txtPenalty = null;
-      //  ImageView imgRule =null;
+        ImageView imgRule =null;
     }
 }

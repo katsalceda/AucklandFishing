@@ -30,7 +30,7 @@ import rktechltd.aucklandfishing.utilities.ImageHelper;
 public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private Context context;
     public static final String DB_NAME = "aklfishingdatabase.db";
-    public static final int DB_VERSION =48;
+    public static final int DB_VERSION =58;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String REAL_TYPE = " REAL";
@@ -39,6 +39,111 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
     private static final String NUMERIC_TYPE = " NUMERIC";
     private static final String BLOB_TYPE = " BLOB";
     private static final String COMMA_SEP = ",";
+
+    public static final int [] images= new int[]{
+            R.drawable.safetychecklist_lifejackets,
+            R.drawable.safetychecklist_communication,
+            R.drawable.safetychecklist_navigation,
+            R.drawable.safetychecklist_anchor,
+            R.drawable.safetychecklist_firstaid,
+            R.drawable.safetychecklist_fireextinguishers,
+            R.drawable.safetychecklist_throwingline,
+            R.drawable.safetychecklist_protectiveclothing,
+            R.drawable.safetychecklist_knife,
+            R.drawable.safetychecklist_torch,
+            R.drawable.finfish_bluecod,
+            R.drawable.finfish_bluemoki,
+            R.drawable.finfish_bluenose,
+            R.drawable.finfish_butterfish,
+            R.drawable.finfish_elephantfish,
+            R.drawable.finfish_flatfish,
+            R.drawable.finfish_johndory,
+            R.drawable.finfish_kahawai,
+            R.drawable.finfish_parore,
+            R.drawable.finfish_porae,
+            R.drawable.finfish_raysbream,
+            R.drawable.finfish_gurnard,
+            R.drawable.finfish_redmoki,
+            R.drawable.finfish_redsnapper,
+            R.drawable.finfish_rig,
+            R.drawable.finfish_sandflounder,
+            R.drawable.finfish_schoolshark,
+            R.drawable.finfish_tarakihi,
+            R.drawable.finfish_trevally,
+            R.drawable.finfish_eels,
+            R.drawable.finfish_garfish,
+            R.drawable.finfish_groper,
+            R.drawable.finfish_kingfish,
+            R.drawable.finfish_greymullet,
+            R.drawable.finfish_pilchards,
+            R.drawable.finfish_snapper,
+            R.drawable.finfish_yelloweyedmullet,
+            R.drawable.finfish_finfish_anchovy,
+            R.drawable.finfish_barracouta,
+            R.drawable.finfish_bigeyetuna,
+            R.drawable.finfish_bluemackerel,
+            R.drawable.finfish_bluemarlin,
+            R.drawable.finfish_bluemaomao,
+            R.drawable.finfish_blueshark,
+            R.drawable.finfish_bronzeshark,
+            R.drawable.finfish_cardinalfish,
+            R.drawable.finfish_frostfish,
+            R.drawable.finfish_gemfish,
+            R.drawable.finfish_greenbackflounder,
+            R.drawable.finfish_hake,
+            R.drawable.finfish_hammerheadshark,
+            R.drawable.finfish_hoki,
+            R.drawable.finfish_jackmackerel,
+            R.drawable.finfish_leatherjacket,
+            R.drawable.finfish_ling,
+            R.drawable.finfish_makoshark,
+            R.drawable.finfish_marblefish,
+            R.drawable.finfish_marlin,
+            R.drawable.finfish_moonfish,
+            R.drawable.finfish_pacificbluefintuna,
+            R.drawable.finfish_porbeagleshark,
+            R.drawable.finfish_quinnatsalmon,
+            R.drawable.finfish_redcod,
+            R.drawable.finfish_seaperch,
+            R.drawable.finfish_sevengillshark,
+            R.drawable.finfish_silverwarehou,
+            R.drawable.finfish_skate,
+            R.drawable.finfish_skipjack,
+            R.drawable.finfish_slendersprat,
+            R.drawable.finfish_smelt,
+            R.drawable.finfish_spinydogfish,
+            R.drawable.finfish_stargazer,
+            R.drawable.finfish_swordfish,
+            R.drawable.finfish_trumpeter,
+            R.drawable.finfish_warehou,
+            R.drawable.finfish_wrasse,
+            R.drawable.finfish_yellowfintuna,
+            R.drawable.crayfish_koura,
+            R.drawable.crayfish_packhorserocklobster,
+            R.drawable.crayfish_spinyrocklobster,
+            R.drawable.shellfish_arrowsquid,
+            R.drawable.shellfish_cockle,
+            R.drawable.shellfish_kina,
+            R.drawable.shellfish_knobbedwhelk,
+            R.drawable.shellfish_mussel,
+            R.drawable.shellfish_octopus,
+            R.drawable.shellfish_oysterdredge,
+            R.drawable.shellfish_oysterrockpacific,
+            R.drawable.shellfish_paddlecrab,
+            R.drawable.shellfish_paua,
+            R.drawable.shellfish_pipi,
+            R.drawable.shellfish_redcrab,
+            R.drawable.shellfish_scallop,
+            R.drawable.shellfish_troughshell,
+            R.drawable.shellfish_tuatua,
+            R.drawable.netsmarked,
+            R.drawable.netrules_netnotallowed,
+            R.drawable.netrules_netchannels,
+            R.drawable.netrules_60mlength,
+            R.drawable.netrules_baitvessel,
+            R.drawable.netrules_60mapart,
+            R.drawable.netrules_netprohibited
+    };
 
     private static final String CREATE_CATEGORY_TABLE = "CREATE TABLE " + AucklandFishingDBTables.Category.TABLE_NAME + " (" +
             AucklandFishingDBTables.Category.COLUMN_CAT_ID + NUMERIC_TYPE + COMMA_SEP +
@@ -53,6 +158,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_TITLE + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE + TEXT_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_INDEX + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.CheckList.PRIMARY_KEY +
             " )";
     private static final String CREATE_FAQ_TABLE = "CREATE TABLE " + AucklandFishingDBTables.Faq.TABLE_NAME + " (" +
@@ -70,6 +176,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + NUMERIC_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.Fish.COLUMN_FISH_INDEX + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.Fish.PRIMARY_KEY +
             " )";
 
@@ -102,6 +209,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             AucklandFishingDBTables.NetRules.COLUMN_NETRULES_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
             AucklandFishingDBTables.NetRules.COLUMN_NETRULES_PENALTY + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE + BLOB_TYPE + COMMA_SEP +
+            AucklandFishingDBTables.NetRules.COLUMN_NETRULES_INDEX + NUMERIC_TYPE + COMMA_SEP +
             AucklandFishingDBTables.NetRules.PRIMARY_KEY +
             " )";
 
@@ -157,7 +265,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                     " VALUES( " + CHECKLISTS[i].getCheckListId() + " , '"
                     + CHECKLISTS[i].getTitle() + "' , '"
                     + CHECKLISTS[i].getDescription() + "' , '"
-                    + CHECKLISTS[i].getImage() + "' )";
+                    + CHECKLISTS[i].getImage() + " '  )";
             Log.d("AKLFishingDB", insertSQL);
             db.execSQL(insertSQL);
         }
@@ -196,7 +304,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                     + AucklandFishingDBTables.Fish.COLUMN_FISH_CAT + " , "
                     + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM +" , "
                     + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT + " , "
-                    + AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + " )" +
+                    + AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + " )"+
                     " VALUES( " + FISHES[i].getFishId() + " , '"
                     +  FISHES[i].getFishName() + "' , '"
                     +  FISHES[i].getFishDescription() + "' , '"
@@ -204,7 +312,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                     +  FISHES[i].getFishCat() + " , "
                     +  FISHES[i].getMinFishLengthCm() + " , "
                     +  FISHES[i].getMaxDailyLimit() + " , "
-                    +  FISHES[i].isCombinedBag() + " )";
+                    +  FISHES[i].isCombinedBag()+")";
+
             Log.d("AKLFishingDB", insertSQL);
             db.execSQL(insertSQL);
         }
@@ -215,12 +324,14 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                     + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_DESCRIPTION+ " , "
                     + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_TITLE + " , "
                     + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_PENALTY + " , "
-                    + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE + " )" +
+                    + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE + " , "
+                    + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_INDEX + " )" +
                     " VALUES( " + NETRULES[i].getRulesId() + " , '"
                     +  NETRULES[i].getDescription() + "' , '"
                     +  NETRULES[i].getTitle()+ "' , "
                     +  NETRULES[i].getPenalty() + " , '"
-                    +  NETRULES[i].getImage() + "' )";
+                    +  NETRULES[i].getImage() + "' , "
+                    +  NETRULES[i].getRulesId() + ")";
             Log.d("AKLFishingDB", insertSQL);
             db.execSQL(insertSQL);
         }
@@ -232,16 +343,16 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         context=SplashActivity.getAppContext();
         Log.d("AKLFishingDBContext", context.toString());
         Log.d("AKLFishingDB", "initializing");
-        CHECKLISTS[0] = new Checklist(1, "Life Jackets and personal floatation device (PFDs)", "Maritime law requires ALL skippers to carry enough life jackets of the right size and type for everyone on board. Wearing a life jacket is mandatory at all times unless the risk is very low.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_lifejackets)));
-        CHECKLISTS[1] = new Checklist(2, "Communication Equipment", "This include distress beacons (EPIRB or PLB) VHF radio, flares, and cellphones.  On any trip you need to carry two means of waterproof communication and three means if you are over 2 miles from shore.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_communication)));
-        CHECKLISTS[2] = new Checklist(3, "Navigation", "You will need a chart and compass in all but the smallest of boats if you go more than a mile or two from shore.  A GPS and a depth sounder are also very useful.  Exactly what you carry will depend on the size and type of your boat and how far from land you go.  Talk to Coastguard of New Zealand for advice.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_navigation)));
-        CHECKLISTS[3] = new Checklist(4, "Anchor", "To determine the right size for your boat, the anchor should weigh not less than 1.5kg per meter of boat length, with chain at least equal to the length of the boat.  A non-floating rope well secured to the boat should be as long as is.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_anchor)));
-        CHECKLISTS[4] = new Checklist(5, "First Aid Kit", "Your kit should contain enough supplies to cover minor accidents or injuries.  Remember to carry a remedy for sea sickness as well as sun block.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_firstaid)));
-        CHECKLISTS[5] = new Checklist(6, "Fire Extinguishers", "If you have an engine or cooker on board always carry at least one fire extinguisher that is suitable for your type of boating.  Know how to use it and ensure it is serviced regularly.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_fireextinguishers)));
-        CHECKLISTS[6] = new Checklist(7, "Throwing Line", "A floating line at least 12m in length with a floating weight at one end",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_throwingline)));
-        CHECKLISTS[7] = new Checklist(8, "Protective Clothin", "Carry adequate warm protective clothing",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_protectiveclothing)));
-        CHECKLISTS[8] = new Checklist(9, "Knife", "Has many uses - remember to keep it sharp.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_knife)));
-        CHECKLISTS[9] = new Checklist(10, "Torch", "Always carry a torch with spare batteries and bulb.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_torch)));
+        CHECKLISTS[0] = new Checklist(1, "Life Jackets and personal floatation device (PFDs)", "Maritime law requires ALL skippers to carry enough life jackets of the right size and type for everyone on board. Wearing a life jacket is mandatory at all times unless the risk is very low.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_lifejackets)),1);
+        CHECKLISTS[1] = new Checklist(2, "Communication Equipment", "This include distress beacons (EPIRB or PLB) VHF radio, flares, and cellphones.  On any trip you need to carry two means of waterproof communication and three means if you are over 2 miles from shore.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_communication)),2);
+        CHECKLISTS[2] = new Checklist(3, "Navigation", "You will need a chart and compass in all but the smallest of boats if you go more than a mile or two from shore.  A GPS and a depth sounder are also very useful.  Exactly what you carry will depend on the size and type of your boat and how far from land you go.  Talk to Coastguard of New Zealand for advice.", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_navigation)),3);
+        CHECKLISTS[3] = new Checklist(4, "Anchor", "To determine the right size for your boat, the anchor should weigh not less than 1.5kg per meter of boat length, with chain at least equal to the length of the boat.  A non-floating rope well secured to the boat should be as long as is.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_anchor)),4);
+        CHECKLISTS[4] = new Checklist(5, "First Aid Kit", "Your kit should contain enough supplies to cover minor accidents or injuries.  Remember to carry a remedy for sea sickness as well as sun block.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_firstaid)),5);
+        CHECKLISTS[5] = new Checklist(6, "Fire Extinguishers", "If you have an engine or cooker on board always carry at least one fire extinguisher that is suitable for your type of boating.  Know how to use it and ensure it is serviced regularly.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_fireextinguishers)),6);
+        CHECKLISTS[6] = new Checklist(7, "Throwing Line", "A floating line at least 12m in length with a floating weight at one end",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_throwingline)),7);
+        CHECKLISTS[7] = new Checklist(8, "Protective Clothin", "Carry adequate warm protective clothing",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_protectiveclothing)),8);
+        CHECKLISTS[8] = new Checklist(9, "Knife", "Has many uses - remember to keep it sharp.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_knife)),9);
+        CHECKLISTS[9] = new Checklist(10, "Torch", "Always carry a torch with spare batteries and bulb.",  ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.safetychecklist_torch)),10);
 
         CATEGORIES[0] =  new Category(1, "Fin Fish", "Fin Fish");
         CATEGORIES[1] =  new Category(2, "Cray Fish", "Cray Fish");
@@ -251,108 +362,108 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         FAQS[1] = new Faq(2, "When does the fishing season start in New Zealand?", "The lowland streams all open on the 1st October with the back country rivers opening on the 1st NOVEMBER. The Southern Lakes are open all year round for fishing with some great options if your here during this time and interested in a days fishing.");
         FAQS[2] = new Faq(3, "Can I bring my own fishing gear to New Zealand?", "Yes, we recommend you bring your own gear to NZ where where possible. Using your own fishing equipment gives  you added confidence.");
 
-        FISHES[0] = new Fish(1, "Blue Cod", "Blue Cod", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluecod)), 1, 30, 20, 1);
-        FISHES[1] = new Fish(2, "Blue Moki", "Blue Moki",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemoki)), 1, 40, 20, 1);
-        FISHES[2] = new Fish(3, "Blue Nose", "Blue Nose",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluenose)), 1, 0, 5, 1);
-        FISHES[3] = new Fish(4, "Butterfish ", "Butterfish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_butterfish)), 1, 35, 20, 1);
-        FISHES[4] = new Fish(5, "Elephant Fish", "Elephant Fish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_elephantfish)), 1, 0, 20, 1);
-        FISHES[5] = new Fish(6, "Flat Fish", "Flat Fish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_flatfish)), 1, 25, 20, 1);
-        FISHES[6] = new Fish(7, "John Dory", "John Dory", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_johndory)), 1, 0, 20, 1);
-        FISHES[7] = new Fish(8, "Kahawai", "Kahawai", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_kahawai)), 1, 0, 20, 1);
-        FISHES[8] = new Fish(9, "Parore", "Parore", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_parore)), 1, 0, 20, 1);
-        FISHES[9] = new Fish(10, "Porae", "Porae", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_porae)), 1, 0, 20, 1);
-        FISHES[10] = new Fish(11, "Rays Bream", "Rays Bream", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_raysbream)), 1, 0, 0, 1);
-        FISHES[11] = new Fish(12, "Gurnard", "Gurnard", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_gurnard)), 1, 25, 20, 1);
-        FISHES[12] = new Fish(13, "Red Moki", "Red Moki", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redmoki)), 1, 40, 20, 1);
-        FISHES[13] = new Fish(14, "Red Snapper", "Red Snapper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redsnapper)), 1, 20, 0, 1);
-        FISHES[14] = new Fish(15, "Rig", "Rig", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_rig)), 1, 0, 20, 1);
-        FISHES[15] = new Fish(16, "Sand Flounder", "Sand Flounder", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_sandflounder)), 1, 23, 20, 1);
-        FISHES[16] = new Fish(17, "School Shark", "School Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_schoolshark)), 1, 0, 20, 1);
-        FISHES[17] = new Fish(18, "Tarakihi", "Tarakihi", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_tarakihi)), 1, 25, 20, 1);
-        FISHES[18] = new Fish(19, "Trevally", "Trevally", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_trevally)), 1, 25, 20, 1);
-        FISHES[19] = new Fish(20, "Eel", "Eel",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_eels)), 1, 0, 6, 1);
-        FISHES[20] = new Fish(21, "Garfish", "Garfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_garfish)), 1, 0, 0, 1);
-        FISHES[21] = new Fish(22, "Groper", "Groper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_groper)), 1, 0, 5, 1);
-        FISHES[22] = new Fish(23, "Kingfish", "Kingfish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_kingfish)), 1, 75, 3, 1);
-        FISHES[23] = new Fish(24, "Grey Mullet", "Grey Mullet", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_greymullet)), 1, 0, 30, 1);
-        FISHES[24] = new Fish(25, "Pilchards", "Pilchards", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_pilchards)), 1, 0, 0, 1);
-        FISHES[25] = new Fish(26, "Snapper", "Snapper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_snapper)), 1, 27, 10, 1);
-        FISHES[26] = new Fish(27, "Yellow Eyed Mullet", "Yellow Eyed Mullet",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_yelloweyedmullet)), 1, 0, 0, 1);
+        FISHES[0] = new Fish(11, "Blue Cod", "Blue Cod", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluecod)), 1, 30, 20, 1,11);
+        FISHES[1] = new Fish(12, "Blue Moki", "Blue Moki",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemoki)), 1, 40, 20, 1,12);
+        FISHES[2] = new Fish(13, "Blue Nose", "Blue Nose",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluenose)), 1, 0, 5, 1,13);
+        FISHES[3] = new Fish(14, "Butterfish ", "Butterfish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_butterfish)), 1, 35, 20, 1,14);
+        FISHES[4] = new Fish(15, "Elephant Fish", "Elephant Fish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_elephantfish)), 1, 0, 20, 1,15);
+        FISHES[5] = new Fish(16, "Flat Fish", "Flat Fish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_flatfish)), 1, 25, 20, 1,16);
+        FISHES[6] = new Fish(17, "John Dory", "John Dory", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_johndory)), 1, 0, 20, 1,17);
+        FISHES[7] = new Fish(18, "Kahawai", "Kahawai", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_kahawai)), 1, 0, 20, 1,18);
+        FISHES[8] = new Fish(19, "Parore", "Parore", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_parore)), 1, 0, 20, 1,19);
+        FISHES[9] = new Fish(20, "Porae", "Porae", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_porae)), 1, 0, 20, 1,20);
+        FISHES[10] = new Fish(21, "Rays Bream", "Rays Bream", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_raysbream)), 1, 0, 0, 1,21);
+        FISHES[11] = new Fish(22, "Gurnard", "Gurnard", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_gurnard)), 1, 25, 20, 1,22);
+        FISHES[12] = new Fish(23, "Red Moki", "Red Moki", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redmoki)), 1, 40, 20, 1,23);
+        FISHES[13] = new Fish(24, "Red Snapper", "Red Snapper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redsnapper)), 1, 20, 0, 1,24);
+        FISHES[14] = new Fish(25, "Rig", "Rig", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_rig)), 1, 0, 20, 1,25);
+        FISHES[15] = new Fish(26, "Sand Flounder", "Sand Flounder", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_sandflounder)), 1, 23, 20, 1,26);
+        FISHES[16] = new Fish(27, "School Shark", "School Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_schoolshark)), 1, 0, 20, 1,27);
+        FISHES[17] = new Fish(28, "Tarakihi", "Tarakihi", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_tarakihi)), 1, 25, 20, 1,28);
+        FISHES[18] = new Fish(29, "Trevally", "Trevally", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_trevally)), 1, 25, 20, 1,29);
+        FISHES[19] = new Fish(30, "Eel", "Eel",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_eels)), 1, 0, 6, 1,30);
+        FISHES[20] = new Fish(31, "Garfish", "Garfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_garfish)), 1, 0, 0, 1,31);
+        FISHES[21] = new Fish(32, "Groper", "Groper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_groper)), 1, 0, 5, 1,32);
+        FISHES[22] = new Fish(33, "Kingfish", "Kingfish",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_kingfish)), 1, 75, 3, 1,33);
+        FISHES[23] = new Fish(34, "Grey Mullet", "Grey Mullet", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_greymullet)), 1, 0, 30, 1,34);
+        FISHES[24] = new Fish(35, "Pilchards", "Pilchards", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_pilchards)), 1, 0, 0, 1,35);
+        FISHES[25] = new Fish(36, "Snapper", "Snapper", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_snapper)), 1, 27, 10, 1,36);
+        FISHES[26] = new Fish(37, "Yellow Eyed Mullet", "Yellow Eyed Mullet",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_yelloweyedmullet)), 1, 0, 0, 1,37);
 
-        FISHES[27] = new Fish(28, "Anchovy", "Anchovy", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_finfish_anchovy)), 1, 0, 0, 1);
-        FISHES[28] = new Fish(29, "Barracouta", "Barracouta", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_barracouta)), 1, 0, 0, 1);
-        FISHES[29] = new Fish(30, "Big Eye Tuna", "Big Eye Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bigeyetuna)), 1, 0, 0, 1);
-        FISHES[30] = new Fish(31, "Blue Mackerel", "Blue Mackerel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemackerel)), 1, 0, 0, 1);
-        FISHES[31] = new Fish(32, "Blue Marlin", "Blue Marlin",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemarlin)), 1, 0, 0, 1);
-        FISHES[32] = new Fish(33, "Blue Mao", "Blue Mao", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemaomao)), 1, 0, 0, 1);
+        FISHES[27] = new Fish(38, "Anchovy", "Anchovy", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_finfish_anchovy)), 1, 0, 0, 1,38);
+        FISHES[28] = new Fish(39, "Barracouta", "Barracouta", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_barracouta)), 1, 0, 0, 1,39);
+        FISHES[29] = new Fish(40, "Big Eye Tuna", "Big Eye Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bigeyetuna)), 1, 0, 0, 1,40);
+        FISHES[30] = new Fish(41, "Blue Mackerel", "Blue Mackerel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemackerel)), 1, 0, 0, 1,41);
+        FISHES[31] = new Fish(42, "Blue Marlin", "Blue Marlin",ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemarlin)), 1, 0, 0, 1,42);
+        FISHES[32] = new Fish(43, "Blue Mao", "Blue Mao", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bluemaomao)), 1, 0, 0, 1,43);
 
-        FISHES[33] = new Fish(34, "Blue Shark", "Blue Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_blueshark)), 1, 0, 0, 1);
-        FISHES[34] = new Fish(35, "Bronze Shark", "Bronze Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bronzeshark)), 1, 0, 0, 1);
-        FISHES[35] = new Fish(36, "Cardinalfish", "Cardinalfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_cardinalfish)), 1, 0, 0, 1);
-        FISHES[36] = new Fish(37, "Frostfish", "Frostfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_frostfish)), 1, 0, 0, 1);
+        FISHES[33] = new Fish(44, "Blue Shark", "Blue Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_blueshark)), 1, 0, 0, 1,44);
+        FISHES[34] = new Fish(45, "Bronze Shark", "Bronze Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_bronzeshark)), 1, 0, 0, 1,45);
+        FISHES[35] = new Fish(46, "Cardinalfish", "Cardinalfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_cardinalfish)), 1, 0, 0, 1,46);
+        FISHES[36] = new Fish(47, "Frostfish", "Frostfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_frostfish)), 1, 0, 0, 1,46);
 
-        FISHES[37] = new Fish(38, "Gemfish", "Gemfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_gemfish)), 1, 0, 0, 1);
-        FISHES[38] = new Fish(39, "Greenback Flounder", "Greenback Flounder", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_greenbackflounder)), 1, 25, 20, 1);
-        FISHES[39] = new Fish(40, "Hake", "Hake", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hake)), 1, 0, 0, 1);
-        FISHES[40] = new Fish(41, "Hammerhead Shark ", "Hammerhead Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hammerheadshark)), 1, 0, 0, 1);
-        FISHES[41] = new Fish(42, "Hoki", "Hoki", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hoki)), 1, 0, 0, 1);
-        FISHES[42] = new Fish(43, "Jack Mackerel", "Jack Mackerel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_jackmackerel)), 1, 0, 0, 1);
-        FISHES[43] = new Fish(44, "Leather Jacket", "Leather Jacket", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_leatherjacket)), 1, 0, 0, 1);
-        FISHES[44] = new Fish(45, "Ling", "Ling", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_ling)), 1, 0, 0, 1);
-        FISHES[45] = new Fish(46, "Mako Shark", "Mako Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_makoshark)), 1, 0, 0, 1);
+        FISHES[37] = new Fish(48, "Gemfish", "Gemfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_gemfish)), 1, 0, 0, 1,47);
+        FISHES[38] = new Fish(49, "Greenback Flounder", "Greenback Flounder", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_greenbackflounder)), 1, 25, 20, 1,48);
+        FISHES[39] = new Fish(50, "Hake", "Hake", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hake)), 1, 0, 0, 1,49);
+        FISHES[40] = new Fish(51, "Hammerhead Shark ", "Hammerhead Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hammerheadshark)), 1, 0, 0, 1,50);
+        FISHES[41] = new Fish(52, "Hoki", "Hoki", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_hoki)), 1, 0, 0, 1,51);
+        FISHES[42] = new Fish(53, "Jack Mackerel", "Jack Mackerel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_jackmackerel)), 1, 0, 0, 1,52);
+        FISHES[43] = new Fish(54, "Leather Jacket", "Leather Jacket", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_leatherjacket)), 1, 0, 0, 1,53);
+        FISHES[44] = new Fish(55, "Ling", "Ling", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_ling)), 1, 0, 0, 1,53);
+        FISHES[45] = new Fish(56, "Mako Shark", "Mako Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_makoshark)), 1, 0, 0, 1,54);
 
-        FISHES[46] = new Fish(47, "Marble Fish", "Marble Fish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_marblefish)), 1, 0, 0, 1);
-        FISHES[47] = new Fish(48, "Marlin", "Marlin", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_marlin)), 1, 0, 0, 1);
-        FISHES[48] = new Fish(49, "Moonfish", "Moonfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_moonfish)), 1, 0, 0, 1);
-        FISHES[49] = new Fish(50, "Pacific Bluefin Tuna", "Pacific Bluefin Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_pacificbluefintuna)), 1, 0, 0, 1);
-        FISHES[50] = new Fish(51, "Porbeagle Shark", "Porbeagle Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_porbeagleshark)), 1, 0, 0, 1);
-        FISHES[51] = new Fish(52, "Quinnat Salmon", "Quinnat Salmon", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_quinnatsalmon)), 1, 0, 0, 1);
-        FISHES[52] = new Fish(53, "Red Cod", "Red Cod", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redcod)), 1, 25, 20, 1);
-        FISHES[53] = new Fish(54, "Sea Perch", "Sea Perch", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_seaperch)), 1, 0, 10, 1);
-        FISHES[54] = new Fish(55, "7 Gill Shark", "7 Gill Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_sevengillshark)), 1, 0, 0, 1);
-        FISHES[55] = new Fish(56, "Silver Warehou", "Silver Warehou", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_silverwarehou)), 1, 0, 0, 1);
+        FISHES[46] = new Fish(57, "Marble Fish", "Marble Fish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_marblefish)), 1, 0, 0, 1,55);
+        FISHES[47] = new Fish(58, "Marlin", "Marlin", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_marlin)), 1, 0, 0, 1,56);
+        FISHES[48] = new Fish(59, "Moonfish", "Moonfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_moonfish)), 1, 0, 0, 1,57);
+        FISHES[49] = new Fish(60, "Pacific Bluefin Tuna", "Pacific Bluefin Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_pacificbluefintuna)), 1, 0, 0, 1,58);
+        FISHES[50] = new Fish(61, "Porbeagle Shark", "Porbeagle Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_porbeagleshark)), 1, 0, 0, 1,59);
+        FISHES[51] = new Fish(62, "Quinnat Salmon", "Quinnat Salmon", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_quinnatsalmon)), 1, 0, 0, 1,60);
+        FISHES[52] = new Fish(63, "Red Cod", "Red Cod", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_redcod)), 1, 25, 20, 1,61);
+        FISHES[53] = new Fish(64, "Sea Perch", "Sea Perch", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_seaperch)), 1, 0, 10, 1,62);
+        FISHES[54] = new Fish(65, "7 Gill Shark", "7 Gill Shark", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_sevengillshark)), 1, 0, 0, 1,63);
+        FISHES[55] = new Fish(66, "Silver Warehou", "Silver Warehou", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_silverwarehou)), 1, 0, 0, 1,64);
 
-        FISHES[56] = new Fish(57, "Skate", "Skate", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_skate)), 1, 0, 0, 1);
-        FISHES[57] = new Fish(58, "Skipjack", "Skipjack", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_skipjack)), 1, 0, 0, 1);
-        FISHES[58] = new Fish(59, "Slender Sprat", "Slender Sprat", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_slendersprat)), 1, 0, 0, 1);
-        FISHES[59] = new Fish(60, "Smelt", "Smelt", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_smelt)), 1, 0, 0, 1);
-        FISHES[60] = new Fish(61, "Spiny Dogfish", "Spiny Dogfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_spinydogfish)), 1, 0, 0, 1);
-        FISHES[61] = new Fish(62, "Stargazer", "Stargazer", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_stargazer)), 1, 0, 0, 1);
-        FISHES[62] = new Fish(63, "Swordfish", "Swordfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_swordfish)), 1, 0, 0, 1);
-        FISHES[63] = new Fish(64, "Trumpeter", "Trumpeter", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_trumpeter)), 1, 0, 0, 1);
-        FISHES[64] = new Fish(65, "Warehou", "Warehou", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_warehou)), 1, 0, 0, 1);
-        FISHES[65] = new Fish(66, "Wrasse", "Wrasse", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_wrasse)), 1, 0, 0, 1);
-        FISHES[66] = new Fish(67, "Yellowfin Tuna", "Yellowfin Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_yellowfintuna)), 1, 0, 0, 1);
+        FISHES[56] = new Fish(67, "Skate", "Skate", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_skate)), 1, 0, 0, 1,65);
+        FISHES[57] = new Fish(68, "Skipjack", "Skipjack", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_skipjack)), 1, 0, 0, 1,66);
+        FISHES[58] = new Fish(69, "Slender Sprat", "Slender Sprat", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_slendersprat)), 1, 0, 0, 1,67);
+        FISHES[59] = new Fish(70, "Smelt", "Smelt", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_smelt)), 1, 0, 0, 1,68);
+        FISHES[60] = new Fish(71, "Spiny Dogfish", "Spiny Dogfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_spinydogfish)), 1, 0, 0, 1,69);
+        FISHES[61] = new Fish(72, "Stargazer", "Stargazer", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_stargazer)), 1, 0, 0, 1,70);
+        FISHES[62] = new Fish(73, "Swordfish", "Swordfish", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_swordfish)), 1, 0, 0, 1,71);
+        FISHES[63] = new Fish(74, "Trumpeter", "Trumpeter", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_trumpeter)), 1, 0, 0, 1,72);
+        FISHES[64] = new Fish(75, "Warehou", "Warehou", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_warehou)), 1, 0, 0, 1,73);
+        FISHES[65] = new Fish(76, "Wrasse", "Wrasse", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_wrasse)), 1, 0, 0, 1,74);
+        FISHES[66] = new Fish(77, "Yellowfin Tuna", "Yellowfin Tuna", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.finfish_yellowfintuna)), 1, 0, 0, 1,75);
 
-        FISHES[67] = new Fish(68, "Koura", "Koura", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_koura)), 2, 0, 0, 1);
-        FISHES[68] = new Fish(69, "Packhorse Rock Lobster", "Packhorse Rock Lobster", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_packhorserocklobster)), 2, 22, 6, 1);
-        FISHES[69] = new Fish(70, "Spiny Rock Lobster", "Spiny Rock Lobster", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_spinyrocklobster)), 2, 6, 6, 1);
+        FISHES[67] = new Fish(78, "Koura", "Koura", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_koura)), 2, 0, 0, 1,76);
+        FISHES[68] = new Fish(79, "Packhorse Rock Lobster", "Packhorse Rock Lobster", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_packhorserocklobster)), 2, 22, 6, 1,77);
+        FISHES[69] = new Fish(80, "Spiny Rock Lobster", "Spiny Rock Lobster", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.crayfish_spinyrocklobster)), 2, 6, 6, 1,78);
 
-        FISHES[70] = new Fish(71, "Arrow Squid", "Arrow Squid", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_arrowsquid)), 3, 0, 50, 1);
-        FISHES[71] = new Fish(72, "Cockle", "Cockle", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_cockle)), 3, 0, 50, 1);
-        FISHES[72] = new Fish(73, "Kina", "Kina", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_kina)), 3, 0, 50, 1);
-        FISHES[73] = new Fish(74, "Knobbed Whelk", "Knobbed Whelk", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_knobbedwhelk)), 3, 0, 50, 1);
-        FISHES[74] = new Fish(75, "Mussel", "Mussel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_mussel)), 3, 0, 25, 1);
-        FISHES[75] = new Fish(76, "Octopus", "Octopus", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_octopus)), 3, 0, 50, 1);
-        FISHES[76] = new Fish(77, "Oyster (dredge)", "Oyster (dredge)", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_oysterdredge)), 3, 6, 50, 1);
-        FISHES[77] = new Fish(78, "Oyster (rock/pacific)", "Oyster (rock/pacific)", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_oysterrockpacific)), 3, 0, 100, 1);
-        FISHES[78] = new Fish(79, "Paddle Crab", "Paddle Crab", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_paddlecrab)), 3, 0, 50, 1);
-        FISHES[79] = new Fish(80, "Paua", "Paua", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_paua)), 3, 13, 15, 1);
-        FISHES[80] = new Fish(81, "Pipi", "Pipi", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_pipi)), 3, 0, 50, 1);
-        FISHES[81] = new Fish(82, "Red Crab", "Red Crab", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_redcrab)), 3, 0, 50, 1);
-        FISHES[82] = new Fish(83, "Scallop", "Scallop", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_scallop)), 3, 10, 20, 1);
-        FISHES[83] = new Fish(84, "Trough Shell", "Trough Shell", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_troughshell)), 3, 0, 50, 1);
-        FISHES[84] = new Fish(85, "Tuatua", "Tuatua", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_tuatua)), 3, 0, 50, 1);
+        FISHES[70] = new Fish(81, "Arrow Squid", "Arrow Squid", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_arrowsquid)), 3, 0, 50, 1,79);
+        FISHES[71] = new Fish(82, "Cockle", "Cockle", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_cockle)), 3, 0, 50, 1,80);
+        FISHES[72] = new Fish(83, "Kina", "Kina", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_kina)), 3, 0, 50, 1,81);
+        FISHES[73] = new Fish(84, "Knobbed Whelk", "Knobbed Whelk", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_knobbedwhelk)), 3, 0, 50, 1,82);
+        FISHES[74] = new Fish(85, "Mussel", "Mussel", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_mussel)), 3, 0, 25, 1,83);
+        FISHES[75] = new Fish(86, "Octopus", "Octopus", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_octopus)), 3, 0, 50, 1,84);
+        FISHES[76] = new Fish(87, "Oyster (dredge)", "Oyster (dredge)", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_oysterdredge)), 3, 6, 50, 1,85);
+        FISHES[77] = new Fish(88, "Oyster (rock/pacific)", "Oyster (rock/pacific)", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_oysterrockpacific)), 3, 0, 100, 1,86);
+        FISHES[78] = new Fish(89, "Paddle Crab", "Paddle Crab", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_paddlecrab)), 3, 0, 50, 1,87);
+        FISHES[79] = new Fish(90, "Paua", "Paua", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_paua)), 3, 13, 15, 1,88);
+        FISHES[80] = new Fish(91, "Pipi", "Pipi", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_pipi)), 3, 0, 50, 1,89);
+        FISHES[81] = new Fish(92, "Red Crab", "Red Crab", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_redcrab)), 3, 0, 50, 1,90);
+        FISHES[82] = new Fish(93, "Scallop", "Scallop", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_scallop)), 3, 10, 20, 1,91);
+        FISHES[83] = new Fish(94, "Trough Shell", "Trough Shell", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_troughshell)), 3, 0, 50, 1,92);
+        FISHES[84] = new Fish(95, "Tuatua", "Tuatua", ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.shellfish_tuatua)), 3, 0, 50, 1,93);
 
 
-        NETRULES[0] = new NetRule(1, "Set nets must have surface float at each end that is clearly and legibly marked with the fishers last name, initials and phone no.", "Set nets must be marked", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netsmarked)));
-        NETRULES[1] = new NetRule(2, "Suitable anchors and floats must be used to deploy a set net", "Use stakes to hold nets is prohibited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netprohibited)));
-        NETRULES[2] = new NetRule(3, "Nets must not be used in a way that allows fish to be stranded in the net by the falling tide", "Stalling of nets is probihited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netnotallowed)));
-        NETRULES[3] = new NetRule(4, "No net (Either used alone or with other nets) can be set more than a quarter of the way across a channel, bay or waterway", "Restrictions on nets in channels", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netchannels)));
-        NETRULES[4] = new NetRule(5, "NOTE: Drag nets may only be 40m in length", "Set nets must be less than 60m in length", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_60mlength)));
-        NETRULES[5] = new NetRule(6, "NOTE: There must be at least 2 fishers on the boat and the second net may only be used if it is less than 10m long and has a mesh of a less than 50mm", "Maximum one net per person or one set and one bait net per vessel", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_baitvessel)));
-        NETRULES[6] = new NetRule(7, "A person may not set any set within 60m of another net.", "Nets must be more than 60m apart", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_60mapart)));
-        NETRULES[7] = new NetRule(8, "No person may possess or use a baited net other than a fyke net or hinaki net.", "Using baited nets is prohibited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_bait)));
+        NETRULES[0] = new NetRule(96, "Set nets must have surface float at each end that is clearly and legibly marked with the fishers last name, initials and phone no.", "Set nets must be marked", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netsmarked)),94);
+        NETRULES[1] = new NetRule(97, "Suitable anchors and floats must be used to deploy a set net", "Use stakes to hold nets is prohibited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netprohibited)),95);
+        NETRULES[2] = new NetRule(98, "Nets must not be used in a way that allows fish to be stranded in the net by the falling tide", "Stalling of nets is probihited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netnotallowed)),96);
+        NETRULES[3] = new NetRule(99, "No net (Either used alone or with other nets) can be set more than a quarter of the way across a channel, bay or waterway", "Restrictions on nets in channels", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_netchannels)),96);
+        NETRULES[4] = new NetRule(100, "NOTE: Drag nets may only be 40m in length", "Set nets must be less than 60m in length", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_60mlength)),97);
+        NETRULES[5] = new NetRule(101, "NOTE: There must be at least 2 fishers on the boat and the second net may only be used if it is less than 10m long and has a mesh of a less than 50mm", "Maximum one net per person or one set and one bait net per vessel", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_baitvessel)),98);
+        NETRULES[6] = new NetRule(102, "A person may not set any set within 60m of another net.", "Nets must be more than 60m apart", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_60mapart)),99);
+        NETRULES[7] = new NetRule(103, "No person may possess or use a baited net other than a fyke net or hinaki net.", "Using baited nets is prohibited", 250, ImageHelper.convertImage(BitmapFactory.decodeResource(context.getResources(),R.drawable.netrules_bait)),100);
 
     }
     /**
@@ -541,14 +652,14 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         String query = "SELECT " + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_ID + ", "
                 + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_TITLE + ", "
                 + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_DESCRIPTION + ", "
-                + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE + " FROM "
+                + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE + "  FROM "
                 + AucklandFishingDBTables.CheckList.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             checkList = new ArrayList<Checklist>();
             cursor.moveToFirst();
             do {
-                Checklist aCheckList = new Checklist(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3));
+                Checklist aCheckList = new Checklist(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3),cursor.getInt(0));
                 checkList.add(aCheckList);
             } while (cursor.moveToNext());
             db.close();
@@ -589,7 +700,8 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.Fish.COLUMN_FISH_CAT + ", "
                 + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM + ", "
                 + AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT + ", "
-                + AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + " FROM "
+                + AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG + ", "
+                + AucklandFishingDBTables.Fish.COLUMN_FISH_INDEX + " FROM "
                 + AucklandFishingDBTables.Fish.TABLE_NAME +
                 " ORDER BY "+AucklandFishingDBTables.Fish.COLUMN_FISH_ID;
 
@@ -598,7 +710,7 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
             fishes = new ArrayList<Fish>();
             cursor.moveToFirst();
             do {
-                Fish aFish = new Fish(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7));
+                Fish aFish = new Fish(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7),cursor.getInt(8));
                 fishes.add(aFish);
             } while (cursor.moveToNext());
             db.close();
@@ -674,14 +786,15 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                 + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_DESCRIPTION + ", "
                 + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_TITLE + ", "
                 + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_PENALTY + ", "
-                + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE + " FROM "
+                + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE + ", "
+                + AucklandFishingDBTables.NetRules.COLUMN_NETRULES_INDEX + " FROM "
                 + AucklandFishingDBTables.NetRules.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             netrules = new ArrayList<NetRule>();
             cursor.moveToFirst();
             do {
-                NetRule netRule = new NetRule(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getBlob(4));
+                NetRule netRule = new NetRule(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getBlob(4),cursor.getInt(5));
                 netrules.add(netRule);
             } while (cursor.moveToNext());
             db.close();
@@ -851,12 +964,13 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
         String query = "SELECT " + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_ID + ", "
                 + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_TITLE + ", "
                 + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_DESCRIPTION + ", "
-                + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE + " FROM "
+                + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_IMAGE + ", "
+                + AucklandFishingDBTables.CheckList.COLUMN_CHECKLIST_INDEX + " FROM "
                 + AucklandFishingDBTables.CheckList.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            Checklist aCheckList = new Checklist(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3));
+            Checklist aCheckList = new Checklist(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3),cursor.getInt(4));
             db.close();
             return aCheckList;
         }
@@ -946,13 +1060,14 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                         AucklandFishingDBTables.Fish.COLUMN_FISH_CAT,
                         AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM,
                         AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT,
-                        AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG},
+                        AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG,
+                        AucklandFishingDBTables.Fish.COLUMN_FISH_INDEX},
                 AucklandFishingDBTables.Fish.COLUMN_FISH_ID+ "=?",
                 new String[]{id}, null, null, null, null);
 
         if (cursor != null) {
             cursor.moveToFirst();
-            Fish aFish = new Fish(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getBlob(3),cursor.getInt(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7));
+            Fish aFish = new Fish(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getBlob(3),cursor.getInt(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7),cursor.getInt(8));
             db.close();
             return aFish;
         }
@@ -984,13 +1099,14 @@ public class AucklandFishingDBHelper extends SQLiteOpenHelper {
                         AucklandFishingDBTables.NetRules.COLUMN_NETRULES_TITLE,
                         AucklandFishingDBTables.NetRules.COLUMN_NETRULES_PENALTY,
                         AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE,
+                        AucklandFishingDBTables.NetRules.COLUMN_NETRULES_INDEX
                         },
                 AucklandFishingDBTables.NetRules.COLUMN_NETRULES_ID+ "=?",
                 new String[]{id}, null, null, null, null);
 
         if (cursor != null) {
             cursor.moveToFirst();
-            NetRule aRule = new NetRule(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getDouble(3),cursor.getBlob(4));
+            NetRule aRule = new NetRule(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getDouble(3),cursor.getBlob(4),cursor.getInt(5));
             db.close();
             return aRule;
         }

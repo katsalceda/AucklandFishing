@@ -34,8 +34,9 @@ public final class AucklandFishingDBTables {
         public static final String COLUMN_CHECKLIST_TITLE = "title";//implementation of the title column
         public static final String COLUMN_CHECKLIST_DESCRIPTION = "description";//implementation of the descriptiom column
         public static final String COLUMN_CHECKLIST_IMAGE = "image";////implementation of the image column
+        public static final String COLUMN_CHECKLIST_INDEX = "ind";////implementation of the image column
         public static final String PRIMARY_KEY = "PRIMARY KEY (" + COLUMN_CHECKLIST_ID + ")"; //implementation of the checklistId as primary key
-        public static final String[] ALL_COLUMNS = {COLUMN_CHECKLIST_ID,COLUMN_CHECKLIST_TITLE, COLUMN_CHECKLIST_DESCRIPTION, COLUMN_CHECKLIST_IMAGE};
+        public static final String[] ALL_COLUMNS = {COLUMN_CHECKLIST_ID,COLUMN_CHECKLIST_TITLE, COLUMN_CHECKLIST_DESCRIPTION, COLUMN_CHECKLIST_IMAGE,COLUMN_CHECKLIST_INDEX};
     }
 
     /**
@@ -63,8 +64,9 @@ public final class AucklandFishingDBTables {
         public static final String COLUMN_MIN_FISH_LENGTH_CM ="minFishLengthCm";//implementation of the minfishlengthcm column
         public static final String COLUMN_MIN_FISH_MAX_DAILY_LIMIT="maxDailyLimit";//implementation of the maxdailylimit column
         public static final String COLUMN_IS_COMBINED_BAG="isCombinedBag";//implementation of the isCombinedaBag column
+        public static final String COLUMN_FISH_INDEX="ind";//implementation of the isCombinedaBag column
         public static final String PRIMARY_KEY="PRIMARY KEY("+ COLUMN_FISH_ID+")";//implementation of the fishId as primary key
-        public static final String[] ALL_COLUMNS ={COLUMN_FISH_ID,COLUMN_FISH_NAME,COLUMN_FISH_DESC,COLUMN_FISH_IMAGE,COLUMN_FISH_CAT,COLUMN_MIN_FISH_LENGTH_CM,COLUMN_MIN_FISH_MAX_DAILY_LIMIT,COLUMN_IS_COMBINED_BAG};
+        public static final String[] ALL_COLUMNS ={COLUMN_FISH_ID,COLUMN_FISH_NAME,COLUMN_FISH_DESC,COLUMN_FISH_IMAGE,COLUMN_FISH_CAT,COLUMN_MIN_FISH_LENGTH_CM,COLUMN_MIN_FISH_MAX_DAILY_LIMIT,COLUMN_IS_COMBINED_BAG,COLUMN_FISH_INDEX};
     }
 
     /**
@@ -109,8 +111,9 @@ public final class AucklandFishingDBTables {
         public static final String COLUMN_NETRULES_DESCRIPTION = "description";//implementation of the description column
         public static final String COLUMN_NETRULES_PENALTY = "penalty";//implementation of the penalty column
         public static final String COLUMN_NETRULES_IMAGE = "image";//implementation of the image column
+        public static final String COLUMN_NETRULES_INDEX = "ind";//implementation of the image column
         public static final String PRIMARY_KEY = "PRIMARY KEY (" + COLUMN_NETRULES_ID + ")";//implementation of the netrulesId column as primary key
-        public static final String[] ALL_COLUMNS = {COLUMN_NETRULES_ID, COLUMN_NETRULES_TITLE, COLUMN_NETRULES_DESCRIPTION,COLUMN_NETRULES_PENALTY, COLUMN_NETRULES_IMAGE};
+        public static final String[] ALL_COLUMNS = {COLUMN_NETRULES_ID, COLUMN_NETRULES_TITLE, COLUMN_NETRULES_DESCRIPTION,COLUMN_NETRULES_PENALTY, COLUMN_NETRULES_IMAGE,COLUMN_NETRULES_INDEX};
     }
 }
 

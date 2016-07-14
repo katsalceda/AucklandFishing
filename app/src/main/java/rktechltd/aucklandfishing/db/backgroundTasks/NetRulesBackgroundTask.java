@@ -101,8 +101,9 @@ public class NetRulesBackgroundTask extends AsyncTask<String,NetRule,String> {
                 n_description = cursor.getString(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_DESCRIPTION));
                 n_penalty = cursor.getDouble(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_PENALTY));
                 image = cursor.getBlob(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_IMAGE));
+              // int i =cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.NetRules.COLUMN_NETRULES_INDEX));
                 //instantiates the NetRule with the row in the cursor
-                NetRule cl= new NetRule(id, n_title, n_description,n_penalty,image);
+                NetRule cl= new NetRule(id, n_title, n_description,n_penalty,image,id);
                 publishProgress(cl);//calls the onProgressUpdate method
                 Log.d("BG",""+netRuleAdapter.getCount());
             }while(cursor.moveToNext());

@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
      private InitializeDatabase initdb;
     private static Context context;
     /** Waiting time **/
-    private final int SPLASH_DISPLAY_LENGTH = 3000;
+    private final int SPLASH_DISPLAY_LENGTH = 2000;
 
     /**
      * On creating the activity

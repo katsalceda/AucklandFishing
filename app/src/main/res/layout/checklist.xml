@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/linearLayout"
@@ -33,18 +33,20 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentTop="false"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
         android:layout_marginStart="170dp"
-        android:layout_alignParentRight="true"></LinearLayout>
+        android:layout_alignParentRight="true">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/imgCL"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </LinearLayout>
 
-    <ImageView
-        android:layout_width="81dp"
-        android:layout_height="67dp"
-        android:id="@+id/imgCL"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

@@ -16,6 +16,7 @@ public class FishCatch {
     private byte[] picture;
     private String name;
     private String remark;
+    //private int index
 
     /**
      * Constructor

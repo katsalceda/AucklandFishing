@@ -13,6 +13,16 @@ public class Checklist {
     private String description;
     private byte[] image;
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    private int index;
+
     /**
      * Constructor
      */
@@ -25,11 +35,12 @@ public class Checklist {
      * @param description
      * @param image
      */
-    public Checklist(int checkListId, String title, String description, byte[] image) {
+    public Checklist(int checkListId, String title, String description, byte[] image, int index) {
         this.checkListId = checkListId;
         this.title = title;
         this.description = description;
         this.image = image;
+        this.index = index;
     }
 
     /**

@@ -87,7 +87,7 @@ public class MyFishingXPActivity extends AppCompatActivity {
         getLocation.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Log.d("CONF",getLocation.toString());
+                //Log.d("CONF",getLocation.toString());
                 glocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, glocListener);
             }
         });

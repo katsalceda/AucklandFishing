@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import rktechltd.aucklandfishing.R;
+import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.models.Fish;
 
 /**
@@ -101,7 +102,7 @@ public class FishListAdapter extends ArrayAdapter<Fish> {
             fishHolder.ckCombined.setChecked(true);
         else
             fishHolder.ckCombined.setChecked(false);
-
+        fishHolder.img.setImageResource(AucklandFishingDBHelper.images[fish.getFishId()]);
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;

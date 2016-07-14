@@ -12,6 +12,7 @@ public class NetRule {
     private String title;
     private double penalty;
     private byte[] image;
+    private int index;
 
     /**
      * Constructor
@@ -21,12 +22,13 @@ public class NetRule {
      * @param penalty
      * @param image
      */
-    public NetRule(int rulesId, String description, String title, double penalty, byte[] image) {
+    public NetRule(int rulesId, String description, String title, double penalty, byte[] image,int index) {
         this.rulesId = rulesId;
         this.description = description;
         this.title = title;
         this.penalty = penalty;
         this.image = image;
+        this.index=index;
     }
 
     /**

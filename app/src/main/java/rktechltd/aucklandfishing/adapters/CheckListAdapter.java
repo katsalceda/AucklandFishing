@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import rktechltd.aucklandfishing.R;
+import rktechltd.aucklandfishing.db.AucklandFishingDBHelper;
 import rktechltd.aucklandfishing.models.Checklist;
 import rktechltd.aucklandfishing.utilities.ImageHelper;
 
@@ -92,7 +93,7 @@ public class CheckListAdapter extends ArrayAdapter<Checklist> {
         Checklist cl = (Checklist)getItem(position);
         clHolder.txtTitle.setText(cl.getTitle().toString());
         clHolder.txtDescription.setText(cl.getDescription().toString());
-        clHolder.imgCL.setImageBitmap(ImageHelper.convertImage(cl.getImage()));
+        clHolder.imgCL.setImageResource(AucklandFishingDBHelper.images[cl.getCheckListId()]);
         Log.d("Adapter","returning view");
         // Return the completed view to render on screen
         return row;

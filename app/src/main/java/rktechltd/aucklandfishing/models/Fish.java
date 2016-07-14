@@ -15,6 +15,7 @@ public class Fish {
     private double minFishLengthCm;
     private int maxDailyLimit;
     private int isCombinedBag;
+    private int index;
 
     /**
      * Constructor
@@ -32,7 +33,7 @@ public class Fish {
      * @param maxDailyLimit
      * @param isCombinedBag
      */
-    public Fish(int fishId, String fishName, String fishDescription, byte[] fishImage, int fishCat, double minFishLengthCm, int maxDailyLimit, int isCombinedBag){
+    public Fish(int fishId, String fishName, String fishDescription, byte[] fishImage, int fishCat, double minFishLengthCm, int maxDailyLimit, int isCombinedBag,int index){
         this.fishId = fishId;
         this.fishName = fishName;
         this.fishDescription = fishDescription;
@@ -41,6 +42,7 @@ public class Fish {
         this.minFishLengthCm = minFishLengthCm;
         this.maxDailyLimit = maxDailyLimit;
         this.isCombinedBag = isCombinedBag;
+        this.index=index;
     }
 
     /**

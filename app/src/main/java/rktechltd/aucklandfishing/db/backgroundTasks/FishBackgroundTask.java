@@ -108,8 +108,9 @@ public class FishBackgroundTask extends AsyncTask<String,Fish,String> {
                 length = cursor.getDouble(cursor.getColumnIndex(AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_LENGTH_CM));
                 maxLimit = cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.Fish.COLUMN_MIN_FISH_MAX_DAILY_LIMIT));
                 isCombined = cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.Fish.COLUMN_IS_COMBINED_BAG));
+               // int i = cursor.getInt(cursor.getColumnIndex(AucklandFishingDBTables.Fish.COLUMN_FISH_INDEX));
                 //instantiates the Fish with the row in the cursor
-                Fish cl= new Fish(id, f_name, f_description,image,cat,length,maxLimit,isCombined);
+                Fish cl= new Fish(id, f_name, f_description,image,cat,length,maxLimit,isCombined,id);
                 publishProgress(cl);//calls the onProgressUpdate method
                 Log.d("BG",""+fishListAdapter.getCount());
             }while(cursor.moveToNext());
